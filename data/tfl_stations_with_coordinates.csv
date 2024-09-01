@@ -1,0 +1,596 @@
+Line,Station Name,Latitude,Longitude
+Bakerloo,Baker Street,51.5231548,-0.156863
+Bakerloo,Charing Cross,51.50813729999999,-0.1247624
+Bakerloo,Edgware Road,51.5202914,-0.1701944
+Bakerloo,Elephant & Castle,51.5048541,-0.1136621
+Bakerloo,Embankment,51.5032466,-0.112293
+Bakerloo,Harlesden,51.5032466,-0.112293
+Bakerloo,Harrow & Wealdstone,51.59172359999999,-0.3343587
+Bakerloo,Kensal Green,51.5032466,-0.112293
+Bakerloo,Kenton,51.5032466,-0.112293
+Bakerloo,Kilburn Park,51.53504119999999,-0.1938988
+Bakerloo,Lambeth North,51.4989177,-0.1121086
+Bakerloo,Maida Vale,51.5032466,-0.112293
+Bakerloo,Marylebone,51.5032466,-0.112293
+Bakerloo,North Wembley,51.5625616,-0.3175595
+Bakerloo,Oxford Circus,51.51521169999999,-0.1418553
+Bakerloo,Paddington,51.5032466,-0.112293
+Bakerloo,Piccadilly Circus,51.510121,-0.1341683
+Bakerloo,Queen's Park,51.53416619999999,-0.2046848
+Bakerloo,Regent's Park,51.5312705,-0.1569694
+Bakerloo,South Kenton,51.570181,-0.3083981
+Bakerloo,Stonebridge Park,51.5439748,-0.2753492
+Bakerloo,Warwick Avenue,51.52325459999999,-0.1838447
+Bakerloo,Waterloo,51.5032466,-0.112293
+Bakerloo,Wembley Central,51.55214429999999,-0.2965274
+Bakerloo,Willesden Junction,51.53211630000001,-0.2433689
+Central,Bank,51.533441,-0.12095
+Central,Barkingside,51.5899246,0.08387420000000001
+Central,Bethnal Green,51.531103,-0.0480805
+Central,Bond Street,51.5112701,-0.143384
+Central,Buckhurst Hill,51.627572,0.034513
+Central,Chancery Lane,51.516132,-0.1120205
+Central,Chigwell,51.62628100000001,0.080647
+Central,Debden,51.533441,-0.12095
+Central,Ealing Broadway,51.5133314,-0.3040798
+Central,East Acton,51.5127758,-0.2476803
+Central,Epping,51.5072178,-0.1275862
+Central,Fairlop,51.6018926,0.08420119999999999
+Central,Gants Hill,51.5767812,0.0661732
+Central,Grange Hill,51.4081738,-0.0878351
+Central,Greenford,51.531797,-0.34622
+Central,Hainault,51.6083149,0.119312
+Central,Hanger Lane,51.5217238,-0.2915098
+Central,Holborn,51.533441,-0.12095
+Central,Holland Park,51.5032252,-0.2036668
+Central,Lancaster Gate,51.5115799,-0.1802554
+Central,Leyton,51.533441,-0.12095
+Central,Leytonstone,51.533441,-0.12095
+Central,Liverpool Street,51.5174846,-0.0826291
+Central,Loughton,51.655942,0.068161
+Central,Marble Arch,51.5133224,-0.1589956
+Central,Mile End,51.52354529999999,-0.0330122
+Central,Newbury Park,51.5734779,0.08897669999999999
+Central,North Acton,51.5219526,-0.2580821
+Central,Northolt,51.546615,-0.373103
+Central,Notting Hill Gate,51.5090613,-0.1966222
+Central,Oxford Circus,51.51521169999999,-0.1418553
+Central,Perivale,51.532222,-0.324477
+Central,Queensway,51.5137928,-0.1877516
+Central,Redbridge,51.58861210000001,0.08239819999999999
+Central,Roding Valley,51.6171644,0.0438972
+Central,Ruislip Gardens,51.533441,-0.12095
+Central,Shepherd's Bush,51.5051913,-0.22469
+Central,Snaresbrook,51.533441,-0.12095
+Central,South Ruislip,51.55507919999999,-0.399575
+Central,South Woodford,51.533441,-0.12095
+Central,St. Paul's,51.5138453,-0.0983506
+Central,Stratford,51.5416767,-0.0015654
+Central,Theydon Bois,51.533441,-0.12095
+Central,Tottenham Court Road,51.5203145,-0.1340121
+Central,Wanstead,51.5767971,0.0249881
+Central,West Acton,51.5179559,-0.2816394
+Central,West Ruislip,51.5698787,-0.4377194
+Central,White City,51.51146199999999,-0.2376332
+Central,Woodford,51.533441,-0.12095
+DLR,Abbey Road,51.5324885,0.0038001
+DLR,All Saints,51.5109882,-0.0130756
+DLR,Bank,51.533441,-0.12095
+DLR,Beckton,51.514206,0.0607712
+DLR,Beckton Park,51.5088248,0.0549896
+DLR,Blackwall,51.5072178,-0.1275862
+DLR,Bow Church,51.5278468,-0.0209184
+DLR,Canary Wharf DLR,51.50510329999999,-0.0208909
+DLR,Canning Town,51.5138726,0.0081865
+DLR,Crossharbour,51.495794,-0.0144615
+DLR,Custom House,51.50983859999999,0.0268796
+DLR,Cutty Sark,51.4816371,-0.0109841
+DLR,Cyprus,51.5087191,0.0647459
+DLR,Deptford Bridge,51.4747989,-0.0229293
+DLR,Devons Road,51.5225628,-0.0174793
+DLR,East India,51.5093311,-0.0022067
+DLR,Elverson Road,51.4687255,-0.0177147
+DLR,Gallions Reach,51.5090228,0.07172769999999999
+DLR,Greenwich,51.47812,-0.0132503
+DLR,Heron Quays,51.502354,-0.024651
+DLR,Island Gardens,51.4878041,-0.0101669
+DLR,King George V,51.5020067,0.06237910000000001
+DLR,Langdon Park,51.5149653,-0.0144675
+DLR,Lewisham DLR,51.4648395,-0.012879
+DLR,Limehouse DLR,51.5127269,-0.039939
+DLR,London City Airport,51.5033146,0.0494113
+DLR,Mudchute,51.4913268,-0.0149936
+DLR,Pontoon Dock,51.5019634,0.0314406
+DLR,Poplar,51.507794,-0.0176126
+DLR,Prince Regent,51.5093322,0.034185
+DLR,Pudding Mill Lane,51.5338978,-0.0133798
+DLR,Royal Albert,51.5084278,0.0460274
+DLR,Royal Victoria,51.5093346,0.0185375
+DLR,Shadwell DLR,51.5112348,-0.05691599999999999
+DLR,South Quay,51.5005076,-0.0159514
+DLR,Star Lane,51.5207507,0.0043191
+DLR,Stratford,51.5416767,-0.0015654
+DLR,Stratford High Street,51.5380043,-0.0005563
+DLR,Stratford International DLR,51.5457171,-0.0087396
+DLR,Tower Gateway,51.5106312,-0.0737553
+DLR,West Ham,51.5280931,0.005108199999999999
+DLR,West India Quay,51.5068851,-0.0205393
+DLR,West Silvertown,51.502838,0.022487
+DLR,Westferry,51.5090546,-0.0267044
+DLR,Woolwich Arsenal,51.4898695,0.068354
+District,Acton Town,51.50837199999999,-0.27444
+District,Aldgate East,51.5152638,-0.0718345
+District,Bank,51.533441,-0.12095
+District,Barking,51.5377369,0.076127
+District,Barons Court,51.4903156,-0.2135906
+District,Bayswater,51.5135456,-0.1865659
+District,Becontree,51.5625977,0.1224296
+District,Blackfriars,51.5115746,-0.1034728
+District,Bow Road,51.52695929999999,-0.024766
+District,Bromley-by-Bow,51.5278208,-0.0128373
+District,Cannon Street,51.5072178,-0.1275862
+District,Chiswick Park,51.4876272,-0.2671732
+District,Dagenham East,51.5402631,0.1482103
+District,Dagenham Heathway,51.5402631,0.1482103
+District,Ealing Broadway,51.5133314,-0.3040798
+District,Ealing Common,51.51027149999999,-0.2877267
+District,Earl's Court,51.490331,-0.1958417
+District,East Ham,51.5333972,0.04991139999999999
+District,East Putney,51.4596431,-0.2141257
+District,Edgware Road,51.5202914,-0.1701944
+District,Elm Park,51.449652,-0.1179072
+District,Embankment,51.5032466,-0.112293
+District,Fulham Broadway,51.4803328,-0.1943638
+District,Gloucester Road,51.495262,-0.1829172
+District,Gunnersbury,51.49335199999999,-0.278887
+District,Hammersmith,51.491187,-0.223731
+District,High Street Kensington,51.5008834,-0.1926463
+District,Hornchurch,51.562254,0.218605
+District,Kensington,51.498705,-0.1901901
+District,Kew Gardens,51.475251,-0.2848908
+District,Mansion House,51.5122905,-0.0936332
+District,Mile End,51.52354529999999,-0.0330122
+District,Notting Hill Gate,51.5090613,-0.1966222
+District,Paddington,51.5032466,-0.112293
+District,Parsons Green,51.4747689,-0.2002723
+District,Plaistow,51.5268317,0.0308143
+District,Putney Bridge,51.5072178,-0.1275862
+District,Ravenscourt Park,51.4952683,-0.2397865
+District,Richmond,37.780683,-122.4723021
+District,Sloane Square,51.4927684,-0.1570174
+District,South Kensington,51.4940406,-0.1802093
+District,Southfields,51.44522,-0.2037324
+District,St. James's Park,51.5072178,-0.1275862
+District,Stamford Brook,51.4904257,-0.2341454
+District,Stepney Green,51.5219664,-0.0466614
+District,Temple,51.5109998,-0.1142932
+District,Tower Hill,51.5101178,-0.07666089999999999
+District,Turnham Green,51.5072178,-0.1275862
+District,Upminster,51.55591399999999,0.248894
+District,Upminster Bridge,51.55591399999999,0.248894
+District,Upney,51.5384146,0.1015648
+District,Upton Park,51.53471750000001,0.0337596
+District,Victoria,51.4952103,-0.1438979
+District,West Brompton,51.4872591,-0.1955188
+District,West Ham,51.5280931,0.005108199999999999
+District,West Kensington,51.4898621,-0.2070008
+District,Westminster,51.4974948,-0.1356583
+District,Whitechapel,51.5148198,-0.0650534
+District,Wimbledon,51.41833889999999,-0.2206288
+District,Wimbledon Park,51.43455230000001,-0.2003717
+Elizabeth Line,Acton Main Line,51.5174028,-0.2666701
+Elizabeth Line,Brentwood,51.613605,0.299613
+Elizabeth Line,Burnham,51.5233529,-0.6465506000000001
+Elizabeth Line,Chadwell Heath,51.5680729,0.1296121
+Elizabeth Line,Ealing Broadway,51.5133314,-0.3040798
+Elizabeth Line,Forest Gate,51.5439215,0.0264272
+Elizabeth Line,Gidea Park,51.5815385,0.2057702
+Elizabeth Line,Goodmayes,51.5662262,0.1102974
+Elizabeth Line,Hanwell,51.5066369,-0.3383229
+Elizabeth Line,Harold Wood,51.5928602,0.232836
+Elizabeth Line,Hayes & Harlington,51.5030533,-0.420603
+Elizabeth Line,Heathrow Terminal 4,51.459438,-0.446682
+Elizabeth Line,Heathrow Terminals 2 & 3,51.4724711,-0.4544586
+Elizabeth Line,Ilford,51.5562328,0.0718341
+Elizabeth Line,Iver,51.5084502,-0.5063803
+Elizabeth Line,Langley,51.5080251,-0.5418476999999999
+Elizabeth Line,Liverpool Street,51.5174846,-0.0826291
+Elizabeth Line,Maidenhead,51.5187073,-0.7226926
+Elizabeth Line,Manor Park,51.550487,0.0514117
+Elizabeth Line,Maryland,51.5465814,0.0060212
+Elizabeth Line,Paddington,51.5032466,-0.112293
+Elizabeth Line,Reading,51.4583641,-0.9714799
+Elizabeth Line,Romford,51.57472449999999,0.1826519
+Elizabeth Line,Seven Kings,51.5636064,0.098511
+Elizabeth Line,Shenfield,51.63080890000001,0.3297648
+Elizabeth Line,Slough,51.5118824,-0.5913883
+Elizabeth Line,Southall,51.5058941,-0.3785616
+Elizabeth Line,Stratford,51.5416767,-0.0015654
+Elizabeth Line,Taplow,51.5235529,-0.6814378999999999
+Elizabeth Line,Twyford,51.4755668,-0.8631605
+Elizabeth Line,West Drayton,51.5098801,-0.4725394999999999
+Elizabeth Line,West Ealing,51.5136783,-0.3209758
+H&C and Circle,Aldgate,51.51298,-0.07002069999999999
+H&C and Circle,Aldgate East,51.5152638,-0.0718345
+H&C and Circle,Baker Street,51.5231548,-0.156863
+H&C and Circle,Bank,51.533441,-0.12095
+H&C and Circle,Barbican,51.51298,-0.07002069999999999
+H&C and Circle,Barking,51.5377369,0.076127
+H&C and Circle,Bayswater,51.5135456,-0.1865659
+H&C and Circle,Blackfriars,51.5115746,-0.1034728
+H&C and Circle,Bow Road,51.52695929999999,-0.024766
+H&C and Circle,Bromley-by-Bow,51.5278208,-0.0128373
+H&C and Circle,Cannon Street,51.5072178,-0.1275862
+H&C and Circle,East Ham,51.5333972,0.04991139999999999
+H&C and Circle,Edgware Road,51.5202914,-0.1701944
+H&C and Circle,Embankment,51.5032466,-0.112293
+H&C and Circle,Euston Square,51.525635,-0.1350197
+H&C and Circle,Farringdon,51.51298,-0.07002069999999999
+H&C and Circle,Gloucester Road,51.495262,-0.1829172
+H&C and Circle,Goldhawk Road,51.5004522,-0.2350711
+H&C and Circle,Great Portland Street,51.5199737,-0.1426286
+H&C and Circle,Hammersmith,51.491187,-0.223731
+H&C and Circle,High Street Kensington,51.5008834,-0.1926463
+H&C and Circle,King's Cross St. Pancras,51.53066279999999,-0.1231666
+H&C and Circle,Ladbroke Grove,51.5178769,-0.2103321
+H&C and Circle,Latimer Road,51.5134548,-0.2177014
+H&C and Circle,Liverpool Street,51.5174846,-0.0826291
+H&C and Circle,Mansion House,51.5122905,-0.0936332
+H&C and Circle,Mile End,51.52354529999999,-0.0330122
+H&C and Circle,Moorgate,51.5170917,-0.088764
+H&C and Circle,Notting Hill Gate,51.5090613,-0.1966222
+H&C and Circle,Paddington,51.5032466,-0.112293
+H&C and Circle,Plaistow,51.5268317,0.0308143
+H&C and Circle,Royal Oak,51.51298,-0.07002069999999999
+H&C and Circle,Shepherd's Bush Market,51.5025321,-0.22654
+H&C and Circle,Sloane Square,51.4927684,-0.1570174
+H&C and Circle,South Kensington,51.4940406,-0.1802093
+H&C and Circle,St. James's Park,51.5072178,-0.1275862
+H&C and Circle,Stepney Green,51.5219664,-0.0466614
+H&C and Circle,Temple,51.5109998,-0.1142932
+H&C and Circle,Tower Hill,51.5101178,-0.07666089999999999
+H&C and Circle,Upton Park,51.53471750000001,0.0337596
+H&C and Circle,Victoria,51.4952103,-0.1438979
+H&C and Circle,West Ham,51.5280931,0.005108199999999999
+H&C and Circle,Westbourne Park,51.51298,-0.07002069999999999
+H&C and Circle,Westminster,51.4974948,-0.1356583
+H&C and Circle,Whitechapel,51.5148198,-0.0650534
+H&C and Circle,Wood Lane,51.51298,-0.07002069999999999
+Jubilee,Baker Street,51.5231548,-0.156863
+Jubilee,Bermondsey,51.49226549999999,-0.0652005
+Jubilee,Bond Street,51.5112701,-0.143384
+Jubilee,Canada Water,51.49798999999999,-0.049693
+Jubilee,Canary Wharf,51.5036926,-0.0193487
+Jubilee,Canning Town,51.5138726,0.0081865
+Jubilee,Canons Park,51.6076736,-0.2962361
+Jubilee,Dollis Hill,51.5525583,-0.2380731
+Jubilee,Finchley Road,51.5611817,-0.1970949
+Jubilee,Green Park,51.5069327,-0.1428838
+Jubilee,Kilburn,51.5465399,-0.204046
+Jubilee,Kingsbury,51.5848468,-0.2787047
+Jubilee,London Bridge,51.5042625,-0.0848024
+Jubilee,Neasden,51.5626819,-0.2536987
+Jubilee,North Greenwich,51.50024519999999,0.0035842
+Jubilee,Queensbury,43.353627,-73.6771662
+Jubilee,Southwark,51.502781,-0.087738
+Jubilee,St. John's Wood,51.5311362,-0.1701036
+Jubilee,Stanmore,51.617676,-0.311451
+Jubilee,Stratford,51.5416767,-0.0015654
+Jubilee,Swiss Cottage,51.5436717,-0.1745194
+Jubilee,Waterloo,51.5032466,-0.112293
+Jubilee,Wembley Park,51.5585935,-0.2796126
+Jubilee,West Ham,51.5280931,0.005108199999999999
+Jubilee,West Hampstead,51.5490183,-0.1971205
+Jubilee,Westminster,51.4974948,-0.1356583
+Jubilee,Willesden Green,51.5476301,-0.2369246
+LO East London,Anerley,51.4120565,-0.06568399999999999
+LO East London,Battersea Park,51.4698901,-0.1712136
+LO East London,Brockley,51.46377160000001,-0.0366031
+LO East London,Canada Water,51.49798999999999,-0.049693
+LO East London,Canonbury,51.5437366,-0.1005803
+LO East London,Clapham High Street,51.463404,-0.1335475
+LO East London,Clapham Junction,-33.000327,27.8415063
+LO East London,Crystal Palace,51.4197233,-0.0830638
+LO East London,Dalston Junction,51.5459999,-0.0751485
+LO East London,Denmark Hill,51.4671404,-0.0907785
+LO East London,Forest Hill,-33.000327,27.8415063
+LO East London,Haggerston,51.5373275,-0.0748971
+LO East London,Highbury & Islington,51.5569649,-0.0979656
+LO East London,Honor Oak Park,51.4498694,-0.0467148
+LO East London,Hoxton,51.5310622,-0.0866091
+LO East London,New Cross,51.4769047,-0.0336897
+LO East London,New Cross Gate,51.4746748,-0.0401427
+LO East London,Norwood Junction,51.55633,0.0655092
+LO East London,Peckham Rye,51.4603241,-0.0603936
+LO East London,Penge West,51.41753509999999,-0.06076210000000001
+LO East London,Queens Road Peckham,51.4734184,-0.0573532
+LO East London,Rotherhithe,51.49628999999999,-0.0411931
+LO East London,Shadwell,51.5112348,-0.05691599999999999
+LO East London,Shoreditch High Street,51.5229106,-0.0777472
+LO East London,Surrey Quays,51.4944172,-0.0383063
+LO East London,Sydenham,51.42476,-0.059399
+LO East London,Wandsworth Road,51.4744321,-0.132418
+LO East London,Wapping,51.5041774,-0.0563736
+LO East London,West Croydon,51.3788016,-0.1020889
+LO East London,Whitechapel,51.5148198,-0.0650534
+LO Gospel Oak-Barking,Barking,51.5377369,0.076127
+LO Gospel Oak-Barking,Blackhorse Road,51.5869521,-0.0409572
+LO Gospel Oak-Barking,Crouch Hill,51.5713784,-0.1171506
+LO Gospel Oak-Barking,Gospel Oak,51.5395507,0.0809453
+LO Gospel Oak-Barking,Harringay Green Lanes,51.5771902,-0.0979994
+LO Gospel Oak-Barking,Leyton Midland Road,51.56941339999999,-0.009734699999999999
+LO Gospel Oak-Barking,Leytonstone High Road,51.563373,0.0092994
+LO Gospel Oak-Barking,South Tottenham,51.5395507,0.0809453
+LO Gospel Oak-Barking,Upper Holloway,51.5638383,-0.1295753
+LO Gospel Oak-Barking,Walthamstow Queen's Road,51.5814217,-0.0238481
+LO Gospel Oak-Barking,Wanstead Park,51.55154820000001,0.0254233
+LO Gospel Oak-Barking,Woodgrange Park,51.5493047,0.043977
+LO North London,Acton Central,51.5077724,-0.2630589
+LO North London,Brondesbury,51.5453971,-0.2004112
+LO North London,Brondesbury Park,51.5408407,-0.210112
+LO North London,Caledonian Road & Barnsbury,51.543116,-0.1160098
+LO North London,Camden Road,51.5479476,-0.1303299
+LO North London,Canonbury,51.5437366,-0.1005803
+LO North London,Clapham Junction,-33.000327,27.8415063
+LO North London,Dalston Kingsland,51.5484626,-0.0754118
+LO North London,Finchley Road & Frognal,51.54947000000001,-0.1815625
+LO North London,Gospel Oak,51.5395507,0.0809453
+LO North London,Gunnersbury,51.49335199999999,-0.278887
+LO North London,Hackney Central,51.5475594,-0.05652500000000001
+LO North London,Hackney Wick,51.544579,-0.0256935
+LO North London,Hampstead Heath,51.5552509,-0.1658907
+LO North London,Highbury & Islington,51.5569649,-0.0979656
+LO North London,Homerton,51.5470366,-0.0423623
+LO North London,Imperial Wharf,51.4750534,-0.1826773
+LO North London,Kensal Rise,51.534513,-0.2197528
+LO North London,Kensington,51.498705,-0.1901901
+LO North London,Kentish Town West,51.54655,-0.14663
+LO North London,Kew Gardens,51.475251,-0.2848908
+LO North London,Richmond,37.780683,-122.4723021
+LO North London,Shepherd's Bush,51.5051913,-0.22469
+LO North London,South Acton,51.4994886,-0.2700235
+LO North London,Stratford,51.5416767,-0.0015654
+LO North London,West Brompton,51.4872591,-0.1955188
+LO North London,West Hampstead,51.5490183,-0.1971205
+LO North London,Willesden Junction,51.53211630000001,-0.2433689
+LO Romford–Upminster,Emerson Park,51.5688727,0.2196953
+LO Romford–Upminster,Romford,51.57472449999999,0.1826519
+LO Romford–Upminster,Upminster,51.55591399999999,0.248894
+LO Watford-Euston,Bushey,51.5280408,-0.1333271
+LO Watford-Euston,Carpenders Park,51.6285418,-0.3836965
+LO Watford-Euston,Euston,51.5280408,-0.1333271
+LO Watford-Euston,Harlesden,51.5032466,-0.112293
+LO Watford-Euston,Harrow & Wealdstone,51.59172359999999,-0.3343587
+LO Watford-Euston,Hatch End,51.5280408,-0.1333271
+LO Watford-Euston,Headstone Lane,51.5280408,-0.1333271
+LO Watford-Euston,Kensal Green,51.5032466,-0.112293
+LO Watford-Euston,Kenton,51.5032466,-0.112293
+LO Watford-Euston,Kilburn High Road,51.5409074,-0.1967388
+LO Watford-Euston,North Wembley,51.5625616,-0.3175595
+LO Watford-Euston,Queen's Park,51.53416619999999,-0.2046848
+LO Watford-Euston,South Hampstead,51.54608899999999,-0.1790479
+LO Watford-Euston,South Kenton,51.570181,-0.3083981
+LO Watford-Euston,Stonebridge Park,51.5439748,-0.2753492
+LO Watford-Euston,Watford High Street,51.652656,-0.3917363
+LO Watford-Euston,Watford Junction,51.5280408,-0.1333271
+LO Watford-Euston,Wembley Central,51.55214429999999,-0.2965274
+LO Watford-Euston,Willesden Junction,51.53211630000001,-0.2433689
+LO West Anglia,Bethnal Green,51.531103,-0.0480805
+LO West Anglia,Bruce Grove,51.5937069,-0.06993189999999999
+LO West Anglia,Bush Hill Park,51.6482129,-0.0675675
+LO West Anglia,Cambridge Heath,51.5310934,-0.05761819999999999
+LO West Anglia,Cheshunt,51.70264050000001,-0.0343787
+LO West Anglia,Chingford,51.6320667,0.007362700000000001
+LO West Anglia,Clapton,51.5584687,-0.0559163
+LO West Anglia,Edmonton Green,51.6248126,-0.0581806
+LO West Anglia,Enfield Town,51.6522994,-0.0807119
+LO West Anglia,Hackney Downs,51.5553095,-0.06908249999999999
+LO West Anglia,Highams Park,51.6083754,0.0014712
+LO West Anglia,Liverpool Street,51.5174846,-0.0826291
+LO West Anglia,London Fields,51.5410441,-0.0577287
+LO West Anglia,Rectory Road,51.558502,-0.068241
+LO West Anglia,Seven Sisters,51.58232770000001,-0.0749855
+LO West Anglia,Silver Street,51.6532939,-0.0805666
+LO West Anglia,Southbury,51.6487709,-0.05241390000000001
+LO West Anglia,St James Street,51.5065008,-0.1393289
+LO West Anglia,Stamford Hill,51.5696514,-0.0750199
+LO West Anglia,Stoke Newington,51.561175,-0.08349229999999999
+LO West Anglia,Theobalds Grove,51.6923107,-0.0346524
+LO West Anglia,Turkey Street,51.67249349999999,-0.0470747
+LO West Anglia,Walthamstow Central,51.5828251,-0.0198182
+LO West Anglia,White Hart Lane,51.6032123,-0.0657389
+LO West Anglia,Wood Street,51.6528755,-0.2107749
+London Trams,Addington Village,51.3563452,-0.0324264
+London Trams,Addiscombe,51.3805498,-0.07227449999999999
+London Trams,Ampere Way,51.3833801,-0.1256994
+London Trams,Arena,51.3916182,-0.0583279
+London Trams,Avenue Road,51.5384136,-0.1690901
+London Trams,Beckenham Junction Trams,51.410728,-0.026375
+London Trams,Beckenham Road,51.4088643,-0.0404625
+London Trams,Beddington Lane,51.3894216,-0.1418278
+London Trams,Belgrave Walk,51.4026766,-0.1772244
+London Trams,Birkbeck Trams,51.40380589999999,-0.05583929999999999
+London Trams,Blackhorse Lane,51.5922107,-0.0398795
+London Trams,Centrale,51.5074256,-0.1271814
+London Trams,Church Street,51.5228495,-0.1711376
+London Trams,Coombe Lane,51.4115823,-0.2405083
+London Trams,Dundonald Road,51.5374013,-0.2183658
+London Trams,East Croydon Trams,51.37488159999999,-0.0925491
+London Trams,Elmers End,51.39749,-0.0474767
+London Trams,Fieldway,51.5435455,-0.2670019
+London Trams,George Street,51.5170389,-0.1579115
+London Trams,Gravel Hill,51.5977805,-0.1986414
+London Trams,Harrington Road,51.4940194,-0.1767166
+London Trams,King Henry's Drive,51.34535529999999,-0.0203298
+London Trams,Lebanon Road,51.4562477,-0.2010368
+London Trams,Lloyd Park,51.5943815,-0.020408
+London Trams,Merton Park,51.4078272,-0.1983261
+London Trams,Mitcham,51.402869,-0.166709
+London Trams,Mitcham Junction,51.3930336,-0.1576835
+London Trams,Morden Road,51.4684087,0.0177949
+London Trams,New Addington,51.348184,-0.017094
+London Trams,Phipps Bridge,51.4034219,-0.1822814
+London Trams,Reeves Corner,51.3738324,-0.1061935
+London Trams,Sandilands,51.5072178,-0.1275862
+London Trams,Therapia Lane,51.3853918,-0.1343512
+London Trams,Waddon Marsh,51.3769818,-0.1179077
+London Trams,Wandle Park,51.4184762,-0.1797532
+London Trams,Wellesley Road,51.4904446,-0.2772375
+London Trams,West Croydon Trams,51.3788016,-0.1020889
+London Trams,Wimbledon Trams,51.4214125,-0.2054832
+London Trams,Woodside,51.3882998,-0.0649971
+Metropolitan,Aldgate,51.51298,-0.07002069999999999
+Metropolitan,Amersham,51.6755179,-0.6072409999999999
+Metropolitan,Baker Street,51.5231548,-0.156863
+Metropolitan,Barbican,51.51298,-0.07002069999999999
+Metropolitan,Chalfont & Latimer,51.5072178,-0.1275862
+Metropolitan,Chesham,51.709401,-0.612333
+Metropolitan,Chorleywood,51.655632,-0.5161829
+Metropolitan,Croxley,51.6458299,-0.452023
+Metropolitan,Eastcote,51.57726719999999,-0.3981245
+Metropolitan,Euston Square,51.525635,-0.1350197
+Metropolitan,Farringdon,51.51298,-0.07002069999999999
+Metropolitan,Finchley Road,51.5611817,-0.1970949
+Metropolitan,Great Portland Street,51.5199737,-0.1426286
+Metropolitan,Harrow-on-the-Hill,51.5706321,-0.3396363
+Metropolitan,Hillingdon,51.5351832,-0.4481378
+Metropolitan,Ickenham,51.563966,-0.442299
+Metropolitan,King's Cross St. Pancras,51.53066279999999,-0.1231666
+Metropolitan,Liverpool Street,51.5174846,-0.0826291
+Metropolitan,Moor Park,51.629278,-0.432108
+Metropolitan,Moorgate,51.5170917,-0.088764
+Metropolitan,North Harrow,51.58412800000001,-0.3644343
+Metropolitan,Northwick Park,51.5072178,-0.1275862
+Metropolitan,Northwood,51.6112297,-0.423889
+Metropolitan,Northwood Hills,51.6006218,-0.4093582
+Metropolitan,Pinner,51.595172,-0.378002
+Metropolitan,Preston Road,51.5044258,-0.0075681
+Metropolitan,Rayners Lane,51.5762173,-0.3702536
+Metropolitan,Rickmansworth,51.638763,-0.4741309999999999
+Metropolitan,Ruislip,51.574593,-0.4250547000000001
+Metropolitan,Ruislip Manor,51.5708186,-0.411653
+Metropolitan,Uxbridge,51.5485,-0.479611
+Metropolitan,Watford,51.66112829999999,-0.3970199
+Metropolitan,Wembley Park,51.5585935,-0.2796126
+Metropolitan,West Harrow,51.5805011,-0.3421192
+Northern,Angel,51.5327841,-0.1058706
+Northern,Archway,51.5648883,-0.1323808
+Northern,Balham,51.4439889,-0.1494105
+Northern,Bank,51.533441,-0.12095
+Northern,Belsize Park,51.5475617,-0.1671077
+Northern,Borough,51.5012449,-0.0936138
+Northern,Brent Cross,51.5763589,-0.2236956
+Northern,Burnt Oak,51.602809,-0.266965
+Northern,Camden Town,51.5390261,-0.1425516
+Northern,Chalk Farm,51.5444834,-0.152158
+Northern,Charing Cross,51.50813729999999,-0.1247624
+Northern,Clapham Common,51.4589252,-0.1493071
+Northern,Clapham North,51.4650932,-0.1295309
+Northern,Clapham South,51.4527773,-0.1487892
+Northern,Colindale,51.5896908,-0.2491029
+Northern,Colliers Wood,51.41704439999999,-0.1778555
+Northern,East Finchley,51.592468,-0.1664342
+Northern,Edgware,51.61548819999999,-0.2609598
+Northern,Elephant & Castle,51.5048541,-0.1136621
+Northern,Embankment,51.5032466,-0.112293
+Northern,Euston,51.5280408,-0.1333271
+Northern,Finchley Central,51.5971434,-0.1979547
+Northern,Golders Green,51.5740013,-0.1987725
+Northern,Goodge Street,51.5206203,-0.1344842
+Northern,Hampstead,51.5556461,-0.1761749
+Northern,Hendon Central,51.5833094,-0.226453
+Northern,High Barnet,51.6569225,-0.1949252
+Northern,Highgate,51.5717195,-0.149989
+Northern,Kennington,51.4879753,-0.1119362
+Northern,Kentish Town,51.5503953,-0.1405159
+Northern,King's Cross St. Pancras,51.53066279999999,-0.1231666
+Northern,Leicester Square,51.510359,-0.1300625
+Northern,London Bridge,51.5042625,-0.0848024
+Northern,Mill Hill East,51.6078622,-0.2082474
+Northern,Moorgate,51.5170917,-0.088764
+Northern,Morden,51.4022497,-0.1947067
+Northern,Mornington Crescent,51.5343501,-0.1388961
+Northern,Old Street,51.5256719,-0.0874922
+Northern,Oval,51.4841476,-0.1170091
+Northern,South Wimbledon,51.41570919999999,-0.192514
+Northern,Stockwell,51.472046,-0.1230034
+Northern,Tooting Bec,51.436753,-0.1618404
+Northern,Tooting Broadway,51.4279271,-0.1679343
+Northern,Tottenham Court Road,51.5203145,-0.1340121
+Northern,Totteridge & Whetstone,51.630241,-0.179144
+Northern,Tufnell Park,51.55633479999999,-0.1374941
+Northern,Warren Street,51.5246192,-0.1381671
+Northern,Waterloo,51.5032466,-0.112293
+Northern,West Finchley,51.6095641,-0.18844
+Northern,Woodside Park,51.6162352,-0.1874339
+Piccadilly,Acton Town,51.50837199999999,-0.27444
+Piccadilly,Alperton,51.5098597,-0.1342809
+Piccadilly,Arnos Grove,51.619799,-0.1296871
+Piccadilly,Arsenal,51.5098597,-0.1342809
+Piccadilly,Barons Court,51.4903156,-0.2135906
+Piccadilly,Boston Manor,51.5098597,-0.1342809
+Piccadilly,Bounds Green,51.5098597,-0.1342809
+Piccadilly,Caledonian Road,51.5436589,-0.1175406
+Piccadilly,Cockfosters,51.647851,-0.151255
+Piccadilly,Covent Garden,51.5098597,-0.1342809
+Piccadilly,Ealing Common,51.51027149999999,-0.2877267
+Piccadilly,Earl's Court,51.490331,-0.1958417
+Piccadilly,Eastcote,51.57726719999999,-0.3981245
+Piccadilly,Finsbury Park,51.56457839999999,-0.1047257
+Piccadilly,Gloucester Road,51.495262,-0.1829172
+Piccadilly,Green Park,51.5069327,-0.1428838
+Piccadilly,Hammersmith,51.491187,-0.223731
+Piccadilly,Hatton Cross,51.466743,-0.423171
+Piccadilly,Heathrow Terminal 4,51.459438,-0.446682
+Piccadilly,Heathrow Terminal 5,51.471466,-0.4879806
+Piccadilly,Heathrow Terminals 123,51.4679914,-0.455051
+Piccadilly,Hillingdon,51.5351832,-0.4481378
+Piccadilly,Holborn,51.533441,-0.12095
+Piccadilly,Holloway Road,51.5570479,-0.1184015
+Piccadilly,Hounslow Central,51.5098597,-0.1342809
+Piccadilly,Hounslow East,51.4704124,-0.3633719
+Piccadilly,Hounslow West,51.473431,-0.385718
+Piccadilly,Hyde Park Corner,51.5029347,-0.1508562
+Piccadilly,Ickenham,51.563966,-0.442299
+Piccadilly,King's Cross St. Pancras,51.53066279999999,-0.1231666
+Piccadilly,Knightsbridge,51.5098597,-0.1342809
+Piccadilly,Leicester Square,51.510359,-0.1300625
+Piccadilly,Manor House,51.5098597,-0.1342809
+Piccadilly,North Ealing,51.5175662,-0.2890518
+Piccadilly,Northfields,51.5098597,-0.1342809
+Piccadilly,Oakwood,51.5098597,-0.1342809
+Piccadilly,Osterley,51.5098597,-0.1342809
+Piccadilly,Park Royal,51.5278587,-0.2618239
+Piccadilly,Piccadilly Circus,51.510121,-0.1341683
+Piccadilly,Rayners Lane,51.5762173,-0.3702536
+Piccadilly,Ruislip,51.574593,-0.4250547000000001
+Piccadilly,Ruislip Manor,51.5708186,-0.411653
+Piccadilly,Russell Square,51.5221667,-0.1249807
+Piccadilly,South Ealing,51.4993778,-0.3061534
+Piccadilly,South Harrow,51.5683717,-0.3553483
+Piccadilly,South Kensington,51.4940406,-0.1802093
+Piccadilly,Southgate,51.5098597,-0.1342809
+Piccadilly,Sudbury Hill,51.5098597,-0.1342809
+Piccadilly,Sudbury Town,51.5503085,-0.316207
+Piccadilly,Turnham Green,51.5072178,-0.1275862
+Piccadilly,Turnpike Lane,51.5893282,-0.1083047
+Piccadilly,Uxbridge,51.5485,-0.479611
+Piccadilly,Wood Green,51.5098597,-0.1342809
+Victoria,Blackhorse Road,51.5869521,-0.0409572
+Victoria,Brixton,51.4952103,-0.1438979
+Victoria,Euston,51.5280408,-0.1333271
+Victoria,Finsbury Park,51.56457839999999,-0.1047257
+Victoria,Green Park,51.5069327,-0.1428838
+Victoria,Highbury & Islington,51.5569649,-0.0979656
+Victoria,King's Cross St. Pancras,51.53066279999999,-0.1231666
+Victoria,Oxford Circus,51.51521169999999,-0.1418553
+Victoria,Pimlico,51.4956389,-0.1443364
+Victoria,Seven Sisters,51.58232770000001,-0.0749855
+Victoria,Stockwell,51.472046,-0.1230034
+Victoria,Tottenham Hale,51.5892808,-0.06105049999999999
+Victoria,Vauxhall,51.4952103,-0.1438979
+Victoria,Victoria,51.4952103,-0.1438979
+Victoria,Walthamstow Central,51.5828251,-0.0198182
+Victoria,Warren Street,51.5246192,-0.1381671
+Waterloo & City,Bank,51.533441,-0.12095
+Waterloo & City,Waterloo,51.5032466,-0.112293
