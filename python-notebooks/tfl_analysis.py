@@ -16,6 +16,7 @@ Post-submission corrections (see README "Corrections after submission"):
 
 from __future__ import annotations
 
+import functools
 import re
 from pathlib import Path
 
@@ -198,12 +199,23 @@ def top_table(cent: pd.DataFrame, label: str, measures=MEASURES, n: int = TOP_N)
 
 ANNUAL_SHEETS = {2017: "Annualised", 2018: "Annualised", 2019: "Annualised",
                  2020: "Annualised", 2021: "Annualised", 2022: "AC22"}
+ANNUAL_YEARS = list(range(2017, 2026))
 TIME_PERIODS = ["Early", "AM Peak", "Inter Peak", "PM Peak", "Evening", "Late"]
 
 
 def load_annual_raw(year: int) -> pd.DataFrame:
-    df = pd.read_excel(DATA / "yearly-counts-tube" / f"AnnualisedEntryExit_{year}.xlsx",
-                       sheet_name=ANNUAL_SHEETS[year], skiprows=6)
+    path = DATA / "yearly-counts-tube" / f"AnnualisedEntryExit_{year}.xlsx"
+    if year >= 2023:
+        # 2023+ files: header rows move between years, but the columns do not:
+        # A-F = Mode, MNLC, MASC, Station, Coverage, Source; S = Annualised En/Ex.
+        raw = pd.read_excel(path, sheet_name=0, header=None)
+        raw = raw[raw[0].isin(["LU", "LO", "DLR", "EZL", "TfLRail", "TRM"])]
+        return pd.DataFrame({
+            "Mode": raw[0], "NLC": raw[1], "Station": raw[3].astype(str),
+            "Coverage": raw[4].astype(str),
+            "Entry/Exit": pd.to_numeric(raw[18], errors="coerce").fillna(0),
+        })
+    df = pd.read_excel(path, sheet_name=ANNUAL_SHEETS[year], skiprows=6)
     # the annual total is the last 'en/ex' column in every year's file
     ee_col = [c for c in df.columns if str(c).lower().startswith("en/ex")][-1]
     df = df.rename(columns={"MNLC": "NLC", "MASC": "ASC"})
@@ -222,7 +234,10 @@ def load_annual_lu(year: int) -> pd.DataFrame:
     stations ('---see LU---' rows)."""
     df = load_annual_raw(year)
     lu = df[(df["Mode"] == "LU") & df["Coverage"].str.contains("entry", case=False)]
-    lu = lu.assign(Station=lu["Station"].str.replace(r" (LU|TfL)$", "", regex=True))
+    lu = lu.assign(Station=lu["Station"]
+                   .str.replace(r" (LU|TfL)$", "", regex=True)
+                   # 2024+ files write "St Paul's"; earlier years and the network use "St. Paul's"
+                   .str.replace(r"\bSt (?=[A-Z])", "St. ", regex=True))
     out = lu.groupby("Station", as_index=False)["Entry/Exit"].sum()
     out["year"] = year
     return out
@@ -240,3 +255,42 @@ def load_hourly_lu(year: int) -> pd.DataFrame:
                                     "SAT": "Saturday", "SUN": "Sunday", "FRI": "Friday"})
     df["year"] = year
     return df
+
+
+# --------------------------------------------------------------------------
+# Linking counts to the network (extended analysis)
+# --------------------------------------------------------------------------
+
+# Count files keep these station pairs separate; the network merges each pair.
+COUNT_TO_NETWORK = {
+    "Edgware Road (Bak)": "Edgware Road", "Edgware Road (DIS)": "Edgware Road",
+    "Hammersmith (DIS)": "Hammersmith", "Hammersmith (H&C)": "Hammersmith",
+}
+
+
+@functools.lru_cache(maxsize=1)
+def _node_lookup() -> dict:
+    return {_key(n.replace("St.", "St")): n for n in pd.unique(
+        load_edges_2024()[["From Station", "To Station"]].values.ravel())}
+
+
+def network_name(count_station: str) -> str:
+    """Map an LU count-file station name onto the 2024 network's node name."""
+    if count_station in COUNT_TO_NETWORK:
+        return COUNT_TO_NETWORK[count_station]
+    return _node_lookup().get(_key(count_station.replace("St.", "St")), count_station)
+
+
+def positions_2024() -> dict:
+    """{station: (lon, lat)} from TfL's official locations (mean over a station's line rows)."""
+    st = pd.read_csv(DATA / "tfl_stations_2022_with_coordinates.csv")
+    st["Station Name"] = st["Station Name"].map(harmonise_2024_name)
+    mean = st.groupby("Station Name")[["Longitude", "Latitude"]].mean()
+    return {s: (r.Longitude, r.Latitude) for s, r in mean.iterrows()}
+
+
+def lu_counts_panel(years=ANNUAL_YEARS) -> pd.DataFrame:
+    """Station x year table of LU entry/exit counts, keyed by network node name."""
+    lu = pd.concat([load_annual_lu(y) for y in years])
+    lu["station"] = lu["Station"].map(network_name)
+    return lu.groupby(["station", "year"])["Entry/Exit"].sum().unstack()

@@ -6,3 +6,18 @@ __pycache__/
 
 # secrets (Google Maps API key used for geocoding)
 credentials/
+
+# local-only files: dissertation source/PDF, archives, LaTeX build, papers
+# (kept on disk, deliberately not published)
+*.zip
+230900787-*
+analysis-of-tfl-data/
+dissertation-source-files/
+statistical-gis-boundaries-london/
+imgs/
+References/*.pdf
+References/*.tex
+References/*.log
+References/*.jpg
+References/.Rhistory
+References/London_Multiplex_Transport/README.pdf
