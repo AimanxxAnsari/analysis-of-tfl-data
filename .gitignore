@@ -1,0 +1,8 @@
+# local environment
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+
+# secrets (Google Maps API key used for geocoding)
+credentials/

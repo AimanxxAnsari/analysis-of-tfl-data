@@ -1,0 +1,12 @@
+rank,station,appearances,rank_points,measures,mean_percentile
+1,King's Cross St. Pancras,5,16,"degree, betweenness, closeness, katz, pagerank",0.9951
+2,Bank and Monument,4,19,"degree, betweenness, katz, pagerank",0.9967
+3,Baker Street,3,10,"degree, katz, pagerank",0.9896
+4,Green Park,3,9,"betweenness, closeness, katz",0.9871
+5,Stratford,3,8,"degree, katz, pagerank",0.944
+6,Canning Town,2,2,"degree, pagerank",0.8948
+7,Westminster,1,4,closeness,0.9398
+8,Waterloo,1,3,betweenness,0.9843
+9,Bond Street,1,2,closeness,0.9387
+10,Euston,1,1,betweenness,0.9731
+11,Oxford Circus,1,1,closeness,0.9569
