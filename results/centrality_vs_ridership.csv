@@ -1,0 +1,11 @@
+comparison,measure,spearman_rho,p_value,n_stations
+2014 network vs 2019 ridership,degree,0.511,7.030976519193998e-19,263
+2014 network vs 2019 ridership,betweenness,0.359,2.0898648475225886e-09,263
+2014 network vs 2019 ridership,closeness,0.71,1.1908722488930461e-41,263
+2014 network vs 2019 ridership,katz,0.598,6.443670292800889e-27,263
+2014 network vs 2019 ridership,pagerank,0.165,0.007349287834226211,263
+2024 network vs 2023 ridership,degree,0.561,2.883476665162479e-23,264
+2024 network vs 2023 ridership,betweenness,0.282,3.1152055608309928e-06,264
+2024 network vs 2023 ridership,closeness,0.661,1.6195565070007506e-34,264
+2024 network vs 2023 ridership,katz,0.611,1.8849275584771638e-28,264
+2024 network vs 2023 ridership,pagerank,0.242,6.907250292624632e-05,264
