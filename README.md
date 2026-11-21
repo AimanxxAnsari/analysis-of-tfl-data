@@ -10,8 +10,20 @@ entry/exit counts from 2017 to 2022, including the effect of COVID-19.
 > **Submitted version.** The code exactly as it was when the dissertation was submitted
 > (1 September 2024) is preserved at the git tag
 > [`dissertation-submitted`](../../tree/dissertation-submitted). The dissertation itself is
-> unchanged. Everything on this branch is a post-submission revision of the code and results;
+> unchanged. Everything after that tag is a post-submission revision of the code and results;
 > see [Corrections after submission](#corrections-after-submission).
+
+## Key findings at a glance
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/centrality-overlap-dark.png">
+  <img alt="Bar chart: number of 2014 top-5 stations shared by each 2024 top-5 list, with and without the Elizabeth line" src="figures/centrality-overlap-light.png" width="800">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/station-share-change-dark.png">
+  <img alt="Bar chart: change in each station's share of Underground traffic from 2017 to 2022" src="figures/station-share-change-light.png" width="800">
+</picture>
 
 ## Repository layout
 
@@ -22,6 +34,7 @@ entry/exit counts from 2017 to 2022, including the effect of COVID-19.
 | `python-notebooks/tfl-passenger-flow.ipynb` | Annual and time-of-day station entry/exit analysis, 2017-2022 |
 | `python-notebooks/tfl_analysis.py` | Logic shared by the three notebooks above |
 | `results/` | CSV outputs written by the notebooks |
+| `figures/` | README charts, built from `results/` by `python-notebooks/make_readme_figures.py` |
 | `data/` | 2024 network edges/stations and TfL annual and quarter-hourly counts |
 | `References/London_Multiplex_Transport/` | 2014 network: De Domenico et al. multiplex dataset |
 | `python-notebooks/draft-*.ipynb`, `main-draft.ipynb`, ... | Exploratory work, not used for the results |
@@ -33,6 +46,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cd python-notebooks
 jupyter nbconvert --to notebook --execute --inplace tfl-2014-centrality.ipynb tfl-2024-centrality.ipynb tfl-passenger-flow.ipynb
+python make_readme_figures.py   # rebuilds the charts in figures/ from results/
 ```
 
 Each notebook runs top to bottom from a fresh kernel and writes its tables to `results/`.
@@ -110,6 +124,11 @@ Betweenness rank (1 = highest) of selected stations:
 | Bank and Monument | 1 | 23 | 1 |
 | Green Park | 4 | 29 | 5 |
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/betweenness-ranks-dark.png">
+  <img alt="Dot plot: betweenness rank of ten stations in 2014, 2024, and 2024 without the Elizabeth line" src="figures/betweenness-ranks-light.png" width="800">
+</picture>
+
 Full tables: `results/centrality_top5_comparison.csv`, `results/betweenness_rank_key_stations.csv`.
 
 ### 5. Passenger counts comparable across years
@@ -124,6 +143,11 @@ the one series published on the same basis for 2017-2022 (264-266 stations per y
 | Year | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 |
 |---|---|---|---|---|---|---|
 | LU entries + exits (bn) | 2.776 | 2.748 | 2.843 | 1.015 | 1.168 | 2.147 |
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/lu-totals-dark.png">
+  <img alt="Bar chart: London Underground station entries plus exits per year, 2017 to 2022" src="figures/lu-totals-light.png" width="800">
+</picture>
 
 Top stations change accordingly. Before COVID they were King's Cross St. Pancras, Victoria,
 Waterloo, Oxford Circus and London Bridge. Stratford tops only 2020 (25.1M), and Canning Town
@@ -143,11 +167,17 @@ as a share of all LU traffic:
 Green Park's fall matches the network-wide post-COVID drop, so it does not show Green Park
 becoming less central. The Elizabeth line stations, by contrast, roughly doubled
 (Farringdon) or substantially grew their share of traffic. Bank and Monument's 2022 figure
-(−25% relative to the network) is also affected by the 2022 Bank station closure works.
+(−25% relative to the network) is also affected by the 2022 Bank station closure works
+(chart under *Key findings at a glance*).
 
 **Time of day.** On LU weekdays, the AM peak share fell from 25.8% (2019) to 23.4% (2021)
 while inter-peak rose from 25.8% to 27.1% (`results/lu_typical_day_profile.csv`). 2017 is
 published as a Monday-Friday profile and 2018 onwards as Monday-Thursday.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/weekday-profile-dark.png">
+  <img alt="Grouped bar chart: share of a typical weekday's Underground entries and exits by time period, 2019 to 2021" src="figures/weekday-profile-light.png" width="800">
+</picture>
 
 ### 6. Other code fixes
 
