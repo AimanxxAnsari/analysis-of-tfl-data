@@ -1,0 +1,25 @@
+network,measure,top_stations,stations_tied_at_cutoff
+2014,degree,Bank and Monument; Baker Street; King's Cross St. Pancras; Stratford; Canning Town,5.0
+2014,betweenness,Bank and Monument; King's Cross St. Pancras; Waterloo; Green Park; Euston,0.0
+2014,closeness,Green Park; Westminster; King's Cross St. Pancras; Bond Street; Oxford Circus,0.0
+2014,katz,Bank and Monument; Baker Street; King's Cross St. Pancras; Green Park; Stratford,0.0
+2014,pagerank,Stratford; Bank and Monument; King's Cross St. Pancras; Baker Street; Canning Town,0.0
+2014,overall,King's Cross St. Pancras; Bank and Monument; Baker Street; Green Park; Stratford,
+"2024 (full, as in dissertation)",degree,Stratford; Bank and Monument; Liverpool Street; Baker Street; Canary Wharf,2.0
+"2024 (full, as in dissertation)",betweenness,Liverpool Street; Farringdon; Bond Street; Stratford; Tottenham Court Road,0.0
+"2024 (full, as in dissertation)",closeness,Farringdon; Liverpool Street; Tottenham Court Road; Bond Street; King's Cross St. Pancras,0.0
+"2024 (full, as in dissertation)",katz,Stratford; Liverpool Street; Bank and Monument; Whitechapel; Canary Wharf,0.0
+"2024 (full, as in dissertation)",pagerank,Stratford; Bank and Monument; Liverpool Street; King's Cross St. Pancras; Canary Wharf,0.0
+"2024 (full, as in dissertation)",overall,Liverpool Street; Stratford; Bank and Monument; Canary Wharf; Farringdon,
+2024 comparable (no trams),degree,Stratford; Bank and Monument; Liverpool Street; Baker Street; Canary Wharf,2.0
+2024 comparable (no trams),betweenness,Liverpool Street; Farringdon; Bond Street; Stratford; Tottenham Court Road,0.0
+2024 comparable (no trams),closeness,Farringdon; Liverpool Street; Tottenham Court Road; Bond Street; King's Cross St. Pancras,0.0
+2024 comparable (no trams),katz,Stratford; Liverpool Street; Bank and Monument; Whitechapel; Canary Wharf,0.0
+2024 comparable (no trams),pagerank,Stratford; Bank and Monument; Liverpool Street; King's Cross St. Pancras; Canary Wharf,0.0
+2024 comparable (no trams),overall,Liverpool Street; Stratford; Bank and Monument; Canary Wharf; Farringdon,
+2024 without Elizabeth line,degree,Bank and Monument; Baker Street; King's Cross St. Pancras; Stratford; Canning Town,5.0
+2024 without Elizabeth line,betweenness,Bank and Monument; King's Cross St. Pancras; Waterloo; Euston; Green Park,0.0
+2024 without Elizabeth line,closeness,Green Park; King's Cross St. Pancras; Bank and Monument; Westminster; Oxford Circus,0.0
+2024 without Elizabeth line,katz,Bank and Monument; Baker Street; King's Cross St. Pancras; Green Park; Stratford,0.0
+2024 without Elizabeth line,pagerank,Stratford; Bank and Monument; King's Cross St. Pancras; Baker Street; Canning Town,0.0
+2024 without Elizabeth line,overall,Bank and Monument; King's Cross St. Pancras; Baker Street; Green Park; Stratford,
