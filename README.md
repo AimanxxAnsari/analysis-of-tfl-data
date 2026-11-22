@@ -8,6 +8,7 @@ centrality measures, assesses what the Elizabeth line changed, and studies stati
 entry/exit counts from 2017 to 2022, including the effect of COVID-19. An
 [extended analysis](#extended-analysis) added after submission uses counts up to 2025 to
 measure the Elizabeth line's effect on ridership and the network's resilience to closures.
+A [TfL bus analysis](#tfl-bus-analysis-coming-soon) is coming soon.
 
 > **Submitted version.** The code exactly as it was when the dissertation was submitted
 > (1 September 2024) is preserved at the git tag
@@ -311,6 +312,37 @@ stations close, and it stays meaningful when the network splits into pieces.
   because the Central line's Epping and Hainault branches depend on them.
 
 Full outputs: `results/centrality_vs_ridership.csv`, `results/elizabeth_line_*.csv`, `results/resilience_*.csv`.
+
+## TfL bus analysis (coming soon)
+
+> 🚧 **In progress.** The next part of this project extends the analysis from rail to London's
+> bus network. TfL publishes the data openly, so everything below is reproducible.
+
+### Planned analyses
+
+1. **Bus vs Tube recovery after COVID.** Daily journey counts for both modes, 2019-2026: how each
+   recovered, how weekday and weekend travel differ, and whether bus use changed along the
+   Elizabeth line corridor after it opened.
+2. **Daily before/after for the Elizabeth line.** Re-estimate the [ridership effect](#2-the-elizabeth-lines-effect-on-ridership)
+   from daily station footfall around the opening on 24 May 2022, instead of annual counts.
+3. **Bus crowding.** The most crowded routes and stops by time of day, and whether they cluster around
+   rail stations or in areas the Underground does not reach.
+4. **A combined bus + rail network.** Build the bus network from TfL's route and stop sequences, link it
+   to the rail stations, and re-run the centrality and resilience analysis on the combined network:
+   which stations matter most once buses are counted, and which areas depend on a single route.
+
+### Data
+
+| Dataset | Contents | Coverage | Size |
+|---|---|---|---|
+| [Network Demand: journeys](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) (`Journeys_*.csv`) | Total Tube and bus journeys per day | 2019 - 2026 | < 30 KB per year |
+| [Network Demand: station footfall](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) (`StationFootfall_*.csv`) | Daily entries and exits per rail station | 2019 - 2026 | 6-13 MB per year |
+| [BUSTO bus demand](https://crowding.data.tfl.gov.uk/#!BUSTO/) | Boardings, alightings, on-board load, capacity and crowding ratio for every route, direction and stop, by quarter hour (weekday, Saturday, Sunday) | 2023-24, 2024-25, 2025-26 | about 1.2-1.3 GB per year (13 files) |
+| [TfL Unified API: bus routes](https://api.tfl.gov.uk/Line/Mode/bus) | All 677 bus routes, with ordered stop sequences and stop coordinates | Current | Small |
+
+The BUSTO files are each up to about 120 MB, above GitHub's 100 MB file limit, so they will not be
+stored in this repository. A download script will fetch them locally, and only summarised results
+will be committed.
 
 ## Notes on the data
 
