@@ -350,3 +350,16 @@ will be committed.
 * TfL's annual counts are modelled in 2017 (`Relate`), ticket-gate counts 2018-2023 (`Gateline`) and card
   taps from 2024 (`taps`). Richmond and Wimbledon join the LU series from 2024, and some stations close
   temporarily in some years. Comparisons across years use stations counted in every year.
+
+## Licence
+
+* **Code** (notebooks and Python scripts) is released under the [MIT License](LICENSE).
+* **Data keeps its original licences** and is not covered by the MIT License:
+  * TfL station counts, NUMBAT link loads and station locations are © Transport for London,
+    used under the [TfL open data terms](https://tfl.gov.uk/info-for/open-data-users/).
+    *Powered by TfL Open Data.*
+  * The 2014 London multiplex dataset (De Domenico et al., 2014) is licensed under the
+    [Open Database License (ODbL)](References/London_Multiplex_Transport/LICENSE_odbl-10.txt),
+    with its contents under the
+    [Database Contents License (DbCL)](References/London_Multiplex_Transport/LICENSE_dbcl-10.txt).
+    Data derived from it, such as the harmonised 2014 network and its results, falls under the same terms.
