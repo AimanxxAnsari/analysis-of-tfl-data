@@ -1,0 +1,6 @@
+capacity,routes,load_change_pct,standing_change_pp
+cut > 10%,100,-13.56,1.43
+cut 2-10%,187,-2.79,0.64
+about the same,123,0.05,-0.08
+up 2-10%,86,3.46,0.57
+up > 10%,47,15.32,-0.56
