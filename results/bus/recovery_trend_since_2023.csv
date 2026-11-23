@@ -1,0 +1,7 @@
+,,trend (% per year),95% CI,months
+all days,Tube,0.54,-0.07 to 1.15,41
+all days,Bus,-2.23,-2.57 to -1.89,41
+weekdays,Tube,0.67,0.09 to 1.26,41
+weekdays,Bus,-2.51,-2.80 to -2.23,41
+weekends,Tube,0.39,-0.64 to 1.43,41
+weekends,Bus,-1.48,-1.97 to -0.99,41
