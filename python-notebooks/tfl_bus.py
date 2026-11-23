@@ -208,6 +208,69 @@ def load_footfall() -> pd.DataFrame:
     return df[["date", "dayofweek", "station", "entries", "exits", "entries_exits"]]
 
 
+def atypical_days(journeys: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Classify days whose Tube or bus journeys are far below normal.
+
+    Normal = rolling 29-day median of the same day type (weekday / weekend). Classes:
+    'Tube strike' (Tube < 50% of normal, buses >= 90%), 'Tube partly disrupted'
+    (Tube < 75%, buses >= 90%), 'bus strike' / 'buses partly disrupted' (the reverse),
+    'holiday / other' (either below 75% otherwise: bank holidays, snow, ...) and
+    'Christmas / New Year' (24 Dec - 1 Jan). Returns one row per atypical day."""
+    j = load_journeys() if journeys is None else journeys
+    weekend = j.index.dayofweek >= 5
+    norm = pd.concat([j[weekend == w][["tube", "bus"]].rolling(29, center=True, min_periods=8).median()
+                      for w in (False, True)]).sort_index()
+    ratio = j[["tube", "bus"]] / norm
+    christmas = (j.index.month == 12) & (j.index.day >= 24) | (j.index.month == 1) & (j.index.day == 1)
+    kind = pd.Series(None, index=j.index, dtype=object)
+    kind[(ratio.tube < .5) & (ratio.bus >= .9)] = "Tube strike"
+    kind[kind.isna() & (ratio.tube < .75) & (ratio.bus >= .9)] = "Tube partly disrupted"
+    kind[(ratio.bus < .5) & (ratio.tube >= .9)] = "bus strike"
+    kind[kind.isna() & (ratio.bus < .75) & (ratio.tube >= .9)] = "buses partly disrupted"
+    kind[kind.isna() & ((ratio.tube < .75) | (ratio.bus < .75))] = "holiday / other"
+    kind[christmas] = "Christmas / New Year"
+    kind = kind.dropna()
+    return j.loc[kind.index, ["dayofweek", "tube", "bus"]].assign(
+        kind=kind, tube_vs_normal=(100 * ratio.tube[kind.index]).round(0),
+        bus_vs_normal=(100 * ratio.bus[kind.index]).round(0))
+
+
+# Footfall series that are one station complex in the rail network
+FOOTFALL_TO_NETWORK = {
+    "Bank": "Bank and Monument", "Monument": "Bank and Monument",
+    "Edgware Road B": "Edgware Road", "Edgware Road C&H": "Edgware Road",
+    "Hammersmith C&H": "Hammersmith", "Hammersmith D&P": "Hammersmith",
+    "Kensington Olympia": "Kensington", "Watford Met": "Watford",
+}
+MODE_SUFFIX = r" (?:DLR|LO|NR|EL|SR|TfL Rail/HEx)$"
+
+
+def footfall_panel(underground_only: bool = True, weekdays_only: bool = True,
+                   drop_atypical: bool = True) -> pd.DataFrame:
+    """Date x network-station table of daily entries + exits.
+
+    With underground_only, series with a mode suffix ('Canary Wharf DLR', 'Liverpool St NR',
+    'Paddington EL', ...) are left out and only stations on an Underground line are kept,
+    matching the LU gate counts of the annual analysis. Split complexes (Bank / Monument,
+    the two Edgware Road and Hammersmith stations) are summed into one network node."""
+    f = load_footfall()
+    if weekdays_only:
+        f = f[f["date"].dt.dayofweek < 5]
+    if drop_atypical:
+        f = f[~f["date"].isin(atypical_days().index)]
+    if underground_only:
+        f = f[~f["station"].str.contains(MODE_SUFFIX, regex=True)]
+    f = f.assign(node=f["station"].map(lambda s: FOOTFALL_TO_NETWORK.get(s, T.network_name(s))))
+    panel = f.pivot_table(index="date", columns="node", values="entries_exits", aggfunc="sum")
+    if underground_only:
+        rail = rail_stations()
+        lu_lines = {"Bakerloo", "Central", "District", "H&C and Circle", "Jubilee", "Metropolitan",
+                    "Northern", "Piccadilly", "Victoria", "Waterloo & City"}
+        lu = [s for s in rail.index if lu_lines & set(rail.loc[s, "lines"].split("; "))]
+        panel = panel[[c for c in panel.columns if c in lu]]
+    return panel
+
+
 # --------------------------------------------------------------------------
 # BUSTO demand
 # --------------------------------------------------------------------------
