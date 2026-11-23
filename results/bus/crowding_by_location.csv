@@ -1,10 +1,10 @@
 ,,route_stops,standing_pct
-to_rail,< 400 m,10874,1.72
-to_rail,400-800 m,8678,2.86
-to_rail,800 m - 2 km,10470,4.2
-to_rail,> 2 km,8254,5.06
-from_centre,0-3 km,2187,2.51
-from_centre,3-6 km,4551,1.65
-from_centre,6-10 km,7775,1.54
-from_centre,10-15 km,10521,4.25
-from_centre,15+ km,13242,4.5
+to_rail,< 400 m,10874,1.7197
+to_rail,400-800 m,8678,2.8578
+to_rail,800 m - 2 km,10470,4.2025
+to_rail,> 2 km,8254,5.0642
+from_centre,0-3 km,2187,2.5149
+from_centre,3-6 km,4551,1.648
+from_centre,6-10 km,7775,1.5434
+from_centre,10-15 km,10521,4.2486
+from_centre,15+ km,13242,4.5008

@@ -1,0 +1,21 @@
+name: Check docs against results
+
+# Fails if a number in README.md or docs/*.md no longer matches the CSVs in results/,
+# or if a link, anchor or chart image is broken. Runs without the raw data.
+on:
+  pull_request:
+    paths: ["README.md", "docs/**", "results/**", "figures/**", "tools/check_docs.py", ".github/workflows/check-docs.yml"]
+  push:
+    branches: [main]
+    paths: ["README.md", "docs/**", "results/**", "figures/**", "tools/check_docs.py", ".github/workflows/check-docs.yml"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install "pandas>=2.0,<3"
+      - run: python tools/check_docs.py --verbose

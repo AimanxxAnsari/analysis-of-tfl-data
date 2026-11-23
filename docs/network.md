@@ -65,7 +65,7 @@ Spearman rank correlation between each centrality measure and annual LU entries 
 | Katz | 0.60 | 0.61 |
 | Degree | 0.51 | 0.56 |
 | Betweenness | 0.36 | 0.28 |
-| PageRank | 0.17 | 0.24 |
+| PageRank | 0.16 | 0.24 |
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../figures/centrality-vs-ridership-dark.png">

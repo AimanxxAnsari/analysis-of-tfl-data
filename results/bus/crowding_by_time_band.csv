@@ -1,18 +1,18 @@
 day_type,band,route-stop-hours,standing (%),near full (%),passengers on standing route-stops (%)
-Weekday,early 05-07,41257.0,1.19,0.02,2.53
-Weekday,AM peak 07-10,38916.0,3.45,0.04,5.17
-Weekday,inter-peak 10-16,38727.0,1.42,0.01,1.72
-Weekday,PM peak 16-19,38678.0,1.36,0.04,1.96
-Weekday,evening 19-22,38554.0,0.03,0.0,0.08
-Weekday,late 22-24,36150.0,0.01,0.01,0.07
-Weekday,night 00-05,34465.0,0.11,0.01,0.45
-Saturday,early + AM 05-10,42064.0,0.15,0.01,0.37
-Saturday,day 10-19,39176.0,0.21,0.02,0.32
-Saturday,evening 19-22,37622.0,0.02,0.0,0.07
-Saturday,late 22-24,36262.0,0.04,0.01,0.16
-Saturday,night 00-05,35834.0,0.06,0.0,0.28
-Sunday,early + AM 05-10,38636.0,0.17,0.0,0.56
-Sunday,day 10-19,36203.0,0.92,0.01,1.63
-Sunday,evening 19-22,35423.0,0.01,0.0,0.01
-Sunday,late 22-24,35849.0,0.08,0.03,0.34
-Sunday,night 00-05,33031.0,0.17,0.06,1.75
+Weekday,early 05-07,41257.0,1.1877,0.0242,2.5311
+Weekday,AM peak 07-10,38916.0,3.4485,0.0437,5.17
+Weekday,inter-peak 10-16,38727.0,1.4202,0.0129,1.7194
+Weekday,PM peak 16-19,38678.0,1.3574,0.0362,1.962
+Weekday,evening 19-22,38554.0,0.0285,0.0,0.0788
+Weekday,late 22-24,36150.0,0.0138,0.0055,0.0665
+Weekday,night 00-05,34465.0,0.1132,0.0145,0.4523
+Saturday,early + AM 05-10,42064.0,0.1545,0.0095,0.3708
+Saturday,day 10-19,39176.0,0.2068,0.0153,0.3154
+Saturday,evening 19-22,37622.0,0.0239,0.0,0.0719
+Saturday,late 22-24,36262.0,0.0386,0.0083,0.1577
+Saturday,night 00-05,35834.0,0.0642,0.0028,0.2828
+Sunday,early + AM 05-10,38636.0,0.1682,0.0,0.5611
+Sunday,day 10-19,36203.0,0.9226,0.0055,1.6308
+Sunday,evening 19-22,35423.0,0.0085,0.0,0.015
+Sunday,late 22-24,35849.0,0.0781,0.0279,0.3438
+Sunday,night 00-05,33031.0,0.1726,0.0575,1.7486
