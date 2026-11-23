@@ -21,3 +21,7 @@ References/*.log
 References/*.jpg
 References/.Rhistory
 References/London_Multiplex_Transport/README.pdf
+
+# downloaded TfL data (re-fetch from data/bus/manifest.csv)
+data/raw/
+data/processed/
