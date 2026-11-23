@@ -62,31 +62,54 @@ recovery after COVID, the Elizabeth line from daily data, crowding, and a combin
 | [Passengers and buses](docs/passengers-and-buses.md) | Underground counts 2017-2022, bus vs Tube recovery, where bus demand fell, bus crowding |
 | [Corrections after submission](docs/corrections.md) | What was corrected in the code and results after the dissertation was submitted |
 
-## Repository layout
+## Notebooks and data
 
-| Path | Contents |
-|---|---|
-| `python-notebooks/tfl-2014-centrality.ipynb` | 2014 network (Tube, Overground, DLR) and its centrality measures |
-| `python-notebooks/tfl-2024-centrality.ipynb` | 2024 network, its centrality measures, and the like-for-like 2014 vs 2024 comparison |
-| `python-notebooks/tfl-passenger-flow.ipynb` | Annual and time-of-day station entry/exit analysis, 2017-2022 |
-| `python-notebooks/extended-analysis.ipynb` | Centrality vs ridership, Elizabeth line difference-in-differences, network resilience |
-| `python-notebooks/tfl_analysis.py` | Logic shared by the notebooks above |
-| [`python-notebooks/bus-routes-stops.ipynb`](python-notebooks/bus-routes-stops.ipynb) | Matches bus stops and routes across BUSTO, TfL's feeds and the API; links every bus stop to rail |
-| [`python-notebooks/bus-eda.ipynb`](python-notebooks/bus-eda.ipynb) | First look at every dataset: recovery, strikes, footfall, what the BUSTO measures mean |
-| [`python-notebooks/bus-tube-recovery.ipynb`](python-notebooks/bus-tube-recovery.ipynb) | Bus vs Tube recovery after COVID |
-| [`python-notebooks/elizabeth-line-daily.ipynb`](python-notebooks/elizabeth-line-daily.ipynb) | The Elizabeth line's effect from daily station data |
-| [`python-notebooks/bus-demand-change.ipynb`](python-notebooks/bus-demand-change.ipynb) | Where bus demand fell since 2023-24, and near the Elizabeth line |
-| [`python-notebooks/bus-crowding.ipynb`](python-notebooks/bus-crowding.ipynb) | When, where and on which routes buses are crowded |
-| [`python-notebooks/bus-rail-network.ipynb`](python-notebooks/bus-rail-network.ipynb) | Combined bus + rail network: accessibility, centrality, resilience |
-| `python-notebooks/tfl_bus.py` | Logic shared by the bus notebooks: data loaders, coordinate conversion, bus + rail network |
-| `python-notebooks/data-prep/` | How the 2024 network and station coordinates were built, including `fix_station_coordinates.py`; `download_tfl_bus.py` fetches the bus analysis data |
-| `docs/` | Full results, by topic (linked above) |
-| `results/` | CSV outputs written by the notebooks (`results/bus/` for the bus analysis) |
-| `figures/` | Charts, built from `results/` by `python-notebooks/make_readme_figures.py` |
-| `data/` | 2024 network edges/stations, TfL station locations and counts (see [`data/README.md`](data/README.md)) |
-| `data/bus/` | Manifest of the downloaded bus analysis data, with source links (see [`data/bus/README.md`](data/bus/README.md)) |
-| `References/London_Multiplex_Transport/` | 2014 network: De Domenico et al. multiplex dataset |
-| `python-notebooks/archive/` | Exploratory notebooks from the dissertation period, not used for any result |
+| Notebook (`python-notebooks/`) | What it covers | Data used |
+|---|---|---|
+| [`tfl-2014-centrality`](python-notebooks/tfl-2014-centrality.ipynb) | 2014 network (Tube, Overground, DLR) and its centrality measures | 2014 network |
+| [`tfl-2024-centrality`](python-notebooks/tfl-2024-centrality.ipynb) | 2024 network, its centrality measures, and the like-for-like 2014 vs 2024 comparison | 2014 and 2024 networks |
+| [`tfl-passenger-flow`](python-notebooks/tfl-passenger-flow.ipynb) | Annual and time-of-day station entry/exit analysis, 2017-2022 | Station counts |
+| [`extended-analysis`](python-notebooks/extended-analysis.ipynb) | Centrality vs ridership, Elizabeth line difference-in-differences, network resilience | Station counts, both networks |
+| [`bus-routes-stops`](python-notebooks/bus-routes-stops.ipynb) | Matches bus stops and routes across BUSTO, TfL's feeds and the API; links every bus stop to rail | BUSTO, bus stops and routes, 2024 network |
+| [`bus-eda`](python-notebooks/bus-eda.ipynb) | First look at every dataset: recovery, strikes, footfall, what the BUSTO measures mean | Network Demand, BUSTO |
+| [`bus-tube-recovery`](python-notebooks/bus-tube-recovery.ipynb) | Bus vs Tube recovery after COVID | Network Demand, BUSTO |
+| [`elizabeth-line-daily`](python-notebooks/elizabeth-line-daily.ipynb) | The Elizabeth line's effect from daily station data | Network Demand, 2024 network |
+| [`bus-demand-change`](python-notebooks/bus-demand-change.ipynb) | Where bus demand fell since 2023-24, and near the Elizabeth line | BUSTO, bus stops, 2024 network |
+| [`bus-crowding`](python-notebooks/bus-crowding.ipynb) | When, where and on which routes buses are crowded | BUSTO, bus stops, 2024 network |
+| [`bus-rail-network`](python-notebooks/bus-rail-network.ipynb) | Combined bus + rail network: accessibility, centrality, resilience | BUSTO, bus stops, 2024 network |
+
+| Data | Contents | Coverage |
+|---|---|---|
+| 2024 network | `data/2022-tfl-edges.csv`, `data/tfl_stations_2022_with_coordinates.csv`: built for this project from TfL line and station information; station locations from the [TfL Unified API](https://api.tfl.gov.uk/) | 2024 |
+| 2014 network | London multiplex transport dataset of M. De Domenico, A. Solé-Ribalta, S. Gómez and A. Arenas, *Navigability of interconnected networks under random failures*, PNAS 111 (2014) 8351-8356 (licences in `References/London_Multiplex_Transport/`) | 2013-era |
+| [Station counts](https://crowding.data.tfl.gov.uk/) | Annual (`AnnualisedEntryExit_<year>.xlsx`) and quarter-hourly (`ByQhrEntryExit_<year>.xlsx`) station counts | 2017-2025; 2017-2021 |
+| [Network Demand](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) | Total Tube and bus journeys per day; daily entry and exit taps per rail station | Jan 2019 - Nov 2026 |
+| [BUSTO](https://crowding.data.tfl.gov.uk/#!BUSTO/) | Bus boardings, alightings, load and capacity for every route, direction and stop by quarter hour, and each stop's busiest hour (typical weekday, Saturday, Sunday) | 2023-24 to 2025-26 |
+| Bus stops and routes | [TfL bus stops and sequences feeds](https://tfl.gov.uk/info-for/open-data-users/our-open-data) (stop codes used by BUSTO, stop locations, route sequences); [TfL Unified API](https://api.tfl.gov.uk/) (677 current routes with ordered stops) | Aug 2024; snapshot at download |
+
+*Powered by TfL Open Data.* The bus analysis data is **not stored in git** (BUSTO alone is 3.7 GB):
+`python-notebooks/data-prep/download_tfl_bus.py` downloads everything, converts BUSTO to Parquet (580 MB) and
+deletes the raw CSVs. Every file's source URL, TfL version, size and checksum is recorded in
+[`data/bus/manifest.csv`](data/bus/manifest.csv), so anything deleted can be fetched again;
+[`data/bus/README.md`](data/bus/README.md) describes the layout and the quirks found in the data.
+
+**Other folders:** `python-notebooks/tfl_analysis.py` and `tfl_bus.py` hold logic shared by the notebooks;
+`python-notebooks/data-prep/` shows how the 2024 network and station coordinates were built
+(`fix_station_coordinates.py`); `data/` holds the 2024 network, station locations and counts
+([`data/README.md`](data/README.md)); `results/` the CSV outputs (`results/bus/` for buses); `figures/` the charts,
+built by `python-notebooks/make_readme_figures.py`; `docs/` the full results; `References/London_Multiplex_Transport/`
+the 2014 dataset; `python-notebooks/archive/` exploratory notebooks from the dissertation period, not used for any result.
+
+**Notes on the data**
+
+* The 2014 network is the 2013-era multiplex dataset rather than an official TfL release.
+* TfL's annual counts are modelled in 2017 (`Relate`), ticket-gate counts 2018-2023 (`Gateline`) and card
+  taps from 2024 (`taps`). Richmond and Wimbledon join the LU series from 2024, and some stations close
+  temporarily in some years. Comparisons across years use stations counted in every year.
+* BUSTO gives **typical-day averages** for each financial year, not counts for individual days, and starts
+  in 2023-24. The bus stop feed dates from August 2024; 0.5% of 2025-26 boardings are at newer stops.
+* The combined network and the bus-near-rail measures use **TfL rail only**. National Rail, which serves
+  much of south and outer London, is not included.
 
 ## Running
 
@@ -110,38 +133,6 @@ python make_readme_figures.py   # rebuilds the charts in figures/ from results/
 ```
 
 Each notebook runs top to bottom from a fresh kernel and writes its tables to `results/`.
-
-## Data
-
-| Data | Source | Coverage |
-|---|---|---|
-| 2024 network: `data/2022-tfl-edges.csv` and `data/tfl_stations_2022_with_coordinates.csv` | Built for this project from TfL line and station information; station locations from the [TfL Unified API](https://api.tfl.gov.uk/) | 2024 |
-| 2014 network | London multiplex transport dataset of M. De Domenico, A. Solé-Ribalta, S. Gómez and A. Arenas, *Navigability of interconnected networks under random failures*, PNAS 111 (2014) 8351-8356 (licences in `References/London_Multiplex_Transport/`) | 2013-era |
-| Passenger counts: annual (`AnnualisedEntryExit_<year>.xlsx`) and quarter-hourly (`ByQhrEntryExit_<year>.xlsx`) station counts | [TfL's crowding data](https://crowding.data.tfl.gov.uk/) | 2017-2025 and 2017-2021 |
-| [Network Demand: journeys](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) | Total Tube and bus journeys per day | Jan 2019 - Nov 2026 |
-| [Network Demand: station footfall](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) | Daily entry and exit taps per rail station | Jan 2019 - Nov 2026 |
-| [BUSTO bus demand](https://crowding.data.tfl.gov.uk/#!BUSTO/) | Boardings, alightings, load and capacity for every route, direction and stop by quarter hour, and each stop's busiest hour (typical weekday, Saturday, Sunday) | 2023-24, 2024-25, 2025-26 |
-| [TfL bus stops and sequences feeds](https://tfl.gov.uk/info-for/open-data-users/our-open-data) | Stop codes used by BUSTO, stop locations, route sequences | August 2024 |
-| [TfL Unified API: bus routes](https://api.tfl.gov.uk/) | 677 current routes with ordered stops | Snapshot at download |
-
-*Powered by TfL Open Data.*
-
-The bus analysis data is **not stored in git** (BUSTO alone is 3.7 GB). `python-notebooks/data-prep/download_tfl_bus.py`
-downloads everything, converts BUSTO to Parquet (580 MB) and deletes the raw CSVs. Every file's source URL,
-TfL version, size and checksum is recorded in [`data/bus/manifest.csv`](data/bus/manifest.csv), so anything
-deleted can be fetched again; [`data/bus/README.md`](data/bus/README.md) describes the layout and the
-quirks found in the data.
-
-**Notes on the data**
-
-* The 2014 network is the 2013-era multiplex dataset rather than an official TfL release.
-* TfL's annual counts are modelled in 2017 (`Relate`), ticket-gate counts 2018-2023 (`Gateline`) and card
-  taps from 2024 (`taps`). Richmond and Wimbledon join the LU series from 2024, and some stations close
-  temporarily in some years. Comparisons across years use stations counted in every year.
-* BUSTO gives **typical-day averages** for each financial year, not counts for individual days, and starts
-  in 2023-24. The bus stop feed dates from August 2024; 0.5% of 2025-26 boardings are at newer stops.
-* The combined network and the bus-near-rail measures use **TfL rail only**. National Rail, which serves
-  much of south and outer London, is not included.
 
 ## Licence
 
