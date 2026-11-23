@@ -1,0 +1,206 @@
+date,dayofweek,tube,bus,kind,tube_vs_normal,bus_vs_normal
+2019-01-01,Tuesday,1801000,2312000,Christmas / New Year,44.0,39.0
+2019-01-06,Sunday,1679000,2989000,holiday / other,75.0,81.0
+2019-01-25,Friday,1905000,1245000,holiday / other,44.0,21.0
+2019-04-19,Friday,2650000,4269000,holiday / other,61.0,70.0
+2019-04-22,Monday,1931000,3431000,holiday / other,44.0,57.0
+2019-05-06,Monday,1923000,3449000,holiday / other,44.0,56.0
+2019-05-27,Monday,2221000,3526000,holiday / other,51.0,57.0
+2019-08-26,Monday,2193000,3398000,holiday / other,55.0,64.0
+2019-12-24,Tuesday,2202000,4221000,Christmas / New Year,54.0,72.0
+2019-12-25,Wednesday,0,1000,Christmas / New Year,0.0,0.0
+2019-12-26,Thursday,1395000,2605000,Christmas / New Year,34.0,45.0
+2019-12-27,Friday,2646000,3963000,Christmas / New Year,65.0,68.0
+2019-12-28,Saturday,2667000,3733000,Christmas / New Year,107.0,100.0
+2019-12-29,Sunday,2180000,3157000,Christmas / New Year,88.0,91.0
+2019-12-30,Monday,3109000,4459000,Christmas / New Year,76.0,77.0
+2019-12-31,Tuesday,2973000,4212000,Christmas / New Year,73.0,72.0
+2020-01-01,Wednesday,1831000,2191000,Christmas / New Year,45.0,38.0
+2020-01-02,Thursday,3245000,4356000,holiday / other,79.0,75.0
+2020-01-05,Sunday,1702000,2973000,holiday / other,68.0,86.0
+2020-01-12,Sunday,1810000,3172000,Tube partly disrupted,73.0,92.0
+2020-02-09,Sunday,1547000,2664000,holiday / other,74.0,82.0
+2020-03-29,Sunday,84000,536000,holiday / other,68.0,68.0
+2020-04-05,Sunday,81000,552000,holiday / other,65.0,75.0
+2020-04-10,Friday,111000,730000,holiday / other,56.0,75.0
+2020-04-12,Sunday,65000,440000,holiday / other,52.0,82.0
+2020-04-13,Monday,93000,618000,holiday / other,47.0,64.0
+2020-04-19,Sunday,80000,387000,holiday / other,65.0,72.0
+2020-04-25,Saturday,109000,8000,holiday / other,88.0,1.0
+2020-04-26,Sunday,77000,5000,holiday / other,62.0,1.0
+2020-05-02,Saturday,118000,5000,bus strike,95.0,1.0
+2020-05-03,Sunday,79000,3000,holiday / other,64.0,1.0
+2020-05-08,Friday,132000,3000,holiday / other,59.0,50.0
+2020-05-09,Saturday,121000,4000,bus strike,98.0,1.0
+2020-05-10,Sunday,84000,2000,holiday / other,68.0,0.0
+2020-05-11,Monday,233000,4000,buses partly disrupted,103.0,67.0
+2020-05-12,Tuesday,238000,4000,buses partly disrupted,102.0,67.0
+2020-05-13,Wednesday,241000,4000,buses partly disrupted,101.0,67.0
+2020-05-14,Thursday,246000,4000,buses partly disrupted,102.0,67.0
+2020-05-15,Friday,255000,4000,buses partly disrupted,104.0,67.0
+2020-05-16,Saturday,151000,3000,bus strike,122.0,1.0
+2020-05-17,Sunday,108000,2000,holiday / other,82.0,0.0
+2020-05-18,Monday,288000,4000,buses partly disrupted,113.0,67.0
+2020-05-19,Tuesday,295000,4000,buses partly disrupted,102.0,67.0
+2020-05-20,Wednesday,305000,4000,buses partly disrupted,103.0,67.0
+2020-05-21,Thursday,302000,4000,buses partly disrupted,100.0,67.0
+2020-05-23,Saturday,177000,37000,bus strike,117.0,7.0
+2020-05-24,Sunday,132000,29000,holiday / other,75.0,5.0
+2020-05-25,Monday,179000,38000,Tube partly disrupted,57.0,100.0
+2020-05-30,Saturday,248000,372000,buses partly disrupted,139.0,60.0
+2020-05-31,Sunday,179000,272000,holiday / other,81.0,44.0
+2020-06-28,Sunday,357000,1217000,holiday / other,75.0,77.0
+2020-11-07,Saturday,537000,1839000,Tube partly disrupted,61.0,92.0
+2020-11-08,Sunday,363000,1253000,holiday / other,42.0,63.0
+2020-11-14,Saturday,543000,1808000,Tube partly disrupted,64.0,93.0
+2020-11-15,Sunday,403000,1311000,holiday / other,48.0,69.0
+2020-11-22,Sunday,449000,1402000,holiday / other,65.0,75.0
+2020-11-29,Sunday,455000,1376000,holiday / other,84.0,75.0
+2020-12-24,Thursday,503000,1983000,Christmas / New Year,73.0,100.0
+2020-12-25,Friday,0,0,Christmas / New Year,0.0,0.0
+2020-12-26,Saturday,226000,1001000,Christmas / New Year,53.0,70.0
+2020-12-27,Sunday,310000,1109000,Christmas / New Year,73.0,78.0
+2020-12-28,Monday,366000,1329000,Christmas / New Year,54.0,68.0
+2020-12-29,Tuesday,529000,1820000,Christmas / New Year,78.0,95.0
+2020-12-30,Wednesday,549000,1882000,Christmas / New Year,81.0,99.0
+2020-12-31,Thursday,507000,1796000,Christmas / New Year,75.0,94.0
+2021-01-01,Friday,229000,836000,Christmas / New Year,34.0,44.0
+2021-01-10,Sunday,253000,1012000,holiday / other,60.0,71.0
+2021-01-17,Sunday,293000,1110000,holiday / other,69.0,78.0
+2021-01-24,Sunday,261000,999000,holiday / other,62.0,70.0
+2021-01-31,Sunday,314000,1161000,holiday / other,74.0,82.0
+2021-02-07,Sunday,293000,1062000,holiday / other,69.0,75.0
+2021-03-14,Sunday,431000,1409000,holiday / other,71.0,84.0
+2021-03-28,Sunday,444000,1389000,holiday / other,69.0,71.0
+2021-04-02,Friday,778000,2090000,holiday / other,68.0,69.0
+2021-04-05,Monday,557000,1607000,holiday / other,49.0,53.0
+2021-05-03,Monday,934000,2077000,holiday / other,59.0,57.0
+2021-05-16,Sunday,824000,1941000,holiday / other,70.0,84.0
+2021-05-31,Monday,1376000,2641000,holiday / other,71.0,69.0
+2021-07-04,Sunday,1094000,2321000,Tube partly disrupted,72.0,91.0
+2021-07-18,Sunday,1146000,2415000,holiday / other,74.0,89.0
+2021-07-25,Sunday,1098000,2181000,holiday / other,71.0,81.0
+2021-08-30,Monday,1435000,2601000,holiday / other,69.0,71.0
+2021-12-24,Friday,1132000,3080000,Christmas / New Year,63.0,77.0
+2021-12-25,Saturday,0,0,Christmas / New Year,0.0,0.0
+2021-12-26,Sunday,692000,1737000,Christmas / New Year,40.0,64.0
+2021-12-27,Monday,1110000,2238000,Christmas / New Year,62.0,56.0
+2021-12-28,Tuesday,1240000,2416000,Christmas / New Year,69.0,60.0
+2021-12-29,Wednesday,1487000,2968000,Christmas / New Year,83.0,74.0
+2021-12-30,Thursday,1527000,3083000,Christmas / New Year,85.0,77.0
+2021-12-31,Friday,1620000,3230000,Christmas / New Year,90.0,81.0
+2022-01-01,Saturday,973000,1787000,Christmas / New Year,56.0,66.0
+2022-01-02,Sunday,1119000,2135000,holiday / other,67.0,80.0
+2022-01-03,Monday,1121000,2413000,holiday / other,63.0,60.0
+2022-01-09,Sunday,1161000,2383000,holiday / other,67.0,88.0
+2022-02-18,Friday,1844000,3490000,holiday / other,73.0,75.0
+2022-03-01,Tuesday,180000,5310000,Tube strike,7.0,112.0
+2022-03-03,Thursday,187000,5321000,Tube strike,7.0,112.0
+2022-04-15,Friday,2067000,3696000,holiday / other,74.0,79.0
+2022-04-17,Sunday,1574000,2687000,holiday / other,74.0,86.0
+2022-04-18,Monday,1522000,2953000,holiday / other,54.0,63.0
+2022-05-02,Monday,1739000,3157000,holiday / other,60.0,64.0
+2022-06-02,Thursday,2652000,3639000,holiday / other,90.0,72.0
+2022-06-03,Friday,2437000,3655000,holiday / other,83.0,72.0
+2022-06-06,Monday,643000,5319000,Tube strike,22.0,105.0
+2022-06-21,Tuesday,160000,5537000,Tube strike,5.0,110.0
+2022-06-22,Wednesday,2171000,5143000,Tube partly disrupted,72.0,102.0
+2022-06-23,Thursday,1963000,5103000,Tube partly disrupted,65.0,101.0
+2022-07-18,Monday,2043000,3990000,holiday / other,68.0,85.0
+2022-07-19,Tuesday,1955000,3816000,holiday / other,65.0,82.0
+2022-08-19,Friday,272000,4616000,Tube strike,9.0,107.0
+2022-08-29,Monday,1950000,2937000,holiday / other,67.0,66.0
+2022-09-19,Monday,1406000,1928000,holiday / other,44.0,37.0
+2022-11-10,Thursday,461000,5900000,Tube strike,13.0,115.0
+2022-12-24,Saturday,1417000,3337000,Christmas / New Year,62.0,100.0
+2022-12-25,Sunday,0,1000,Christmas / New Year,0.0,0.0
+2022-12-26,Monday,1311000,2560000,Christmas / New Year,47.0,54.0
+2022-12-27,Tuesday,1917000,2958000,Christmas / New Year,69.0,62.0
+2022-12-28,Wednesday,2286000,3486000,Christmas / New Year,82.0,73.0
+2022-12-29,Thursday,2653000,3949000,Christmas / New Year,95.0,83.0
+2022-12-30,Friday,2583000,3968000,Christmas / New Year,93.0,83.0
+2022-12-31,Saturday,2648000,3457000,Christmas / New Year,116.0,104.0
+2023-01-01,Sunday,1494000,2149000,Christmas / New Year,69.0,68.0
+2023-01-02,Monday,1918000,2959000,holiday / other,67.0,62.0
+2023-01-08,Sunday,1552000,2675000,holiday / other,72.0,85.0
+2023-03-15,Wednesday,411000,5514000,Tube strike,12.0,106.0
+2023-03-16,Thursday,2555000,5181000,Tube partly disrupted,74.0,100.0
+2023-04-07,Friday,2497000,3981000,holiday / other,73.0,78.0
+2023-04-09,Sunday,1790000,2900000,holiday / other,69.0,82.0
+2023-04-10,Monday,1770000,2929000,holiday / other,52.0,57.0
+2023-04-16,Sunday,1877000,3100000,holiday / other,73.0,88.0
+2023-05-01,Monday,2114000,3343000,holiday / other,62.0,63.0
+2023-05-08,Monday,1865000,3113000,holiday / other,54.0,59.0
+2023-05-29,Monday,2264000,3375000,holiday / other,65.0,64.0
+2023-08-28,Monday,2172000,3343000,holiday / other,67.0,72.0
+2023-12-24,Sunday,1512000,2987000,Christmas / New Year,59.0,89.0
+2023-12-25,Monday,0,1000,Christmas / New Year,0.0,0.0
+2023-12-26,Tuesday,1523000,2793000,Christmas / New Year,50.0,56.0
+2023-12-27,Wednesday,2412000,3590000,Christmas / New Year,80.0,72.0
+2023-12-28,Thursday,2705000,3911000,Christmas / New Year,89.0,78.0
+2023-12-29,Friday,2835000,4185000,Christmas / New Year,94.0,84.0
+2023-12-30,Saturday,2667000,3783000,Christmas / New Year,103.0,100.0
+2023-12-31,Sunday,2720000,3271000,Christmas / New Year,106.0,97.0
+2024-01-01,Monday,1631000,2252000,Christmas / New Year,54.0,45.0
+2024-01-07,Sunday,1547000,2964000,holiday / other,60.0,88.0
+2024-01-14,Sunday,1828000,3034000,Tube partly disrupted,71.0,90.0
+2024-03-29,Friday,2537000,4017000,holiday / other,74.0,78.0
+2024-03-31,Sunday,1785000,2891000,holiday / other,70.0,81.0
+2024-04-01,Monday,1975000,3274000,holiday / other,57.0,63.0
+2024-05-06,Monday,1756000,3127000,holiday / other,49.0,58.0
+2024-05-27,Monday,2032000,3462000,holiday / other,58.0,65.0
+2024-08-26,Monday,2111000,3353000,holiday / other,64.0,72.0
+2024-12-24,Tuesday,1870000,3774000,Christmas / New Year,59.0,79.0
+2024-12-25,Wednesday,0,1000,Christmas / New Year,0.0,0.0
+2024-12-26,Thursday,1503000,2598000,Christmas / New Year,47.0,54.0
+2024-12-27,Friday,2561000,3638000,Christmas / New Year,80.0,76.0
+2024-12-28,Saturday,2623000,3502000,Christmas / New Year,103.0,100.0
+2024-12-29,Sunday,2310000,2937000,Christmas / New Year,92.0,89.0
+2024-12-30,Monday,2774000,3989000,Christmas / New Year,87.0,83.0
+2024-12-31,Tuesday,2990000,3984000,Christmas / New Year,94.0,83.0
+2025-01-01,Wednesday,1523000,1959000,Christmas / New Year,48.0,41.0
+2025-01-05,Sunday,1502000,2557000,holiday / other,60.0,78.0
+2025-01-12,Sunday,1784000,2759000,holiday / other,71.0,84.0
+2025-01-19,Sunday,1856000,2924000,holiday / other,74.0,89.0
+2025-04-18,Friday,2555000,3866000,holiday / other,72.0,77.0
+2025-04-20,Sunday,1806000,2820000,holiday / other,68.0,81.0
+2025-04-21,Monday,1833000,3045000,holiday / other,51.0,61.0
+2025-05-05,Monday,2005000,3127000,holiday / other,56.0,61.0
+2025-05-11,Sunday,1991000,3357000,Tube partly disrupted,75.0,96.0
+2025-05-26,Monday,2071000,3324000,holiday / other,58.0,65.0
+2025-06-01,Sunday,1943000,3313000,Tube partly disrupted,73.0,95.0
+2025-08-25,Monday,2180000,3258000,holiday / other,67.0,72.0
+2025-09-07,Sunday,1272000,3493000,Tube partly disrupted,55.0,100.0
+2025-09-08,Monday,529000,5701000,Tube strike,16.0,113.0
+2025-09-09,Tuesday,650000,5748000,Tube strike,19.0,114.0
+2025-09-10,Wednesday,589000,5667000,Tube strike,18.0,111.0
+2025-09-11,Thursday,607000,5756000,Tube strike,18.0,112.0
+2025-12-24,Wednesday,1874000,3724000,Christmas / New Year,60.0,80.0
+2025-12-25,Thursday,0,2000,Christmas / New Year,0.0,0.0
+2025-12-26,Friday,1490000,2666000,Christmas / New Year,48.0,57.0
+2025-12-27,Saturday,2521000,3419000,Christmas / New Year,98.0,100.0
+2025-12-28,Sunday,2100000,2859000,Christmas / New Year,83.0,84.0
+2025-12-29,Monday,2683000,3851000,Christmas / New Year,86.0,83.0
+2025-12-30,Tuesday,2901000,4043000,Christmas / New Year,93.0,87.0
+2025-12-31,Wednesday,2955000,3970000,Christmas / New Year,95.0,85.0
+2026-01-01,Thursday,1703000,2199000,Christmas / New Year,55.0,47.0
+2026-01-04,Sunday,1760000,2753000,holiday / other,70.0,81.0
+2026-01-11,Sunday,1672000,2798000,holiday / other,66.0,82.0
+2026-01-18,Sunday,1829000,2992000,holiday / other,72.0,88.0
+2026-03-08,Sunday,1979000,3323000,Tube partly disrupted,75.0,100.0
+2026-04-03,Friday,2450000,3809000,holiday / other,71.0,76.0
+2026-04-05,Sunday,1818000,2968000,holiday / other,69.0,83.0
+2026-04-06,Monday,1963000,3312000,holiday / other,57.0,66.0
+2026-04-19,Sunday,1985000,3288000,Tube partly disrupted,75.0,92.0
+2026-04-21,Tuesday,2162000,5249000,Tube partly disrupted,64.0,104.0
+2026-04-22,Wednesday,2024000,5302000,Tube partly disrupted,60.0,105.0
+2026-04-23,Thursday,2230000,5330000,Tube partly disrupted,66.0,105.0
+2026-04-24,Friday,2464000,5330000,Tube partly disrupted,72.0,105.0
+2026-05-04,Monday,2061000,3256000,holiday / other,59.0,64.0
+2026-05-10,Sunday,1944000,3191000,holiday / other,73.0,89.0
+2026-05-25,Monday,2067000,3361000,holiday / other,60.0,66.0
+2026-06-02,Tuesday,2104000,5297000,Tube partly disrupted,61.0,105.0
+2026-06-04,Thursday,2288000,5372000,Tube partly disrupted,67.0,106.0
+2026-06-07,Sunday,2005000,3238000,Tube partly disrupted,74.0,90.0
+2026-08-31,Monday,2090000,3293000,holiday / other,64.0,73.0
+2026-11-01,Sunday,1933000,3092000,holiday / other,74.0,85.0

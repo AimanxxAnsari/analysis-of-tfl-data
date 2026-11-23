@@ -168,6 +168,47 @@ def route_type(route: str) -> str:
 
 
 # --------------------------------------------------------------------------
+# Network Demand (daily journeys, daily station footfall)
+# --------------------------------------------------------------------------
+
+def _network_demand(prefix: str, keys: list[str]) -> pd.DataFrame:
+    """Concatenate TfL's overlapping yearly files; for each key, keep the row from the
+    most recently published file (TfL revises a few recent values between releases)."""
+    man = pd.read_csv(DATA / "bus" / "manifest.csv")
+    man = man[(man["dataset"] == "network-demand")
+              & man["raw_path"].str.contains(f"/{prefix}_")].sort_values("tfl_last_modified")
+    frames = []
+    for _, r in man.iterrows():
+        df = pd.read_csv(T.ROOT / r["raw_path"], encoding="utf-8-sig")
+        df.columns = [c.lower() for c in df.columns]
+        df["published"] = r["tfl_last_modified"]
+        frames.append(df)
+    df = pd.concat(frames, ignore_index=True)
+    df["date"] = pd.to_datetime(df["traveldate"].astype(str), format="%Y%m%d")
+    df = df.sort_values("published").drop_duplicates(keys, keep="last")
+    return df.drop(columns=["traveldate", "published"]).sort_values(keys).reset_index(drop=True)
+
+
+def load_journeys() -> pd.DataFrame:
+    """Daily total Tube and bus journeys, 2019 onwards (indexed by date)."""
+    df = _network_demand("journeys", ["date"])
+    df = df.rename(columns={"tubejourneycount": "tube", "busjourneycount": "bus"})
+    return df.set_index("date")[["dayofweek", "tube", "bus"]]
+
+
+def load_footfall() -> pd.DataFrame:
+    """Daily entry and exit taps per rail station, 2019 onwards.
+
+    TfL renamed three Elizabeth line stations on 28 May 2025 ('Canary Wharf EL' ->
+    'Canary Wharf Elizabeth Line'); both names are mapped to '... EL'."""
+    df = _network_demand("stationfootfall", ["date", "station"])
+    df["station"] = df["station"].str.replace(r" Elizabeth Line$", " EL", regex=True)
+    df = df.rename(columns={"entrytapcount": "entries", "exittapcount": "exits"})
+    df["entries_exits"] = df["entries"] + df["exits"]
+    return df[["date", "dayofweek", "station", "entries", "exits", "entries_exits"]]
+
+
+# --------------------------------------------------------------------------
 # BUSTO demand
 # --------------------------------------------------------------------------
 
