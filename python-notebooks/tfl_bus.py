@@ -325,3 +325,104 @@ def bus_rail_links(stops: pd.DataFrame, stations: pd.DataFrame,
     return pd.DataFrame({"stopcode": stops.index.values[si],
                          "station": stations.index.values[ri],
                          "dist_m": D[si, ri].round(1)})
+
+
+# --------------------------------------------------------------------------
+# Combined bus + rail network
+# --------------------------------------------------------------------------
+
+# Travel-time assumptions for edge weights (minutes). Sensitivity is tested in the notebook.
+BUS_KMH, BUS_DETOUR = 15.0, 1.3      # average London bus speed incl. stops; road vs straight line
+RAIL_KMH = 30.0                       # average TfL rail speed incl. stops
+WALK_KMH, WALK_DETOUR = 4.8, 1.3
+CHANGE_MIN = 5.0                      # wait / interchange penalty when changing mode
+
+
+def bus_edges(year: int = 2025, day_type: str = "Weekday") -> pd.DataFrame:
+    """Consecutive stop-area pairs on every BUSTO route-direction, with the routes serving them.
+
+    Nodes are TfL stop areas (stops on both sides of the road). Virtual stops (timing
+    points) and stops missing from the bus-stops feed are skipped, joining their
+    neighbours; route-directions that mix two variants in one sequence are left out."""
+    st = load_stops()
+    con = busto_con()
+    seq = con.execute(f"""SELECT DISTINCT route, direction, stopsequence, stopcode FROM qhr
+                          WHERE year = {year} AND day_type = '{day_type}'""").df()
+    seq = seq[seq["stopcode"].isin(st.index)].join(st[["stop_area", "virtual"]], on="stopcode")
+    seq = seq[~seq["virtual"]].sort_values(["route", "direction", "stopsequence"])
+    mixed = seq.groupby(["route", "direction"])["stopsequence"].transform(lambda s: s.duplicated().any())
+    seq = seq[~mixed.astype(bool)]
+    seq["node"] = "bus:" + seq["stop_area"]
+    nxt = seq.groupby(["route", "direction"])["node"].shift(-1)
+    e = pd.DataFrame({"a": seq["node"], "b": nxt, "route": seq["route"]}).dropna()
+    e = e[e["a"] != e["b"]]
+    e[["a", "b"]] = np.sort(e[["a", "b"]].values, axis=1)          # undirected
+    return e.groupby(["a", "b"])["route"].agg(lambda s: frozenset(s)).rename("routes").reset_index()
+
+
+def stop_area_positions() -> pd.DataFrame:
+    st = load_stops()
+    g = st.assign(node="bus:" + st["stop_area"]).groupby("node")
+    return g.agg(lat=("lat", "mean"), lon=("lon", "mean"),
+                 name=("stop_name", lambda s: s.mode().iloc[0]))
+
+
+def build_bus_rail_graph(year: int = 2025, walk_m: float = WALK_M, include_bus: bool = True,
+                         include_rail: bool = True, exclude_lines=("London Trams",),
+                         bus_kmh: float = BUS_KMH, rail_kmh: float = RAIL_KMH,
+                         change_min: float = CHANGE_MIN):
+    """Undirected graph of bus stop areas ('bus:<area>') and TfL rail stations ('rail:<name>').
+
+    Edge attribute `minutes` is the estimated travel time: bus and rail edges from
+    straight-line distance and average speeds, walking links between a stop area and a
+    station within walk_m, plus a change penalty. Edge attribute `mode` is bus / rail / walk;
+    bus edges carry the set of `routes` serving them. Nodes carry lat, lon, name, mode."""
+    import networkx as nx
+    G = nx.Graph()
+    pos = stop_area_positions()
+    rail = rail_stations(include_trams="London Trams" not in exclude_lines)
+    if include_bus:
+        for a, b, routes in bus_edges(year).itertuples(index=False):
+            d = haversine_m(pos.at[a, "lat"], pos.at[a, "lon"], pos.at[b, "lat"], pos.at[b, "lon"])
+            G.add_edge(a, b, mode="bus", routes=routes,
+                       minutes=max(BUS_DETOUR * d / 1000 / bus_kmh * 60, 0.5))
+    if include_rail:
+        R = T.build_graph(T.load_edges_2024(exclude_lines=list(exclude_lines)))
+        for a, b in R.edges:
+            d = haversine_m(rail.at[a, "lat"], rail.at[a, "lon"], rail.at[b, "lat"], rail.at[b, "lon"])
+            G.add_edge("rail:" + a, "rail:" + b, mode="rail", minutes=max(d / 1000 / rail_kmh * 60, 1.0))
+    if include_bus and include_rail:
+        bn = [n for n in G if n.startswith("bus:")]
+        P = pos.loc[bn]
+        D = haversine_m(P["lat"].values[:, None], P["lon"].values[:, None],
+                        rail["lat"].values[None, :], rail["lon"].values[None, :])
+        i, k = np.nonzero(D <= walk_m)
+        for a, s, d in zip(np.array(bn)[i], rail.index[k], D[i, k]):
+            G.add_edge(a, "rail:" + s, mode="walk",
+                       minutes=WALK_DETOUR * d / 1000 / WALK_KMH * 60 + change_min)
+    for n in G:
+        if n.startswith("bus:"):
+            G.nodes[n].update(mode="bus", lat=pos.at[n, "lat"], lon=pos.at[n, "lon"], name=pos.at[n, "name"])
+        else:
+            s = n[5:]
+            G.nodes[n].update(mode="rail", lat=rail.at[s, "lat"], lon=rail.at[s, "lon"], name=s)
+    return G
+
+
+def efficiency_minutes(G, sources=None, weight: str = "minutes") -> float:
+    """Mean of 1 / travel time over ordered pairs (source in `sources`, any target).
+    Unreachable pairs count as 0, so the measure stays meaningful when the graph splits."""
+    import networkx as nx
+    from scipy.sparse.csgraph import dijkstra
+    nodes = list(G)
+    if len(nodes) < 2:
+        return 0.0
+    idx = {n: i for i, n in enumerate(nodes)}
+    A = nx.to_scipy_sparse_array(G, nodelist=nodes, weight=weight, format="csr")
+    src = np.arange(len(nodes)) if sources is None else np.array([idx[s] for s in sources if s in idx])
+    total = 0.0
+    for chunk in np.array_split(src, max(1, len(src) // 500)):
+        D = dijkstra(A, directed=False, indices=chunk)
+        D[D == 0] = np.inf
+        total += (1.0 / D).sum()
+    return total / (len(src) * (len(nodes) - 1))

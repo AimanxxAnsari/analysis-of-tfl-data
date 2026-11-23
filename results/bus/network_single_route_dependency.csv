@@ -1,0 +1,5 @@
+to_rail,stop areas,served by one route (%),boardings at one-route stop areas (%)
+< 400 m,2268.0,21.2,2.6
+400-800 m,2150.0,34.0,8.5
+800 m - 2 km,2867.0,40.3,13.3
+> 2 km,2988.0,47.3,13.4

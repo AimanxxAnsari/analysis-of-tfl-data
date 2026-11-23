@@ -1,0 +1,8 @@
+,Spearman vs main,top-10 overlap with main,top 5
+main (sampled),0.997,9,"Canada Water, London Bridge, Surrey Quays, Earl's Court, New Cross Gate"
+bus 12 km/h,0.995,8,"Canada Water, London Bridge, Surrey Quays, Earl's Court, New Cross Gate"
+bus 18 km/h,0.989,9,"Canada Water, Surrey Quays, London Bridge, Earl's Court, Waterloo"
+rail 25 km/h,0.971,9,"Canada Water, Surrey Quays, London Bridge, Earl's Court, Waterloo"
+change penalty 2 min,0.997,9,"Canada Water, London Bridge, Surrey Quays, Earl's Court, New Cross Gate"
+change penalty 10 min,0.997,10,"Canada Water, London Bridge, Surrey Quays, Earl's Court, Liverpool Street"
+walking links up to 200 m,0.996,9,"Canada Water, London Bridge, Surrey Quays, Earl's Court, New Cross Gate"
