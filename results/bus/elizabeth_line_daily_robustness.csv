@@ -1,0 +1,6 @@
+variant,weeks -16 to -1 (before),first 4 weeks,weeks 27-52,year 3
+"main (48 central controls, 16-week baseline)",0.0,42.3,64.5,87.6
+controls > 1 km from treated (33),0.1,39.0,62.5,82.3
+all other Underground stations (250),0.3,41.9,60.2,82.9
+8-week baseline,0.8,43.4,65.8,89.1
+24-week baseline,-0.1,42.1,64.3,87.4
