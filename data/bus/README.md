@@ -21,6 +21,7 @@ Re-running skips files whose TfL ETag is unchanged and whose output still exists
 | Network Demand: daily entry/exit taps per rail station, 2019-2026 | same | `data/raw/network-demand/stationfootfall_*.csv` | yes |
 | BUSTO bus demand, 2023-24 to 2025-26 (39 CSVs, 3.7 GB) | [crowding.data.tfl.gov.uk](https://crowding.data.tfl.gov.uk/#!BUSTO/) | `data/processed/busto/<year>/*.parquet` (580 MB) | **no**: converted to Parquet, then deleted |
 | BUSTO user guide and data dictionary v1.2 | same | `data/raw/busto/` | yes |
+| Bus stops and route sequences feeds (`bus-stops.csv`, `bus-sequences.csv`): LBSL stop codes as used by BUSTO, NaPTAN ids, grid coordinates. TfL last updated them on 29 Aug 2024 | [tfl.gov.uk/tfl/syndication/feeds](https://tfl.gov.uk/info-for/open-data-users/our-open-data) | `data/raw/bus-feeds/` | yes |
 | Bus routes, ordered stop sequences, stop coordinates | [TfL Unified API](https://api.tfl.gov.uk/) `/Line/Mode/bus/Route`, `/Line/{id}/Route/Sequence/{direction}` | `data/processed/bus-routes/{routes,route_stop_sequences,stops}.csv`; raw responses in `data/raw/bus-routes/` | yes |
 
 The API data is a snapshot of the network on the download date, not a historical record.

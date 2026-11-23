@@ -1,0 +1,419 @@
+station,lat,lon,lines,n_lines,bus_stops,bus_routes,weekday_boardings_within,bus_routes_200m,bus_routes_800m
+Abbey Road,51.531926,0.003737,DLR,1,4,1,149,1,14
+Abbey Wood,51.491241,0.121374,Elizabeth Line,1,16,9,10188,9,11
+Acton Central,51.508716,-0.262971,LO North London,1,6,11,4011,0,12
+Acton Main Line,51.51718,-0.266756,Elizabeth Line,1,14,5,1748,4,7
+Acton Town,51.503057,-0.280462,District; Piccadilly,2,9,4,1527,3,10
+Aldgate,51.514246,-0.075689,H&C and Circle; Metropolitan,2,17,17,11077,16,32
+Aldgate East,51.515037,-0.072384,District; H&C and Circle,2,17,16,12942,16,33
+All Saints,51.511,-0.013135,DLR,1,18,9,7397,8,13
+Alperton,51.540627,-0.29961,Piccadilly,1,13,8,7020,7,8
+Amersham,51.674126,-0.607714,Metropolitan,1,0,0,0,0,0
+Anerley,51.412153,-0.065886,LO East London,1,15,6,1934,6,12
+Angel,51.531788,-0.105919,Northern,1,20,20,19706,20,22
+Archway,51.565478,-0.134819,Northern,1,19,16,15746,16,16
+Arnos Grove,51.616446,-0.133062,Piccadilly,1,7,8,4582,8,10
+Arsenal,51.558655,-0.107457,Piccadilly,1,3,11,1190,0,26
+Baker Street,51.522883,-0.15713,Bakerloo; H&C and Circle; Jubilee; Metropolitan,4,16,17,13946,15,17
+Balham,51.443288,-0.152997,Northern,1,8,6,3918,6,6
+Bank and Monument,51.51314883333333,-0.08979166666666667,Central; DLR; District; H&C and Circle; Northern; Waterloo & City,6,14,24,10036,18,34
+Barbican,51.520275,-0.097993,H&C and Circle; Metropolitan,2,14,9,3665,3,34
+Barking,51.539379,0.081003,District; H&C and Circle; LO Gospel Oak-Barking,3,15,12,29534,12,12
+Barking Riverside,51.51953,0.11596,LO Gospel Oak-Barking,1,6,2,429,2,3
+Barkingside,51.585689,0.088585,Central,1,5,2,482,0,8
+Barons Court,51.490311,-0.213427,District; Piccadilly,2,1,5,239,0,23
+Battersea Power Station,51.479932,-0.142142,Northern,1,8,5,3980,4,11
+Bayswater,51.512284,-0.187938,District; H&C and Circle,2,10,9,2429,1,18
+Beckton,51.514362,0.061453,DLR,1,12,10,4877,10,10
+Beckton Park,51.508793,0.054932,DLR,1,7,1,34,1,11
+Becontree,51.540331,0.127016,District,1,8,2,2134,2,2
+Belsize Park,51.550311,-0.164648,Northern,1,11,4,1890,3,9
+Bermondsey,51.49775,-0.063993,Jubilee,1,9,7,3889,6,10
+Bethnal Green,51.5255695,-0.057537000000000005,Central; LO West Anglia,2,10,9,5529,7,17
+Blackfriars,51.511581,-0.103659,District; H&C and Circle,2,13,16,4824,5,30
+Blackhorse Road,51.586762,-0.041193,LO Gospel Oak-Barking; Victoria,2,11,5,8043,5,7
+Blackwall,51.507991,-0.006969,DLR,1,14,10,2489,6,13
+Bond Street,51.51396333333333,-0.14958766666666667,Central; Elizabeth Line; Jubilee,3,7,20,14548,10,42
+Borough,51.501199,-0.09337,Northern,1,16,9,7482,8,47
+Boston Manor,51.495635,-0.324939,Piccadilly,1,6,2,1429,2,3
+Bounds Green,51.607034,-0.124235,Piccadilly,1,10,5,3100,5,7
+Bow Church,51.527858,-0.020936,DLR,1,11,10,6137,9,13
+Bow Road,51.52694,-0.025128,District; H&C and Circle,2,8,6,3820,5,17
+Brent Cross,51.57665,-0.213622,Northern,1,12,6,1297,5,21
+Brentwood,51.613605,0.299586,Elizabeth Line,1,0,0,0,0,1
+Brixton,51.462618,-0.114888,Victoria,1,31,24,43702,22,24
+Brockley,51.464649,-0.037537,LO East London,1,9,4,1698,4,8
+Bromley-by-Bow,51.524839,-0.011538,District; H&C and Circle,2,11,3,1256,3,12
+Brondesbury,51.545166,-0.202309,LO North London,1,6,5,5866,5,11
+Brondesbury Park,51.540699,-0.210128,LO North London,1,8,3,717,1,8
+Bruce Grove,51.593959,-0.069867,LO West Anglia,1,14,11,11486,11,15
+Buckhurst Hill,51.626605,0.046757,Central,1,11,2,285,2,2
+Burnham,51.523506,-0.646374,Elizabeth Line,1,0,0,0,0,0
+Burnt Oak,51.602774,-0.264048,Northern,1,12,9,6016,5,11
+Bush Hill Park,51.641519,-0.069221,LO West Anglia,1,0,0,0,0,7
+Bushey,51.645582,-0.384749,LO Watford-Euston,1,4,2,615,2,2
+Caledonian Road,51.548519,-0.118493,Piccadilly,1,15,7,3489,5,19
+Caledonian Road & Barnsbury,51.543041,-0.116729,LO North London,1,8,6,3536,5,8
+Cambridge Heath,51.531973,-0.057279,LO West Anglia,1,13,11,5400,9,15
+Camden Road,51.541791,-0.138701,LO North London,1,23,19,11652,19,20
+Camden Town,51.539292,-0.14274,Northern,1,24,19,17210,18,20
+Canada Water,51.497960500000005,-0.049562499999999995,Jubilee; LO East London,2,17,10,5958,10,11
+Canary Wharf,51.504882333333335,-0.019352666666666667,DLR; Elizabeth Line; Jubilee,3,10,8,7985,8,13
+Canning Town,51.513855500000005,0.0082115,DLR; Jubilee,2,15,13,9331,12,15
+Cannon Street,51.51151,-0.090432,District; H&C and Circle,2,15,24,13884,9,33
+Canonbury,51.548732,-0.092191,LO East London; LO North London,2,14,8,1623,2,18
+Canons Park,51.607701,-0.294693,Jubilee,1,4,3,2129,3,4
+Carpenders Park,51.628351,-0.385939,LO Watford-Euston,1,0,0,0,0,0
+Chadwell Heath,51.568039,0.128958,Elizabeth Line,1,11,6,5034,2,9
+Chalfont & Latimer,51.667985,-0.560689,Metropolitan,1,0,0,0,0,0
+Chalk Farm,51.544118,-0.153388,Northern,1,18,8,2484,6,12
+Chancery Lane,51.518247,-0.111583,Central,1,16,17,6240,8,52
+Charing Cross,51.50741,-0.127277,Bakerloo; Northern,2,22,41,17808,39,63
+Chesham,51.705208,-0.611247,Metropolitan,1,0,0,0,0,0
+Cheshunt,51.702876,-0.02396,LO West Anglia,1,0,0,0,0,0
+Chigwell,51.617916,0.075041,Central,1,7,1,247,1,1
+Chingford,51.633087,0.009897,LO West Anglia,1,9,9,1903,9,9
+Chiswick Park,51.494627,-0.267972,District,1,10,9,3601,0,10
+Chorleywood,51.654358,-0.518461,Metropolitan,1,0,0,0,0,0
+Clapham Common,51.461742,-0.138317,Northern,1,18,12,12366,12,14
+Clapham High Street,51.465481,-0.132522,LO East London,1,11,7,3254,6,17
+Clapham Junction,51.464187,-0.170221,LO East London; LO North London,2,20,19,26619,19,21
+Clapham North,51.465135,-0.130016,Northern,1,12,7,2402,7,13
+Clapham South,51.452654,-0.147582,Northern,1,14,6,3159,6,7
+Clapton,51.561644,-0.057025,LO West Anglia,1,15,12,4295,5,15
+Cockfosters,51.65152,-0.149171,Piccadilly,1,5,4,536,4,5
+Colindale,51.595424,-0.249919,Northern,1,7,5,3333,4,9
+Colliers Wood,51.41816,-0.178086,Northern,1,8,7,4977,7,13
+Covent Garden,51.513093,-0.124436,Piccadilly,1,12,48,19066,0,70
+Crossharbour,51.495728,-0.014606,DLR,1,7,7,1747,5,7
+Crouch Hill,51.571302,-0.117149,LO Gospel Oak-Barking,1,11,4,2943,4,8
+Croxley,51.647044,-0.441718,Metropolitan,1,0,0,0,0,0
+Crystal Palace,51.418109,-0.07261,LO East London,1,7,6,2697,6,20
+Custom House,51.509575999999996,0.02719,DLR; Elizabeth Line,2,10,7,3908,7,10
+Cutty Sark,51.481671,-0.01081,DLR,1,12,8,7448,8,13
+Cyprus,51.508473,0.063925,DLR,1,12,3,1384,3,11
+Dagenham East,51.544096,0.166017,District,1,6,2,1692,2,3
+Dagenham Heathway,51.541639,0.147527,District,1,14,5,8287,4,5
+Dalston Junction,51.546116,-0.075137,LO East London,1,15,14,16031,13,15
+Dalston Kingsland,51.548148,-0.075701,LO North London,1,21,14,16561,5,20
+Debden,51.645386,0.083782,Central,1,6,2,504,1,2
+Denmark Hill,51.468203,-0.089361,LO East London,1,10,8,7074,8,20
+Deptford Bridge,51.474215,-0.022438,DLR,1,15,7,3829,7,22
+Devons Road,51.522667,-0.017615,DLR,1,12,2,1038,2,12
+Dollis Hill,51.551955,-0.239068,Jubilee,1,14,10,5164,1,11
+Ealing Broadway,51.51495833333333,-0.30155533333333334,Central; District; Elizabeth Line,3,18,19,24986,19,19
+Ealing Common,51.51014,-0.288265,District; Piccadilly,2,7,6,2037,4,8
+Earl's Court,51.492063,-0.193378,District; Piccadilly,2,11,8,4908,7,10
+East Acton,51.516612,-0.247248,Central,1,16,10,3635,8,10
+East Finchley,51.587131,-0.165012,Northern,1,13,7,5023,7,7
+East Ham,51.538948,0.051186,District; H&C and Circle,2,17,8,12293,8,12
+East India,51.509359,-0.002326,DLR,1,12,7,1891,3,12
+East Putney,51.459205,-0.211,District,1,5,2,2167,2,14
+Eastcote,51.576506,-0.397373,Metropolitan; Piccadilly,2,8,2,1153,2,2
+Edgware,51.613653,-0.274928,Northern,1,12,18,11942,18,18
+Edgware Road,51.520005,-0.16860466666666665,Bakerloo; District; H&C and Circle,3,16,14,9583,14,23
+Edmonton Green,51.624929,-0.061112,LO West Anglia,1,14,12,18571,12,12
+Elephant & Castle,51.494536,-0.100606,Bakerloo; Northern,2,24,36,43936,36,41
+Elm Park,51.549775,0.19864,District,1,12,4,3418,4,4
+Elverson Road,51.469074,-0.016728,DLR,1,12,12,1303,2,31
+Embankment,51.507058,-0.122666,Bakerloo; District; H&C and Circle; Northern,4,15,41,12761,0,60
+Emerson Park,51.568642,0.220113,LO Romford–Upminster,1,9,3,591,3,7
+Enfield Town,51.652026,-0.079328,LO West Anglia,1,21,13,12864,13,13
+Epping,51.69368,0.113767,Central,1,0,0,0,0,0
+Euston,51.52827466666667,-0.13284133333333334,LO Watford-Euston; Northern; Victoria,3,15,15,9805,15,32
+Euston Square,51.525604,-0.135829,H&C and Circle; Metropolitan,2,22,22,20189,16,27
+Fairlop,51.595618,0.091004,Central,1,4,1,101,1,7
+Farringdon,51.520154999999995,-0.10429233333333333,Elizabeth Line; H&C and Circle; Metropolitan,3,20,18,7500,4,35
+Finchley Central,51.600921,-0.192527,Northern,1,10,8,5790,8,8
+Finchley Road,51.546825,-0.179845,Jubilee; Metropolitan,2,15,10,5896,6,12
+Finchley Road & Frognal,51.550266,-0.183141,LO North London,1,11,6,2784,3,13
+Finsbury Park,51.564158,-0.106825,Piccadilly; Victoria,2,17,17,21827,17,19
+Forest Gate,51.549432,0.024353,Elizabeth Line,1,11,9,6461,3,9
+Forest Hill,51.43928,-0.053157,LO East London,1,13,5,4573,5,9
+Fulham Broadway,51.480081,-0.195422,District,1,16,9,8506,9,19
+Gallions Reach,51.508941,0.071555,DLR,1,10,7,2501,5,7
+Gants Hill,51.576544,0.066185,Central,1,13,11,8821,11,11
+Gidea Park,51.581904,0.205964,Elizabeth Line,1,6,2,829,2,7
+Gloucester Road,51.494316,-0.182658,District; H&C and Circle; Piccadilly,3,20,7,2723,4,18
+Golders Green,51.572259,-0.194039,Northern,1,19,18,15778,18,18
+Goldhawk Road,51.502005,-0.226715,H&C and Circle,1,11,14,6309,2,19
+Goodge Street,51.520599,-0.134361,Northern,1,5,10,8234,10,53
+Goodmayes,51.565579,0.110807,Elizabeth Line,1,14,6,5575,4,7
+Gospel Oak,51.555335,-0.15077,LO Gospel Oak-Barking; LO North London,2,10,3,1978,1,7
+Grange Hill,51.613378,0.092066,Central,1,9,2,188,2,3
+Great Portland Street,51.52384,-0.144262,H&C and Circle; Metropolitan,2,14,8,7003,8,19
+Green Park,51.506947,-0.142787,Jubilee; Piccadilly; Victoria,3,8,11,6132,11,36
+Greenford,51.542424,-0.34605,Central,1,9,4,3479,4,5
+Greenwich,51.478087,-0.013673,DLR,1,11,7,2297,5,13
+Gunnersbury,51.4917405,-0.2752765,District; LO North London,2,13,6,3717,6,9
+Hackney Central,51.547105,-0.056058,LO North London,1,17,18,8401,13,23
+Hackney Downs,51.548757,-0.060819,LO West Anglia,1,20,10,3824,7,20
+Hackney Wick,51.54341,-0.02492,LO North London,1,11,3,592,2,9
+Haggerston,51.538705,-0.075666,LO East London,1,10,5,4011,4,11
+Hainault,51.603659,0.093482,Central,1,5,4,1843,3,5
+Hammersmith,51.49266333333333,-0.22409,District; H&C and Circle; Piccadilly,3,25,21,22342,21,21
+Hampstead,51.556239,-0.177464,Northern,1,8,3,1367,3,10
+Hampstead Heath,51.55521,-0.165705,LO North London,1,11,6,4080,4,6
+Hanger Lane,51.530177,-0.292704,Central,1,9,6,3190,6,6
+Hanwell,51.511835,-0.338583,Elizabeth Line,1,7,8,3103,1,12
+Harlesden,51.5362995,-0.257775,Bakerloo; LO Watford-Euston,2,8,7,2316,7,13
+Harold Wood,51.592766,0.233129,Elizabeth Line,1,9,4,2888,4,5
+Harringay Green Lanes,51.577182,-0.098144,LO Gospel Oak-Barking,1,6,5,5114,5,13
+Harrow & Wealdstone,51.5922185,-0.334894,Bakerloo; LO Watford-Euston,2,11,9,7189,9,11
+Harrow-on-the-Hill,51.579195,-0.337225,Metropolitan,1,17,21,28749,21,21
+Hatch End,51.609417,-0.368601,LO Watford-Euston,1,4,2,782,2,3
+Hatton Cross,51.466747,-0.423191,Piccadilly,1,9,9,9462,9,9
+Hayes & Harlington,51.503096,-0.420683,Elizabeth Line,1,10,11,13351,11,11
+Headstone Lane,51.602649,-0.35722,LO Watford-Euston,1,11,4,1519,4,5
+Heathrow Terminal 4,51.45839599999999,-0.445617,Elizabeth Line; Piccadilly,2,5,2,1153,2,5
+Heathrow Terminal 5,51.4700525,-0.4905745,Elizabeth Line; Piccadilly,2,3,5,1996,0,5
+Heathrow Terminals 123,51.471235,-0.452265,Piccadilly,1,3,10,6557,10,10
+Heathrow Terminals 2 & 3,51.471987,-0.454788,Elizabeth Line,1,3,10,6557,10,10
+Hendon Central,51.583301,-0.226424,Northern,1,11,10,6663,10,13
+Heron Quays,51.503379,-0.021421,DLR,1,17,8,8028,8,9
+High Barnet,51.650541,-0.194298,Northern,1,9,11,3525,11,11
+High Street Kensington,51.501055,-0.192792,District; H&C and Circle,2,10,12,10811,9,17
+Highams Park,51.60835,-0.000222,LO West Anglia,1,10,3,2149,3,3
+Highbury & Islington,51.54623466666666,-0.10361733333333334,LO East London; LO North London; Victoria,3,11,11,9750,11,13
+Highgate,51.577532,-0.145857,Northern,1,8,7,3023,4,10
+Hillingdon,51.553715,-0.449828,Metropolitan; Piccadilly,2,7,2,1364,2,2
+Holborn,51.51758,-0.120475,Central; Piccadilly,2,20,27,15368,26,61
+Holland Park,51.507143,-0.205679,Central,1,6,5,1330,5,18
+Holloway Road,51.552697,-0.113244,Piccadilly,1,8,11,5376,7,19
+Homerton,51.547012,-0.04236,LO North London,1,19,12,5399,0,20
+Honor Oak Park,51.449989,-0.045505,LO East London,1,8,6,1446,2,9
+Hornchurch,51.554093,0.219116,District,1,2,3,1376,3,6
+Hounslow Central,51.471295,-0.366578,Piccadilly,1,10,11,7188,2,21
+Hounslow East,51.473213,-0.356474,Piccadilly,1,12,19,10914,2,21
+Hounslow West,51.473469,-0.386544,Piccadilly,1,6,8,7404,8,10
+Hoxton,51.531512,-0.075681,LO East London,1,18,9,6253,9,20
+Hyde Park Corner,51.503035,-0.152441,Piccadilly,1,14,24,10794,23,26
+Ickenham,51.56177,-0.442225,Metropolitan; Piccadilly,2,7,3,382,2,3
+Ilford,51.559118,0.06968,Elizabeth Line,1,16,21,31903,21,21
+Imperial Wharf,51.474949,-0.182823,LO North London,1,9,2,1296,2,17
+Island Gardens,51.487811,-0.010139,DLR,1,7,5,1177,3,15
+Iver,51.508503,-0.506726,Elizabeth Line,1,0,0,0,0,0
+Kennington,51.488337,-0.105963,Northern,1,11,12,2725,6,28
+Kensal Green,51.5305395,-0.225052,Bakerloo; LO Watford-Euston,2,5,2,782,2,10
+Kensal Rise,51.534554,-0.219957,LO North London,1,9,5,4534,5,8
+Kensington,51.497761499999996,-0.2101895,District; LO North London,2,11,9,3561,2,12
+Kentish Town,51.550312,-0.140733,Northern,1,11,5,3537,5,13
+Kentish Town West,51.546548,-0.146655,LO North London,1,13,7,3281,2,20
+Kenton,51.581779,-0.3169455,Bakerloo; LO Watford-Euston,2,7,8,4000,8,13
+Kew Gardens,51.477065499999995,-0.2851475,District; LO North London,2,9,4,793,1,4
+Kilburn,51.547183,-0.204248,Jubilee,1,6,5,5486,5,9
+Kilburn High Road,51.537277,-0.192237,LO Watford-Euston,1,19,12,12031,11,15
+Kilburn Park,51.534979,-0.194232,Bakerloo,1,17,12,7913,7,16
+King George V,51.502003,0.062624,DLR,1,9,3,1468,0,5
+King's Cross St. Pancras,51.53066299999999,-0.123194,H&C and Circle; Metropolitan; Northern; Piccadilly; Victoria,5,15,15,17001,15,22
+Kingsbury,51.584845,-0.27879,Jubilee,1,9,7,7897,5,7
+Knightsbridge,51.501669,-0.160508,Piccadilly,1,7,15,5829,15,26
+Ladbroke Grove,51.517449,-0.210391,H&C and Circle,1,14,8,5904,7,13
+Lambeth North,51.498808,-0.112315,Bakerloo,1,21,24,9432,11,41
+Lancaster Gate,51.511723,-0.175494,Central,1,8,4,1785,4,14
+Langdon Park,51.515172,-0.01415,DLR,1,20,3,1903,2,10
+Langley,51.508062,-0.541756,Elizabeth Line,1,0,0,0,0,0
+Latimer Road,51.513389,-0.217799,H&C and Circle,1,6,3,1309,3,22
+Leicester Square,51.511386,-0.128426,Northern; Piccadilly,2,18,43,22083,13,72
+Lewisham,51.464665,-0.012874,DLR,1,22,27,19648,26,28
+Leyton,51.556589,-0.005523,Central,1,11,7,9158,7,12
+Leyton Midland Road,51.569725,-0.008051,LO Gospel Oak-Barking,1,10,4,3716,4,17
+Leytonstone,51.568324,0.008194,Central,1,17,10,6152,10,11
+Leytonstone High Road,51.563554,0.008416,LO Gospel Oak-Barking,1,7,5,1841,3,10
+Limehouse,51.512393,-0.039809,DLR,1,8,7,2350,7,13
+Liverpool Street,51.5175656,-0.08260300000000001,Central; Elizabeth Line; H&C and Circle; LO West Anglia; Metropolitan,5,16,22,20067,22,36
+London Bridge,51.505721,-0.088873,Jubilee; Northern,2,15,19,21533,17,20
+London City Airport,51.503416,0.048739,DLR,1,7,3,840,3,4
+London Fields,51.541153,-0.057753,LO West Anglia,1,15,12,5138,8,18
+Loughton,51.641443,0.055476,Central,1,8,4,1273,4,4
+Maida Vale,51.529777,-0.185758,Bakerloo,1,9,6,1737,4,16
+Maidenhead,51.518669,-0.72266,Elizabeth Line,1,0,0,0,0,0
+Manor House,51.570738,-0.096118,Piccadilly,1,16,11,9561,11,13
+Manor Park,51.552477,0.046342,Elizabeth Line,1,13,9,7893,4,9
+Mansion House,51.512117,-0.094009,District; H&C and Circle,2,15,21,6970,10,35
+Marble Arch,51.513424,-0.158953,Central,1,15,25,22086,23,27
+Maryland,51.546081,0.005815,Elizabeth Line,1,14,4,3386,4,23
+Marylebone,51.522322,-0.163207,Bakerloo,1,19,17,9312,8,26
+Mile End,51.525122,-0.03364,Central; District; H&C and Circle,3,14,11,8936,11,14
+Mill Hill East,51.608229,-0.209986,Northern,1,11,3,2137,3,3
+Moor Park,51.629845,-0.432454,Metropolitan,1,0,0,0,0,0
+Moorgate,51.518176000000004,-0.088322,H&C and Circle; Metropolitan; Northern,3,13,9,6150,4,36
+Morden,51.402142,-0.194839,Northern,1,19,14,16157,14,14
+Mornington Crescent,51.534679,-0.138789,Northern,1,17,18,6262,15,19
+Mudchute,51.490704,-0.014738,DLR,1,10,5,721,3,7
+Neasden,51.553986,-0.249837,Jubilee,1,9,7,943,1,15
+New Cross,51.476344,-0.032441,LO East London,1,14,15,8659,6,24
+New Cross Gate,51.475128,-0.040399,LO East London,1,15,20,17760,17,21
+Newbury Park,51.575726,0.090004,Central,1,5,3,1938,3,4
+Nine Elms,51.479912,-0.128476,Northern,1,8,8,4070,5,19
+North Acton,51.523524,-0.259755,Central,1,16,7,2757,6,13
+North Ealing,51.517505,-0.288868,Piccadilly,1,4,3,489,3,9
+North Greenwich,51.50047,0.004287,Jubilee,1,5,10,17631,10,10
+North Harrow,51.584872,-0.362408,Metropolitan,1,11,6,1749,5,6
+North Wembley,51.5625735,-0.303992,Bakerloo; LO Watford-Euston,2,4,2,1492,2,5
+Northfields,51.499319,-0.314719,Piccadilly,1,5,3,2196,3,7
+Northolt,51.548236,-0.368699,Central,1,15,9,7907,8,9
+Northwick Park,51.578481,-0.318056,Metropolitan,1,9,9,3527,2,13
+Northwood,51.611053,-0.423829,Metropolitan,1,9,3,1278,3,3
+Northwood Hills,51.600572,-0.409464,Metropolitan,1,10,3,1257,2,3
+Norwood Junction,51.397019,-0.075221,LO East London,1,13,7,5604,7,10
+Notting Hill Gate,51.509128,-0.19610399999999997,Central; District; H&C and Circle,3,13,13,7962,13,17
+Oakwood,51.647726,-0.132182,Piccadilly,1,7,4,2076,4,5
+Old Street,51.525864,-0.08777,Northern,1,18,12,11892,12,28
+Osterley,51.481274,-0.352224,Piccadilly,1,4,2,396,1,3
+Oval,51.48185,-0.112439,Northern,1,17,15,8307,15,20
+Oxford Circus,51.51522400000001,-0.141903,Bakerloo; Central; Victoria,3,16,27,17180,27,43
+Paddington,51.516548,-0.17604350000000002,Bakerloo; District; Elizabeth Line; H&C and Circle,4,14,11,6373,8,19
+Park Royal,51.527123,-0.284341,Piccadilly,1,7,3,1046,2,6
+Parsons Green,51.475277,-0.20117,District,1,8,4,1637,0,17
+Peckham Rye,51.470034,-0.069414,LO East London,1,15,22,18247,11,22
+Penge West,51.417555,-0.06084,LO East London,1,8,4,1056,4,12
+Perivale,51.536717,-0.323446,Central,1,9,3,1407,1,3
+Piccadilly Circus,51.51005,-0.133798,Bakerloo; Piccadilly,2,17,29,17673,21,66
+Pimlico,51.489097,-0.133761,Victoria,1,15,9,3715,8,18
+Pinner,51.592901,-0.381161,Metropolitan,1,8,4,3001,4,4
+Plaistow,51.531341,0.017451,District; H&C and Circle,2,12,5,5446,4,8
+Pontoon Dock,51.502212,0.032115,DLR,1,6,3,1176,3,5
+Poplar,51.507744,-0.017384,DLR,1,6,13,5326,0,15
+Preston Road,51.571972,-0.295107,Metropolitan,1,9,3,2310,3,3
+Prince Regent,51.509263,0.034158,DLR,1,8,8,1865,8,11
+Pudding Mill Lane,51.534302,-0.012755,DLR,1,3,9,1014,1,13
+Putney Bridge,51.468262,-0.208731,District,1,12,16,8943,9,17
+Queen's Park,51.534062,-0.2047795,Bakerloo; LO Watford-Euston,2,10,5,2534,5,12
+Queens Road Peckham,51.473566,-0.057313,LO East London,1,8,10,4787,10,29
+Queensbury,51.594188,-0.286219,Jubilee,1,11,5,4490,4,6
+Queensway,51.510312,-0.187152,Central,1,9,4,2209,4,18
+Ravenscourt Park,51.494122,-0.235881,District,1,11,10,2049,9,14
+Rayners Lane,51.575147,-0.371127,Metropolitan; Piccadilly,2,10,4,2875,4,5
+Reading,51.458786,-0.971863,Elizabeth Line,1,0,0,0,0,0
+Rectory Road,51.558502,-0.068267,LO West Anglia,1,12,9,2774,5,12
+Redbridge,51.576243,0.04536,Central,1,5,4,1009,4,4
+Regent's Park,51.523344,-0.146444,Bakerloo,1,11,8,4320,8,29
+Richmond,51.463149,-0.301447,District; LO North London,2,16,15,14914,11,15
+Rickmansworth,51.640207,-0.473703,Metropolitan,1,0,0,0,0,0
+Roding Valley,51.617199,0.043647,Central,1,4,1,30,1,1
+Romford,51.574829,0.183237,Elizabeth Line; LO Romford–Upminster,2,19,22,26215,22,22
+Rotherhithe,51.500817,-0.052048,LO East London,1,10,10,5359,3,12
+Royal Albert,51.508357,0.045935,DLR,1,5,2,265,0,6
+Royal Oak,51.519113,-0.188748,H&C and Circle,1,13,9,5261,3,19
+Royal Victoria,51.509336,0.018497,DLR,1,8,4,606,3,9
+Ruislip,51.571354,-0.421898,Metropolitan; Piccadilly,2,12,8,2900,8,8
+Ruislip Gardens,51.560736,-0.41071,Central,1,5,1,276,1,2
+Ruislip Manor,51.573202,-0.412973,Metropolitan; Piccadilly,2,10,3,848,3,8
+Russell Square,51.523073,-0.124285,Piccadilly,1,9,6,3874,4,48
+Seven Kings,51.564026,0.0971,Elizabeth Line,1,8,4,2361,2,5
+Seven Sisters,51.582798999999994,-0.07392699999999999,LO West Anglia; Victoria,2,15,13,16979,12,17
+Shadwell,51.5114885,-0.0567885,DLR; LO East London,2,16,9,2667,3,10
+Shenfield,51.630877,0.329851,Elizabeth Line,1,0,0,0,0,0
+Shepherd's Bush,51.5048305,-0.2182335,Central; LO North London,2,17,20,17366,19,20
+Shepherd's Bush Market,51.505579,-0.226375,H&C and Circle,1,17,17,10585,11,19
+Shoreditch High Street,51.523375,-0.075246,LO East London,1,17,14,8590,8,24
+Silver Street,51.614688,-0.06724,LO West Anglia,1,16,12,14631,7,14
+Sloane Square,51.49227,-0.156377,District; H&C and Circle,2,18,14,9056,13,17
+Slough,51.51188,-0.59151,Elizabeth Line,1,2,1,764,0,1
+Snaresbrook,51.580678,0.02144,Central,1,10,5,726,5,10
+South Acton,51.499695,-0.270157,LO North London,1,7,2,373,0,17
+South Ealing,51.501003,-0.307424,Piccadilly,1,8,4,2292,2,5
+South Hampstead,51.541432,-0.178878,LO Watford-Euston,1,11,10,3970,3,12
+South Harrow,51.564888,-0.352492,Piccadilly,1,7,11,8153,11,11
+South Kensington,51.494094,-0.174138,District; H&C and Circle; Piccadilly,3,21,11,9035,10,11
+South Kenton,51.570223,-0.3084475,Bakerloo; LO Watford-Euston,2,3,1,264,1,1
+South Quay,51.50005,-0.015975,DLR,1,9,7,1008,3,9
+South Ruislip,51.556853,-0.398915,Central,1,5,1,839,0,2
+South Tottenham,51.580372,-0.072103,LO Gospel Oak-Barking,1,12,11,13199,7,18
+South Wimbledon,51.415309,-0.192005,Northern,1,11,7,3791,6,10
+South Woodford,51.591907,0.027338,Central,1,9,5,2383,5,8
+Southall,51.505957,-0.37861,Elizabeth Line,1,6,7,7630,7,11
+Southbury,51.648705,-0.052437,LO West Anglia,1,10,8,5366,4,12
+Southfields,51.445073,-0.206602,District,1,8,2,2193,2,4
+Southgate,51.632315,-0.127816,Piccadilly,1,11,8,6859,8,8
+Southwark,51.50427,-0.105331,Jubilee,1,13,15,6215,4,41
+St James Street,51.580981,-0.032918,LO West Anglia,1,14,8,4123,6,11
+St. James's Park,51.499544,-0.133608,District; H&C and Circle,2,10,10,2691,8,34
+St. John's Wood,51.534521,-0.173948,Jubilee,1,8,7,2675,5,8
+St. Paul's,51.514936,-0.097567,Central,1,20,21,6300,19,31
+Stamford Brook,51.494917,-0.245704,District,1,16,9,2509,7,13
+Stamford Hill,51.574467,-0.076682,LO West Anglia,1,17,12,10358,4,15
+Stanmore,51.619839,-0.303266,Jubilee,1,5,4,1828,4,6
+Star Lane,51.520786,0.004156,DLR,1,8,2,227,2,13
+Stepney Green,51.521858,-0.046596,District; H&C and Circle,2,12,5,3488,5,12
+Stockwell,51.472184,-0.122644,Northern; Victoria,2,16,10,7136,10,23
+Stoke Newington,51.565233,-0.072887,LO West Anglia,1,13,10,8593,8,10
+Stonebridge Park,51.544035,-0.27586,Bakerloo; LO Watford-Euston,2,13,6,4625,3,7
+Stratford,51.541832,-0.0033993999999999995,Central; DLR; Elizabeth Line; Jubilee; LO North London,5,14,22,32285,22,22
+Stratford High Street,51.538196,-0.001078,DLR,1,15,18,31711,6,22
+Stratford International,51.545265,-0.009638,DLR,1,8,5,1500,5,23
+Sudbury Hill,51.556946,-0.336435,Piccadilly,1,8,3,2164,2,4
+Sudbury Town,51.550815,-0.315745,Piccadilly,1,14,8,3447,4,8
+Surrey Quays,51.493196,-0.047519,LO East London,1,14,11,4328,10,11
+Swiss Cottage,51.543681,-0.174894,Jubilee,1,17,10,5226,10,10
+Sydenham,51.427248,-0.054244,LO East London,1,11,7,5254,7,9
+Taplow,51.523562,-0.68137,Elizabeth Line,1,0,0,0,0,0
+Temple,51.511006,-0.11426,District; H&C and Circle,2,12,33,13933,0,44
+Theobalds Grove,51.692457,-0.034831,LO West Anglia,1,0,0,0,0,6
+Theydon Bois,51.671759,0.103085,Central,1,0,0,0,0,0
+Tooting Bec,51.435678,-0.159736,Northern,1,9,7,3395,7,7
+Tooting Broadway,51.42763,-0.168374,Northern,1,19,16,22159,16,16
+Tottenham Court Road,51.51597566666667,-0.13036099999999998,Central; Elizabeth Line; Northern,3,16,30,22637,30,55
+Tottenham Hale,51.588108,-0.060241,Victoria,1,20,8,7873,8,17
+Totteridge & Whetstone,51.630597,-0.17921,Northern,1,11,8,3708,2,8
+Tower Gateway,51.510617,-0.074818,DLR,1,12,14,6355,7,31
+Tower Hill,51.509971,-0.076546,District; H&C and Circle,2,10,7,3131,7,37
+Tufnell Park,51.556822,-0.138433,Northern,1,15,4,2297,4,8
+Turkey Street,51.672628,-0.047217,LO West Anglia,1,1,1,34,0,6
+Turnham Green,51.495148,-0.254555,District; Piccadilly,2,16,10,3955,4,11
+Turnpike Lane,51.590272,-0.102953,Piccadilly,1,17,19,20061,19,19
+Twyford,51.475534,-0.863293,Elizabeth Line,1,0,0,0,0,0
+Upminster,51.5590405,0.250881,District; LO Romford–Upminster,2,12,3,3459,3,3
+Upminster Bridge,51.55856,0.235809,District,1,2,2,483,2,3
+Upney,51.538372,0.10153,District,1,9,3,988,1,4
+Upper Holloway,51.563631,-0.129513,LO Gospel Oak-Barking,1,7,12,8017,5,18
+Upton Park,51.53534,0.035263,District; H&C and Circle,2,12,5,9356,4,10
+Uxbridge,51.546565,-0.477949,Metropolitan; Piccadilly,2,14,14,13394,14,14
+Vauxhall,51.485743,-0.124204,Victoria,1,18,15,16274,15,16
+Victoria,51.496359000000005,-0.143102,District; H&C and Circle; Victoria,3,22,24,23172,24,24
+Walthamstow Central,51.582942,-0.01985,LO West Anglia; Victoria,2,17,21,17317,21,21
+Walthamstow Queen's Road,51.581503,-0.023846,LO Gospel Oak-Barking,1,14,21,10361,8,22
+Wandsworth Road,51.470216,-0.13852,LO East London,1,8,5,2683,4,14
+Wanstead,51.575501,0.028527,Central,1,9,9,2831,8,9
+Wanstead Park,51.551693,0.026213,LO Gospel Oak-Barking,1,7,3,2740,3,9
+Wapping,51.504388,-0.055931,LO East London,1,11,2,842,2,10
+Warren Street,51.524951,-0.138321,Northern; Victoria,2,14,16,14173,16,25
+Warwick Avenue,51.523263,-0.183783,Bakerloo,1,6,3,1753,3,16
+Waterloo,51.503299,-0.11478,Bakerloo; Jubilee; Northern; Waterloo & City,4,20,31,22655,17,46
+Watford,51.657446,-0.417377,Metropolitan,1,0,0,0,0,0
+Watford High Street,51.652655,-0.391711,LO Watford-Euston,1,5,2,1231,2,2
+Watford Junction,51.663908,-0.395925,LO Watford-Euston,1,3,2,669,2,2
+Wembley Central,51.5523145,-0.29664250000000003,Bakerloo; LO Watford-Euston,2,17,12,21001,12,13
+Wembley Park,51.563198,-0.279262,Jubilee; Metropolitan,2,12,7,8817,6,9
+West Acton,51.518001,-0.28098,Central,1,3,1,255,1,4
+West Brompton,51.4871645,-0.195596,District; LO North London,2,9,9,2057,5,17
+West Croydon,51.378428,-0.102585,LO East London,1,27,24,26659,24,32
+West Drayton,51.510055,-0.472234,Elizabeth Line,1,11,5,4870,5,5
+West Ealing,51.513506,-0.320133,Elizabeth Line,1,19,11,5009,2,12
+West Finchley,51.609426,-0.188362,Northern,1,3,4,524,0,8
+West Ham,51.5280755,0.0049117499999999994,DLR; District; H&C and Circle; Jubilee,4,7,1,411,1,3
+West Hampstead,51.547053000000005,-0.19112200000000001,Jubilee; LO North London,2,11,5,3384,3,15
+West Harrow,51.57971,-0.3534,Metropolitan,1,4,3,832,0,7
+West India Quay,51.50703,-0.020311,DLR,1,7,8,5183,8,15
+West Kensington,51.490459,-0.206636,District,1,6,3,1678,3,17
+West Ruislip,51.569688,-0.437886,Central,1,3,3,652,3,4
+West Silvertown,51.502838,0.02246,DLR,1,3,2,519,2,6
+Westbourne Park,51.52111,-0.201065,H&C and Circle,1,15,13,5558,6,17
+Westferry,51.509431,-0.02675,DLR,1,11,11,3170,6,15
+Westminster,51.50132,-0.124861,District; H&C and Circle; Jubilee,3,8,21,6525,21,49
+White City,51.511959,-0.224297,Central,1,9,16,4853,7,21
+White Hart Lane,51.605037,-0.070914,LO West Anglia,1,8,6,5074,6,11
+Whitechapel,51.519515,-0.059809,District; Elizabeth Line; H&C and Circle; LO East London,4,12,8,7021,7,14
+Willesden Green,51.549146,-0.221537,Jubilee,1,8,6,3540,4,10
+Willesden Junction,51.53241766666667,-0.24445966666666666,Bakerloo; LO North London; LO Watford-Euston,3,11,7,5607,5,11
+Wimbledon,51.421207,-0.206573,District,1,19,10,19167,10,10
+Wimbledon Park,51.434573,-0.199719,District,1,3,2,254,0,2
+Wood Green,51.597479,-0.109886,Piccadilly,1,19,16,22305,16,16
+Wood Lane,51.509669,-0.22453,H&C and Circle,1,10,16,5893,15,20
+Wood Street,51.58658,-0.002405,LO West Anglia,1,9,2,736,2,15
+Woodford,51.606899,0.03397,Central,1,6,2,967,2,3
+Woodgrange Park,51.549264,0.044423,LO Gospel Oak-Barking,1,11,9,7200,5,10
+Woodside Park,51.618014,-0.18542,Northern,1,1,1,152,1,9
+Woolwich,51.492168,0.070593,Elizabeth Line,1,14,20,36990,18,20
+Woolwich Arsenal,51.490009,0.069127,DLR,1,21,20,40500,20,20
