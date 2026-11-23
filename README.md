@@ -8,7 +8,8 @@ centrality measures, assesses what the Elizabeth line changed, and studies stati
 entry/exit counts from 2017 to 2022, including the effect of COVID-19. An
 [extended analysis](#extended-analysis) added after submission uses counts up to 2025 to
 measure the Elizabeth line's effect on ridership and the network's resilience to closures.
-A [TfL bus analysis](#tfl-bus-analysis-coming-soon) is coming soon.
+A [TfL bus analysis](#tfl-bus-analysis) adds London's buses: recovery after COVID, the Elizabeth line
+from daily data, crowding, and a combined bus + rail network.
 
 > **Submitted version.** The code exactly as it was when the dissertation was submitted
 > (1 September 2024) is preserved at the git tag
@@ -27,6 +28,17 @@ A [TfL bus analysis](#tfl-bus-analysis-coming-soon) is coming soon.
   49% of its efficiency, against 33-34% without the line ([details](#3-resilience-to-station-closures)).
 * **Closeness, not betweenness, predicts how busy a station is** (Spearman rho 0.66-0.71 vs 0.28-0.36)
   ([details](#1-does-centrality-predict-ridership)).
+* **Buses are losing passengers while the Tube holds steady.** Since mid-2023 bus journeys have fallen about
+  2.2% a year; the Tube is flat. Service cuts explain about a quarter of the bus fall
+  ([details](#1-bus-vs-tube-recovery)).
+* **Daily data confirms the Elizabeth line effect.** Footfall at the new central stations jumped about 42% in
+  the opening weeks and reached +88% after three years, relative to nearby stations
+  ([details](#2-the-elizabeth-line-day-by-day)).
+* **Bus crowding is a suburban, school-time problem,** worst far from rail and rising as service is cut
+  ([details](#4-bus-crowding)).
+* **Buses make the rail network much harder to break.** After the 10 most central rail stations close,
+  travel between the rest keeps 76% of its efficiency with buses, against 47% on rail alone
+  ([details](#5-a-combined-bus--rail-network)).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/centrality-overlap-dark.png">
@@ -47,10 +59,13 @@ A [TfL bus analysis](#tfl-bus-analysis-coming-soon) is coming soon.
 | `python-notebooks/tfl-passenger-flow.ipynb` | Annual and time-of-day station entry/exit analysis, 2017-2022 |
 | `python-notebooks/extended-analysis.ipynb` | Centrality vs ridership, Elizabeth line difference-in-differences, network resilience |
 | `python-notebooks/tfl_analysis.py` | Logic shared by the notebooks above |
-| `python-notebooks/data-prep/` | How the 2024 network and station coordinates were built, including `fix_station_coordinates.py` |
-| `results/` | CSV outputs written by the notebooks |
+| `python-notebooks/bus-*.ipynb`, `elizabeth-line-daily.ipynb` | [TfL bus analysis](#tfl-bus-analysis) |
+| `python-notebooks/tfl_bus.py` | Logic shared by the bus notebooks: data loaders, coordinate conversion, bus + rail network |
+| `python-notebooks/data-prep/` | How the 2024 network and station coordinates were built, including `fix_station_coordinates.py`; `download_tfl_bus.py` fetches the bus analysis data |
+| `results/` | CSV outputs written by the notebooks (`results/bus/` for the bus analysis) |
 | `figures/` | README charts, built from `results/` by `python-notebooks/make_readme_figures.py` |
 | `data/` | 2024 network edges/stations, TfL station locations and counts (see [`data/README.md`](data/README.md)) |
+| `data/bus/` | Manifest of the downloaded bus analysis data, with source links (see [`data/bus/README.md`](data/bus/README.md)) |
 | `References/London_Multiplex_Transport/` | 2014 network: De Domenico et al. multiplex dataset |
 | `python-notebooks/archive/` | Exploratory notebooks from the dissertation period, not used for any result |
 
@@ -64,6 +79,12 @@ jupyter nbconvert --to notebook --execute --inplace tfl-2014-centrality.ipynb tf
     tfl-passenger-flow.ipynb extended-analysis.ipynb
 python make_readme_figures.py   # rebuilds the charts in figures/ from results/
 python data-prep/fix_station_coordinates.py --refresh   # optional: re-download TfL station locations
+
+# bus analysis: download the data (~3.7 GB, kept as ~650 MB locally), then run the notebooks in order
+python data-prep/download_tfl_bus.py all
+jupyter nbconvert --to notebook --execute --inplace bus-routes-stops.ipynb bus-eda.ipynb \
+    bus-tube-recovery.ipynb elizabeth-line-daily.ipynb bus-demand-change.ipynb bus-crowding.ipynb \
+    bus-rail-network.ipynb   # the last one takes about 20 minutes
 ```
 
 Each notebook runs top to bottom from a fresh kernel and writes its tables to `results/`.
@@ -79,6 +100,8 @@ Each notebook runs top to bottom from a fresh kernel and writes its tables to `r
 * **Passenger counts:** TfL annual station counts (`AnnualisedEntryExit_<year>.xlsx`, 2017-2025) and
   quarter-hourly counts (`ByQhrEntryExit_<year>.xlsx`, 2017-2021), from
   [TfL's crowding data](https://crowding.data.tfl.gov.uk/). *Powered by TfL Open Data.*
+* **Bus analysis:** TfL Network Demand, BUSTO, bus stop and sequence feeds and the Unified API; see
+  [Data for the bus analysis](#data-for-the-bus-analysis).
 
 ## Corrections after submission
 
@@ -313,36 +336,171 @@ stations close, and it stays meaningful when the network splits into pieces.
 
 Full outputs: `results/centrality_vs_ridership.csv`, `results/elizabeth_line_*.csv`, `results/resilience_*.csv`.
 
-## TfL bus analysis (coming soon)
+## TfL bus analysis
 
-> 🚧 **In progress.** The next part of this project extends the analysis from rail to London's
-> bus network. TfL publishes the data openly, so everything below is reproducible.
+Added after the rail analysis: London's bus network, daily journey data up to November 2026, and a
+combined bus + rail network. Everything uses TfL open data and is reproducible from the download script
+(see [Data for the bus analysis](#data-for-the-bus-analysis)). "Rail" means TfL rail throughout
+(Underground, Overground, DLR, Elizabeth line; no trams, no National Rail), as in the rail analysis.
 
-### Planned analyses
+| Notebook | What it covers |
+|---|---|
+| [`bus-routes-stops.ipynb`](python-notebooks/bus-routes-stops.ipynb) | Matches bus stops and routes across BUSTO, TfL's feeds and the API; links every bus stop to rail |
+| [`bus-eda.ipynb`](python-notebooks/bus-eda.ipynb) | First look at every dataset: recovery, strikes, footfall, what the BUSTO measures mean |
+| [`bus-tube-recovery.ipynb`](python-notebooks/bus-tube-recovery.ipynb) | Bus vs Tube recovery after COVID |
+| [`elizabeth-line-daily.ipynb`](python-notebooks/elizabeth-line-daily.ipynb) | The Elizabeth line's effect from daily station data |
+| [`bus-demand-change.ipynb`](python-notebooks/bus-demand-change.ipynb) | Where bus demand fell since 2023-24, and near the Elizabeth line |
+| [`bus-crowding.ipynb`](python-notebooks/bus-crowding.ipynb) | When, where and on which routes buses are crowded |
+| [`bus-rail-network.ipynb`](python-notebooks/bus-rail-network.ipynb) | Combined bus + rail network: accessibility, centrality, resilience |
 
-1. **Bus vs Tube recovery after COVID.** Daily journey counts for both modes, 2019-2026: how each
-   recovered, how weekday and weekend travel differ, and whether bus use changed along the
-   Elizabeth line corridor after it opened.
-2. **Daily before/after for the Elizabeth line.** Re-estimate the [ridership effect](#2-the-elizabeth-lines-effect-on-ridership)
-   from daily station footfall around the opening on 24 May 2022, instead of annual counts.
-3. **Bus crowding.** The most crowded routes and stops by time of day, and whether they cluster around
-   rail stations or in areas the Underground does not reach.
-4. **A combined bus + rail network.** Build the bus network from TfL's route and stop sequences, link it
-   to the rail stations, and re-run the centrality and resilience analysis on the combined network:
-   which stations matter most once buses are counted, and which areas depend on a single route.
+### 1. Bus vs Tube recovery
 
-### Data
+Daily journeys compared with the same month and day of the week in 2019, with strikes and bank
+holidays removed.
 
-| Dataset | Contents | Coverage | Size |
-|---|---|---|---|
-| [Network Demand: journeys](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) (`Journeys_*.csv`) | Total Tube and bus journeys per day | 2019 - 2026 | < 30 KB per year |
-| [Network Demand: station footfall](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) (`StationFootfall_*.csv`) | Daily entries and exits per rail station | 2019 - 2026 | 6-13 MB per year |
-| [BUSTO bus demand](https://crowding.data.tfl.gov.uk/#!BUSTO/) | Boardings, alightings, on-board load, capacity and crowding ratio for every route, direction and stop, by quarter hour (weekday, Saturday, Sunday) | 2023-24, 2024-25, 2025-26 | about 1.2-1.3 GB per year (13 files) |
-| [TfL Unified API: bus routes](https://api.tfl.gov.uk/Line/Mode/bus) | All 677 bus routes, with ordered stop sequences and stop coordinates | Current | Small |
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/bus-tube-recovery-dark.png">
+  <img alt="Line chart: Tube and bus journeys as a percentage of 2019, monthly, 2019 to 2026, with trend lines since July 2023" src="figures/bus-tube-recovery-light.png" width="800">
+</picture>
 
-The BUSTO files are each up to about 120 MB, above GitHub's 100 MB file limit, so they will not be
-stored in this repository. A download script will fetch them locally, and only summarised results
-will be committed.
+* **The two modes have diverged.** Since July 2023 the Tube has been flat (+0.5% a year, 95% CI -0.1% to
+  +1.2%) while **bus journeys have fallen 2.2% a year** (CI -2.6% to -1.9%). Buses were at 88% of 2019 in
+  2023-24 and 84% in 2026; in 2025 they fell below the Tube (86% vs 87%). The decline began around
+  **September 2024**, since when bus journeys have been below the year before in every month.
+* **The shortfalls differ.** The Tube is missing weekday commuters, most on Mondays and Fridays (78% of
+  2019, against 84-85% mid-week); at weekends it is back to 2019. Buses are 82-84% of 2019 on every
+  weekday and below 2019 at weekends too (90-95%), so their decline is not a working-from-home effect.
+* **Service cuts explain about a quarter of the bus fall.** Bus capacity on unchanged route-stops fell
+  3.3% on weekdays between 2023-24 and 2025-26 (BUSTO); demand falls about 0.6% for each 1% of capacity,
+  which accounts for about 2 of the 7.8 points lost.
+* **Buses absorb few Tube passengers.** On the 11 full Tube strike days since 2022, bus journeys rose only
+  5-15%.
+
+| | 2019 | 2022 | 2023 | 2024 | 2025 | 2026 |
+|---|---|---|---|---|---|---|
+| Tube (% of 2019) | 100 | 72.5 | 83.7 | 85.5 | 86.8 | 85.5 |
+| Bus (% of 2019) | 100 | 82.1 | 88.2 | 88.3 | 85.8 | 84.3 |
+
+### 2. The Elizabeth line, day by day
+
+The [annual analysis](#2-the-elizabeth-lines-effect-on-ridership) found the four new central stations
+grew about 84% more than nearby stations between 2019 and 2023. Daily station footfall (entry + exit
+taps, weekdays, strikes and holidays removed) shows when that happened. Each station is compared with
+48 central Underground stations, relative to its own 16 weeks before opening.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/elizabeth-line-daily-dark.png">
+  <img alt="Line chart: weekly footfall effect at new Elizabeth line stations relative to control stations, with placebo range, 16 weeks before to 156 weeks after opening" src="figures/elizabeth-line-daily-light.png" width="800">
+</picture>
+
+| After opening | Farringdon, Tottenham Court Road, Whitechapel (24 May 2022) | Bond Street (24 Oct 2022) |
+|---|---|---|
+| 16 weeks before | 0.0% | +0.1% |
+| first 4 weeks | **+42%** | +22% |
+| weeks 27-52 | +65% | +34% |
+| year 2 | +82% | +34% |
+| year 3 | **+88%** | +44% |
+
+* **The effect was immediate**, with no movement before opening, and grew in steps with through services
+  (November 2022) and the full timetable (May 2023). By station, year 3: Farringdon +130%, Tottenham
+  Court Road +95%, Whitechapel +47%, Bond Street +44%.
+* **It is not chance.** In an exact placebo test, no set of control stations comes close: p = 0.0001 over
+  all 17,296 sets for the central three, and p = 0.02, the smallest possible with 48 placebos, for Bond
+  Street. (Bond Street's December spikes are West End Christmas shopping.)
+* **It matches the annual analysis:** 2019 to 2023 gives +73% from daily weekday taps vs +84% from annual
+  counts, and 2019 to 2025 +91% vs +94%.
+* **Part of it is passengers moving from nearby stations,** which fell 4-9% relative to stations further
+  away. Comparing only with stations more than 1 km away gives +82% in year 3 instead of +88%.
+* The Northern line Bank branch (Kennington to Angel) is left out of the control group: it was closed
+  from January to May 2022, exactly the period before the opening.
+
+### 3. Where bus demand fell, and the Elizabeth line
+
+BUSTO bus demand starts in 2023-24, after the Elizabeth line opened, so it cannot give a before/after
+for buses. It can show where bus demand changed since then.
+
+* **The fall is a loss of passengers, not route changes.** Weekday boardings fell 6.7% from 2023-24 to
+  2025-26 (Saturday 5.6%, Sunday 2.3%). On route-stops served in both years the fall was 7.8%; new routes,
+  mainly the Superloop (+3%), slightly outweighed withdrawn ones.
+* **It is widespread,** largest 3-6 km from the centre (-10.5% on weekdays) and at night (-13%).
+* **Near the Elizabeth line, demand held up slightly better, mostly at the stations' doorstep.** The raw
+  gap (-1.5% near the line vs -7.1% elsewhere) is mostly geography and new routes. Comparing stops on the
+  same route, with distance from the centre and capacity changes controlled for, stops near the line did
+  about 2-3% better than stops away from rail at 400 m (not significant), but **7.6% better within 200 m**
+  of a central-section station (95% CI +2.5% to +12.9%). Stops near other TfL rail stations did no better.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/bus-change-near-elizabeth-line-dark.png">
+  <img alt="Bar chart: change in weekday bus boardings near Elizabeth line and other rail stations, relative to stops away from rail, within 200, 400 and 800 metres, with confidence intervals" src="figures/bus-change-near-elizabeth-line-light.png" width="800">
+</picture>
+
+### 4. Bus crowding
+
+Crowding = more passengers on board than seats in a route-stop's busiest hour (BUSTO's "max demand
+hour" files), counting only hours with at least about two buses. BUSTO gives typical-day averages, so
+this shows where crowding is systematic rather than on individual buses.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/bus-crowding-dark.png">
+  <img alt="Bar chart: share of weekday morning-peak bus route-stops with standing passengers, by distance to rail and by distance from central London" src="figures/bus-crowding-light.png" width="800">
+</picture>
+
+* **A weekday morning problem.** 3.5% of route-stops have standing in their busiest AM-peak hour (5% of
+  AM-peak passengers are on them), against about 1.4% in the inter-peak and PM peak and almost none in
+  the evening or at weekends. Buses at 80%+ of total capacity are very rare in the averages.
+* **School travel drives much of it.** Morning crowding peaks in the hour from 07:30, and 99% of
+  inter-peak crowding is in the hour starting 15:15-15:45, just after schools finish.
+* **Suburban routes, away from rail.** The most crowded routes are 493, 117, 152, K1, W19, 167 and E10.
+  Stops more than 800 m from rail are 2-2.5 percentage points more likely to have standing than stops
+  near rail, even allowing for distance from the centre.
+* **Crowding rose as service was cut:** AM-peak standing went from 2.9% of route-stops in 2023-24 to 3.5%
+  in 2025-26 while passengers fell. Routes whose capacity was cut by more than 10% lost 14% of their
+  passengers yet became more crowded.
+
+### 5. A combined bus + rail network
+
+10,273 bus stop areas (stops on both sides of the road) and 418 rail stations, joined by 2,446 walking
+links (up to 400 m). Edges are weighted by estimated travel time: bus 15 km/h on road distance, rail
+30 km/h, walking 4.8 km/h plus 5 minutes to change mode. There is no timetable, so travel times are
+best read as relative.
+
+* **Rail cuts average journey times by about a third:** 79 minutes from a typical stop area to all others
+  with rail, 116 by bus alone. Rail saves most in outer London (45 min) and least in south London, where
+  TfL rail is sparse.
+* **Buses change which rail stations matter most** (Spearman 0.74 with the rail-only ranking). The top
+  stations are those where large bus catchments meet fast rail: Canada Water, London Bridge, Surrey Quays,
+  Earl's Court, Liverpool Street, Bank and Monument. Bus interchanges at the edge of the rail network rise
+  sharply (West Croydon, Norwood Junction, Woolwich, Abbey Wood); stations beyond the bus network fall.
+  *Caveat:* without National Rail, the Overground through south-east London is the only fast route there
+  in the model, which lifts its stations (New Cross Gate, Brockley, Forest Hill) by 100-160 places.
+* **Buses soften rail closures.** After the 10 most central rail stations close, travel between the
+  remaining stations keeps 47% of its efficiency on rail alone but 76% with buses.
+* **Local dependence on single routes.** No one bus route matters for the network as a whole (at most 1%
+  of efficiency), but 388 of 606 routes are the only link for at least one stop area, and 37% of stop
+  areas are served by one route: 21% within 400 m of rail, 47% more than 2 km away.
+* Rankings are stable for bus speeds of 12-18 km/h, rail 25 km/h, change penalties of 2-10 minutes and
+  200 m walking links (Spearman 0.97-1.00).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/bus-rail-closures-dark.png">
+  <img alt="Line chart: efficiency between remaining rail stations as the most central stations close, rail network only versus rail plus bus" src="figures/bus-rail-closures-light.png" width="800">
+</picture>
+
+### Data for the bus analysis
+
+| Dataset | Contents | Coverage |
+|---|---|---|
+| [Network Demand: journeys](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) | Total Tube and bus journeys per day | Jan 2019 - Nov 2026 |
+| [Network Demand: station footfall](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) | Daily entry and exit taps per rail station | Jan 2019 - Nov 2026 |
+| [BUSTO bus demand](https://crowding.data.tfl.gov.uk/#!BUSTO/) | Boardings, alightings, load and capacity for every route, direction and stop by quarter hour, and each stop's busiest hour (typical weekday, Saturday, Sunday) | 2023-24, 2024-25, 2025-26 |
+| [TfL bus stops and sequences feeds](https://tfl.gov.uk/info-for/open-data-users/our-open-data) | Stop codes used by BUSTO, stop locations, route sequences | August 2024 |
+| [TfL Unified API: bus routes](https://api.tfl.gov.uk/) | 677 current routes with ordered stops | Snapshot at download |
+
+The data is **not stored in git** (BUSTO alone is 3.7 GB). `python-notebooks/data-prep/download_tfl_bus.py`
+downloads everything, converts BUSTO to Parquet (580 MB) and deletes the raw CSVs. Every file's source URL,
+TfL version, size and checksum is recorded in [`data/bus/manifest.csv`](data/bus/manifest.csv), so anything
+deleted can be fetched again; [`data/bus/README.md`](data/bus/README.md) describes the layout and the
+quirks found in the data.
 
 ## Notes on the data
 
@@ -350,14 +508,19 @@ will be committed.
 * TfL's annual counts are modelled in 2017 (`Relate`), ticket-gate counts 2018-2023 (`Gateline`) and card
   taps from 2024 (`taps`). Richmond and Wimbledon join the LU series from 2024, and some stations close
   temporarily in some years. Comparisons across years use stations counted in every year.
+* BUSTO gives **typical-day averages** for each financial year, not counts for individual days, and starts
+  in 2023-24. The bus stop feed dates from August 2024; 0.5% of 2025-26 boardings are at newer stops.
+* The combined network and the bus-near-rail measures use **TfL rail only**. National Rail, which serves
+  much of south and outer London, is not included.
 
 ## Licence
 
 * **Code** (notebooks and Python scripts) is released under the [MIT License](LICENSE).
 * **Data keeps its original licences** and is not covered by the MIT License:
-  * TfL station counts, NUMBAT link loads and station locations are © Transport for London,
-    used under the [TfL open data terms](https://tfl.gov.uk/info-for/open-data-users/).
-    *Powered by TfL Open Data.*
+  * TfL station counts, NUMBAT link loads, station locations and the bus analysis data (Network Demand,
+    BUSTO, bus stop and route data) are © Transport for London, used under the
+    [TfL open data terms](https://tfl.gov.uk/info-for/open-data-users/).
+    *Powered by TfL Open Data.* Bus stop locations contain OS data © Crown copyright and database rights.
   * The 2014 London multiplex dataset (De Domenico et al., 2014) is licensed under the
     [Open Database License (ODbL)](References/London_Multiplex_Transport/LICENSE_odbl-10.txt),
     with its contents under the

@@ -282,10 +282,133 @@ def fig_resilience(t, mode):
     save(fig, "resilience", mode)
 
 
+# ============================================================================
+# TfL bus analysis (results/bus/)
+# ============================================================================
+BUS = RESULTS / "bus"
+pct_fmt = FuncFormatter(lambda v, _: f"{v:.0f}%")
+
+
+# -- 10. Bus vs Tube recovery -------------------------------------------------
+def fig_bus_recovery(t, mode):
+    m = pd.read_csv(BUS / "recovery_monthly.csv", parse_dates=["month"]).set_index("month")
+    fig, ax = new_fig(t, 9, 4.4)
+    ax.axhline(100, color=t["axis"], linewidth=1)
+    for col, label, color in [("tube_rel", "Tube", t["s2"]), ("bus_rel", "Bus", t["s1"])]:
+        ax.plot(m.index, m[col], color=color, linewidth=2, label=label)
+        s = m[col][m.index >= "2023-07-01"]
+        x = np.arange(len(s)) / 12
+        b = np.polyfit(x, np.log(s), 1)
+        ax.plot(s.index, np.exp(np.polyval(b, x)), color=color, linewidth=1.2, linestyle="--")
+        ax.annotate(f"{100 * b[0]:+.1f}% a year", (s.index[-1], np.exp(np.polyval(b, x[-1]))),
+                    xytext=(6, 0), textcoords="offset points", va="center", fontsize=9, color=color)
+    ax.set_ylim(0, 112)
+    ax.yaxis.set_major_formatter(pct_fmt)
+    ax.set_xlim(m.index.min(), m.index.max() + pd.Timedelta(days=250))
+    ax.set_xticks(pd.date_range('2019-01-01', '2026-01-01', freq='YS'), [str(y) for y in range(2019, 2027)])
+    title(fig, ax, t, "Since mid-2023 the Tube has held steady while buses slip",
+          "Journeys as % of 2019 (same month and day of week); dashed: trend since July 2023")
+    legend(ax, t, loc="lower right")
+    save(fig, "bus-tube-recovery", mode)
+
+
+# -- 11. Elizabeth line effect, week by week -----------------------------------
+def fig_el_daily(t, mode):
+    w = pd.read_csv(BUS / "elizabeth_line_daily_weekly.csv", index_col=0)
+    fig, ax = new_fig(t, 9, 4.6)
+    ax.fill_between(w.index, w["central placebo 2.5%"], w["central placebo 97.5%"],
+                    color=t["muted"], alpha=0.25, linewidth=0, label="95% of placebo estimates")
+    ax.plot(w.index, w["central three"], color=t["s1"], linewidth=1.6,
+            label="Farringdon, Tottenham Ct Rd, Whitechapel (opened 24 May 2022)")
+    ax.plot(w.index, w["Bond Street"], color=t["s2"], linewidth=1.2, alpha=0.9,
+            label="Bond Street (opened 24 Oct 2022)")
+    ax.axhline(0, color=t["axis"], linewidth=1)
+    ax.axvline(-0.5, color=t["violet"], linewidth=1)
+    ax.yaxis.set_major_formatter(pct_fmt)
+    ax.set_xlabel("Weeks since the station opened", color=t["ink2"], fontsize=10)
+    title(fig, ax, t, "The Elizabeth line effect appeared at once and kept growing",
+          "Weekday station footfall relative to 48 central Underground stations, by week")
+    legend(ax, t, loc="upper left")
+    save(fig, "elizabeth-line-daily", mode)
+
+
+# -- 12. Bus demand change near the Elizabeth line, by walking distance -------
+def fig_bus_el_distance(t, mode):
+    import re
+    r = pd.read_csv(BUS / "bus_change_near_el_robustness.csv", index_col=0)
+    rows = [("within 200 m", "200 m"), ("main: weekday, 400 m, spec (5)", "400 m"), ("within 800 m", "800 m")]
+    groups = [("near EL central section", "Elizabeth line, central section", t["s1"]),
+              ("near EL outer branches", "Elizabeth line, outer branches", t["s3"]),
+              ("near other TfL rail", "other TfL rail stations", t["s2"])]
+    fig, ax = new_fig(t, 9, 4.4)
+    w = 0.26
+    for i, (col, label, color) in enumerate(groups):
+        vals = [list(map(float, re.findall(r"[-+]?\d+\.\d+", r.loc[row, col]))) for row, _ in rows]
+        x = np.arange(len(rows)) + (i - 1) * (w + 0.03)
+        est = [v[0] for v in vals]
+        ax.bar(x, est, w, color=color, label=label, edgecolor=t["surface"], linewidth=1.5)
+        ax.errorbar(x, est, yerr=[[v[0] - v[1] for v in vals], [v[2] - v[0] for v in vals]],
+                    fmt="none", ecolor=t["ink2"], elinewidth=1, capsize=3)
+    ax.axhline(0, color=t["axis"], linewidth=1)
+    ax.set_xticks(range(len(rows)), [f"bus stops within {lab}" for _, lab in rows])
+    ax.yaxis.set_major_formatter(pct_fmt)
+    title(fig, ax, t, "Bus stops right next to Elizabeth line stations held up best",
+          "Change in weekday boardings 2023-24 to 2025-26 vs stops away from rail, same route (95% CI)")
+    legend(ax, t, loc="upper right")
+    save(fig, "bus-change-near-elizabeth-line", mode)
+
+
+# -- 13. Crowding by distance from rail ---------------------------------------
+def fig_crowding(t, mode):
+    c = pd.read_csv(BUS / "crowding_by_location.csv", index_col=[0, 1])
+    fig, ax = new_fig(t, 9, 4.2)
+    parts = [("to_rail", t["s1"], "distance to TfL rail"), ("from_centre", t["s2"], "distance from central London")]
+    x0 = 0
+    ticks, labels = [], []
+    for key, color, name in parts:
+        s = c.loc[key, "standing_pct"]
+        xs = np.arange(x0, x0 + len(s))
+        bars = ax.bar(xs, s.values, 0.7, color=color, label=name, edgecolor=t["surface"], linewidth=1.5)
+        ax.bar_label(bars, labels=[f"{v:.1f}%" for v in s.values], color=t["ink2"], fontsize=9, padding=2)
+        ticks += list(xs); labels += [lab.replace('800 m - 2 km', '0.8-2 km').replace('400-800 m', '0.4-0.8 km') for lab in s.index]
+        x0 += len(s) + 1
+    ax.set_xticks(ticks, labels, fontsize=9)
+    ax.yaxis.set_major_formatter(pct_fmt)
+    ax.set_ylim(0, 6.2)
+    title(fig, ax, t, "Buses are most crowded where rail is far away",
+          "Weekday AM peak, 2025-26: % of route-stops with standing passengers in their busiest hour")
+    legend(ax, t, loc="upper left")
+    save(fig, "bus-crowding", mode)
+
+
+# -- 14. Rail closures with and without buses ----------------------------------
+def fig_bus_rail_closures(t, mode):
+    c = pd.read_csv(BUS / "network_rail_closures.csv")
+    fig, ax = new_fig(t, 9, 4.4)
+    for col, label, color, dy in [("rail only", "rail network only", t["s2"], -10),
+                                  ("bus + rail", "rail + bus network", t["s1"], 10)]:
+        y = 100 * c[col]
+        ax.plot(c["stations closed"], y, color=color, linewidth=2, label=label)
+        ax.plot(10, y[10], "o", color=color, markersize=7, markeredgecolor=t["surface"], markeredgewidth=1.5)
+        ax.annotate(f"{y[10]:.0f}%", (10, y[10]), xytext=(8, dy), textcoords="offset points",
+                    fontsize=9, color=t["ink2"])
+    ax.set_ylim(0, 105)
+    ax.set_xlim(0, c["stations closed"].max())
+    ax.set_xticks(range(0, c["stations closed"].max() + 1, 5))
+    ax.yaxis.set_major_formatter(pct_fmt)
+    ax.set_xlabel("Most central rail stations closed (recomputed after each closure)", color=t["ink2"], fontsize=10)
+    title(fig, ax, t, "Buses soften rail closures",
+          "Efficiency of travel between the remaining rail stations (travel-time weighted)")
+    legend(ax, t, loc="lower left")
+    save(fig, "bus-rail-closures", mode)
+
+
 if __name__ == "__main__":
     plt.rcParams["font.family"] = "DejaVu Sans"
     for mode, t in THEMES.items():
         for f in (fig_overlap, fig_ranks, fig_totals, fig_share, fig_profile,
-                  fig_map, fig_corr, fig_did, fig_resilience):
+                  fig_map, fig_corr, fig_did, fig_resilience,
+                  fig_bus_recovery, fig_el_daily, fig_bus_el_distance, fig_crowding,
+                  fig_bus_rail_closures):
             f(t, mode)
     print("wrote", sorted(p.name for p in FIGURES.glob("*.png")))
