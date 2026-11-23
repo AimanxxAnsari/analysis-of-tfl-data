@@ -16,6 +16,8 @@ What it does
   the raw CSV is deleted. At most one raw file is on disk at a time.
 * routes: every bus route with its ordered stops and stop coordinates, from the
   TfL Unified API. Written to data/processed/bus-routes/.
+* feeds: TfL's bus-stops.csv and bus-sequences.csv, which link BUSTO's LBSL stop
+  codes to NaPTAN stop ids and coordinates. Kept in data/raw/bus-feeds/.
 
 Every file is recorded in data/bus/manifest.csv (committed to git) with its
 source URL, TfL version (ETag / last-modified), size, SHA-256, download time,
@@ -315,9 +317,35 @@ def fetch_routes(m: dict, delay: float = 0.6) -> None:
     save_manifest(m)
 
 
+FEEDS = "https://tfl.gov.uk/tfl/syndication/feeds"
+
+
+def fetch_feeds(m: dict) -> None:
+    """TfL's bus stop and route-sequence feeds. They carry the LBSL stop codes that
+    BUSTO uses (Stop_Code_LBSL), linked to NaPTAN ids and British National Grid
+    coordinates. TfL updates them irregularly; the version is recorded in the manifest."""
+    for name in ("bus-stops.csv", "bus-sequences.csv"):
+        url = f"{FEEDS}/{name}"
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            etag, modified = r.headers.get("ETag", ""), r.headers.get("Last-Modified", "")
+        if up_to_date(m, url, etag):
+            print(f"  skip (up to date) {name}"); continue
+        dest = RAW / "bus-feeds" / name
+        sha, _, size = download(url, dest)
+        rows = sum(1 for _ in open(dest, "rb")) - 1
+        m[url] = {"dataset": "bus-feeds", "file": name, "source_url": url,
+                  "browse_url": "https://tfl.gov.uk/info-for/open-data-users/our-open-data",
+                  "tfl_etag": etag, "tfl_last_modified": modified, "size_bytes": size,
+                  "sha256": sha, "rows": rows, "downloaded_at": now(), "raw_kept": "yes",
+                  "raw_path": rel(dest), "processed_path": ""}
+        save_manifest(m)
+        print(f"  {name}: {size / 1e6:.1f} MB, {rows:,} rows (TfL last modified {modified})")
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    p.add_argument("what", choices=["network-demand", "busto", "routes", "all"])
+    p.add_argument("what", choices=["network-demand", "busto", "routes", "feeds", "all"])
     p.add_argument("--years", nargs="*", help="BUSTO years, e.g. 2025-2026 (default: all)")
     p.add_argument("--keep-raw", action="store_true", help="keep BUSTO CSVs after conversion")
     a = p.parse_args()
@@ -328,6 +356,8 @@ def main() -> None:
         fetch_busto(m, a.years, a.keep_raw)
     if a.what in ("routes", "all"):
         fetch_routes(m)
+    if a.what in ("feeds", "all"):
+        fetch_feeds(m)
     print(f"manifest: {rel(MANIFEST)} ({len(load_manifest())} files)")
 
 
