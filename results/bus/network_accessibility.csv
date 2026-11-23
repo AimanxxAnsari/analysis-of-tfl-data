@@ -1,0 +1,10 @@
+,,bus + rail,bus only,saved by rail
+from centre,0-3 km,55.6,80.6,25.0
+from centre,3-6 km,59.1,85.8,26.7
+from centre,6-10 km,64.4,93.9,29.5
+from centre,10-15 km,73.7,108.3,34.6
+from centre,15+ km,95.4,140.3,44.9
+to TfL rail,< 400 m,64.6,100.4,35.9
+to TfL rail,400-800 m,69.6,106.8,37.3
+to TfL rail,800 m - 2 km,77.8,117.9,40.1
+to TfL rail,> 2 km,98.7,133.3,34.6
