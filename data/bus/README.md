@@ -9,6 +9,7 @@ can be fetched again from `source_url` (direct download) or found on TfL's site 
 ```bash
 python python-notebooks/data-prep/download_tfl_bus.py all          # everything (~3.7 GB download, ~15 min API)
 python python-notebooks/data-prep/download_tfl_bus.py busto --years 2025-2026
+python python-notebooks/data-prep/download_tfl_bus.py demographics   # Census, IMD, LSOA centroids (25 MB)
 ```
 
 Re-running skips files whose TfL ETag is unchanged and whose output still exists.
@@ -23,6 +24,7 @@ Re-running skips files whose TfL ETag is unchanged and whose output still exists
 | BUSTO user guide and data dictionary v1.2 | same | `data/raw/busto/` | yes |
 | Bus stops and route sequences feeds (`bus-stops.csv`, `bus-sequences.csv`): LBSL stop codes as used by BUSTO, NaPTAN ids, grid coordinates. TfL last updated them on 29 Aug 2024 | [tfl.gov.uk/tfl/syndication/feeds](https://tfl.gov.uk/info-for/open-data-users/our-open-data) | `data/raw/bus-feeds/` | yes |
 | Bus routes, ordered stop sequences, stop coordinates | [TfL Unified API](https://api.tfl.gov.uk/) `/Line/Mode/bus/Route`, `/Line/{id}/Route/Sequence/{direction}` | `data/processed/bus-routes/{routes,route_stop_sequences,stops}.csv`; raw responses in `data/raw/bus-routes/` | yes |
+| Small-area (2021 LSOA) data for the 'who depends on buses' analysis: ONS population weighted centroids; English Indices of Deprivation 2025 (File 7, republished 17 Nov 2025); Census 2021 tables TS001 (residents), TS045 (car or van availability), TS007a (age), TS038 (disability) | [ONS Open Geography Portal](https://geoportal.statistics.gov.uk/), [gov.uk IoD 2025](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025), [Nomis Census 2021 bulk](https://www.nomisweb.co.uk/sources/census_2021_bulk) | `data/raw/demographics/` (25 MB) | yes |
 
 The API data is a snapshot of the network on the download date, not a historical record.
 

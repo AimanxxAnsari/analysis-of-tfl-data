@@ -426,3 +426,102 @@ def efficiency_minutes(G, sources=None, weight: str = "minutes") -> float:
         D[D == 0] = np.inf
         total += (1.0 / D).sum()
     return total / (len(src) * (len(nodes) - 1))
+
+
+# --------------------------------------------------------------------------
+# Who depends on buses: 2021 small areas (LSOAs) in London
+# --------------------------------------------------------------------------
+
+LONDON_LADS = {f"E090000{i:02d}" for i in range(1, 34)}   # City of London + 32 boroughs
+
+
+def _census(table: str) -> pd.DataFrame:
+    import zipfile
+    with zipfile.ZipFile(RAW / "demographics" / f"census2021-{table}.zip") as z:
+        df = pd.read_csv(z.open(f"census2021-{table}-lsoa.csv"))
+    return df.set_index("geography code")
+
+
+def load_lsoa_london() -> pd.DataFrame:
+    """One row per London 2021 LSOA (about 1,500 residents each): location (population
+    weighted centroid), Census 2021 residents, households, car availability, age and
+    disability, and English Indices of Deprivation 2025 (deciles are national, 1 = most deprived)."""
+    d = RAW / "demographics"
+    iod = pd.read_csv(d / "iod2025_file7_all_ranks_scores_deciles.csv", encoding="utf-8-sig")
+    iod = iod[iod["Local Authority District code (2024)"].isin(LONDON_LADS)]
+    out = pd.DataFrame({
+        "name": iod["LSOA name (2021)"].values,
+        "borough": iod["Local Authority District name (2024)"].values,
+        "imd_score": iod["Index of Multiple Deprivation (IMD) Score"].values,
+        "imd_rank": iod["Index of Multiple Deprivation (IMD) Rank (where 1 is most deprived)"].values,
+        "imd_decile": iod["Index of Multiple Deprivation (IMD) Decile (where 1 is most deprived 10% of LSOAs)"].values,
+        "income_score": iod["Income Score (rate)"].values,
+    }, index=pd.Index(iod["LSOA code (2021)"].values, name="lsoa"))
+
+    pwc = pd.read_csv(d / "lsoa21_population_weighted_centroids.csv", encoding="utf-8-sig").set_index("Code")
+    out["easting"], out["northing"] = pwc.loc[out.index, "x"].values, pwc.loc[out.index, "y"].values
+    out["lat"], out["lon"] = osgb_to_wgs84(out["easting"], out["northing"])
+
+    res = _census("ts001")
+    out["residents"] = res.loc[out.index, "Residence type: Total; measures: Value"].values
+    car = _census("ts045")
+    out["households"] = car.loc[out.index, "Number of cars or vans: Total: All households"].values
+    out["households_no_car"] = car.loc[out.index, "Number of cars or vans: No cars or vans in household"].values
+    age = _census("ts007a").loc[out.index]
+    out["aged_5_19"] = age[["Age: Aged 5 to 9 years", "Age: Aged 10 to 14 years", "Age: Aged 15 to 19 years"]].sum(axis=1).values
+    out["aged_65_plus"] = age[[c for c in age.columns if any(f"Aged {a}" in c for a in
+                                                            ("65 to", "70 to", "75 to", "80 to", "85 years"))]].sum(axis=1).values
+    out["age_total"] = age["Age: Total"].values
+    dis = _census("ts038").loc[out.index]
+    out["disabled"] = dis["Disability: Disabled under the Equality Act"].values
+    out["disability_total"] = dis["Disability: Total: All usual residents"].values
+
+    out["pct_no_car"] = 100 * out["households_no_car"] / out["households"]
+    out["pct_aged_5_19"] = 100 * out["aged_5_19"] / out["age_total"]
+    out["pct_aged_65_plus"] = 100 * out["aged_65_plus"] / out["age_total"]
+    out["pct_disabled"] = 100 * out["disabled"] / out["disability_total"]
+    return out
+
+
+RAIL_WALK_M = 800                     # 'TfL rail nearby': about a 10-minute walk
+RAIL_WALK_RADII_M = [500, 800, 1200]  # sensitivity range
+CHARING_CROSS_BNG = (530044, 180380)  # conventional centre of London (easting, northing)
+
+
+def lsoa_access(L: pd.DataFrame, year: int = 2025, bus_m: float = WALK_M) -> pd.DataFrame:
+    """Public transport near each LSOA's population weighted centroid (straight line):
+    distance to the nearest TfL rail station, and the bus stops and BUSTO routes
+    (weekday, `year`) within bus_m. Virtual stops (timing points) are left out."""
+    from scipy.spatial import cKDTree
+    rail = rail_stations()
+    D = haversine_m(L["lat"].values[:, None], L["lon"].values[:, None],
+                    rail["lat"].values[None, :], rail["lon"].values[None, :])
+    out = pd.DataFrame({"rail_m": D.min(axis=1).round(1),
+                        "nearest_station": rail.index.values[D.argmin(axis=1)]}, index=L.index)
+    sr = busto_con().execute(f"""SELECT DISTINCT stopcode, route FROM qhr
+                                 WHERE year = {year} AND day_type = 'Weekday'""").df()
+    st = load_stops()
+    st = st[~st["virtual"] & st.index.isin(sr["stopcode"])]
+    routes = sr.groupby("stopcode")["route"].agg(frozenset).reindex(st.index)
+    tree = cKDTree(st[["easting", "northing"]].values)
+    near = tree.query_ball_point(L[["easting", "northing"]].values, bus_m)
+    out["bus_m"] = tree.query(L[["easting", "northing"]].values)[0].round(1)
+    out["stops_near"] = [len(i) for i in near]
+    out["routes_near"] = [len(frozenset().union(*routes.iloc[i])) if i else 0 for i in near]
+    out["centre_km"] = (np.hypot(L["easting"] - CHARING_CROSS_BNG[0],
+                                 L["northing"] - CHARING_CROSS_BNG[1]) / 1000).round(2)
+    return out
+
+
+def stops_to_lsoa(L: pd.DataFrame, stopcodes) -> pd.DataFrame:
+    """Assign bus stops to the LSOA whose population weighted centroid is nearest
+    (an approximate catchment). Returns stopcode -> lsoa, distance (m), distance to TfL rail (m)."""
+    from scipy.spatial import cKDTree
+    st = load_stops()
+    st = st[~st["virtual"] & st.index.isin(pd.Index(stopcodes))]
+    d, i = cKDTree(L[["easting", "northing"]].values).query(st[["easting", "northing"]].values)
+    rail = rail_stations()
+    R = haversine_m(st["lat"].values[:, None], st["lon"].values[:, None],
+                    rail["lat"].values[None, :], rail["lon"].values[None, :])
+    return pd.DataFrame({"lsoa": L.index.values[i], "dist_m": d.round(1),
+                         "rail_m": R.min(axis=1).round(1)}, index=st.index)
