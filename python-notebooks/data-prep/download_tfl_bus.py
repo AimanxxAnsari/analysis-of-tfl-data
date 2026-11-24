@@ -18,6 +18,9 @@ What it does
   TfL Unified API. Written to data/processed/bus-routes/.
 * feeds: TfL's bus-stops.csv and bus-sequences.csv, which link BUSTO's LBSL stop
   codes to NaPTAN stop ids and coordinates. Kept in data/raw/bus-feeds/.
+* demographics: 2021 small-area (LSOA) data for the 'who depends on buses' analysis:
+  ONS population weighted centroids, English Indices of Deprivation 2025 and Census
+  2021 tables TS001, TS045, TS007a, TS038. Kept in data/raw/demographics/.
 
 Every file is recorded in data/bus/manifest.csv (committed to git) with its
 source URL, TfL version (ETag / last-modified), size, SHA-256, download time,
@@ -343,9 +346,49 @@ def fetch_feeds(m: dict) -> None:
         print(f"  {name}: {size / 1e6:.1f} MB, {rows:,} rows (TfL last modified {modified})")
 
 
+DEMOGRAPHICS = {
+    # file name: (source URL, page to find it again, dataset label)
+    "lsoa21_population_weighted_centroids.csv": (
+        "https://alpha-ons-geoportal.hub.arcgis.com/api/download/v1/items/ce789f97d0194b39a284d48ef1293b11/csv?layers=0",
+        "https://geoportal.statistics.gov.uk/", "ONS 2021 LSOA population weighted centroids"),
+    "iod2025_file7_all_ranks_scores_deciles.csv": (
+        "https://assets.publishing.service.gov.uk/media/691ded56d140bbbaa59a2a7d/"
+        "File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv",
+        "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
+        "English Indices of Deprivation 2025 (republished 17 Nov 2025)"),
+    **{f"census2021-{t}.zip": (f"https://www.nomisweb.co.uk/output/census/2021/census2021-{t}.zip",
+                               "https://www.nomisweb.co.uk/sources/census_2021_bulk", f"Census 2021 {t.upper()}")
+       for t in ("ts001", "ts045", "ts007a", "ts038")},
+}
+
+
+def fetch_demographics(m: dict) -> None:
+    """Small-area (2021 LSOA) data for the 'who depends on buses' analysis: ONS population
+    weighted centroids, the English Indices of Deprivation 2025 and four Census 2021 tables
+    (usual residents, car or van availability, age, disability). Kept raw (about 25 MB)."""
+    for name, (url, browse, label) in DEMOGRAPHICS.items():
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                etag = r.headers.get("ETag", "") or r.headers.get("Last-Modified", "")
+                modified = r.headers.get("Last-Modified", "")
+        except urllib.error.HTTPError:      # some hosts do not answer HEAD requests
+            etag, modified = "", ""
+        if up_to_date(m, url, etag):   # hosts without ETag: skip if already downloaded
+            print(f"  skip (up to date) {name}"); continue
+        dest = RAW / "demographics" / name
+        sha, _, size = download(url, dest)
+        m[url] = {"dataset": "demographics", "file": f"{label}: {name}", "source_url": url,
+                  "browse_url": browse, "tfl_etag": etag, "tfl_last_modified": modified,
+                  "size_bytes": size, "sha256": sha, "rows": "", "downloaded_at": now(),
+                  "raw_kept": "yes", "raw_path": rel(dest), "processed_path": ""}
+        save_manifest(m)
+        print(f"  {name}: {size / 1e6:.1f} MB")
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    p.add_argument("what", choices=["network-demand", "busto", "routes", "feeds", "all"])
+    p.add_argument("what", choices=["network-demand", "busto", "routes", "feeds", "demographics", "all"])
     p.add_argument("--years", nargs="*", help="BUSTO years, e.g. 2025-2026 (default: all)")
     p.add_argument("--keep-raw", action="store_true", help="keep BUSTO CSVs after conversion")
     a = p.parse_args()
@@ -358,6 +401,8 @@ def main() -> None:
         fetch_routes(m)
     if a.what in ("feeds", "all"):
         fetch_feeds(m)
+    if a.what in ("demographics", "all"):
+        fetch_demographics(m)
     print(f"manifest: {rel(MANIFEST)} ({len(load_manifest())} files)")
 
 

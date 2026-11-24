@@ -1,0 +1,19 @@
+,,residents,households with no car or van (%),weekday boardings near home per resident
+IMD decile,1,363073.0,55.896,0.468
+IMD decile,2,1260597.0,51.902,0.422
+IMD decile,3,1583141.0,48.658,0.398
+IMD decile,4,1308587.0,46.761,0.343
+IMD decile,5,1038000.0,42.238,0.318
+IMD decile,6,807104.0,39.879,0.345
+IMD decile,7,725417.0,36.066,0.32
+IMD decile,8,636143.0,34.229,0.268
+IMD decile,9,576971.0,27.668,0.221
+IMD decile,10,500743.0,16.361,0.16
+car-free quintile,1 (fewest),1655847.0,15.29,0.212
+car-free quintile,2,1805628.0,27.562,0.331
+car-free quintile,3,1795840.0,39.102,0.381
+car-free quintile,4,1804804.0,52.777,0.444
+car-free quintile,5 (most),1737657.0,68.359,0.326
+access,TfL rail within 800 m,4301303.0,52.244,0.237
+access,bus only,4334030.0,32.225,0.456
+access,neither within reach,164443.0,19.778,0.036
