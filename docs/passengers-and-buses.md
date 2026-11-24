@@ -1,14 +1,15 @@
 # Passengers and buses
 
 Underground passenger counts 2017-2022, bus and Tube recovery after COVID, where bus demand fell
-since 2023-24, and bus crowding.
+since 2023-24, bus crowding, and who depends on buses.
 
 [← Back to the README](../README.md)
 
 Notebooks: [`tfl-passenger-flow.ipynb`](../python-notebooks/tfl-passenger-flow.ipynb),
 [`bus-tube-recovery.ipynb`](../python-notebooks/bus-tube-recovery.ipynb),
 [`bus-demand-change.ipynb`](../python-notebooks/bus-demand-change.ipynb),
-[`bus-crowding.ipynb`](../python-notebooks/bus-crowding.ipynb); groundwork in
+[`bus-crowding.ipynb`](../python-notebooks/bus-crowding.ipynb),
+[`bus-who-depends.ipynb`](../python-notebooks/bus-who-depends.ipynb); groundwork in
 [`bus-routes-stops.ipynb`](../python-notebooks/bus-routes-stops.ipynb) and
 [`bus-eda.ipynb`](../python-notebooks/bus-eda.ipynb).
 
@@ -114,3 +115,51 @@ this shows where crowding is systematic rather than on individual buses.
   passengers yet became more crowded.
 
 Full outputs: `results/bus/crowding_*.csv`, `results/bus/crowded_routes_am_peak.csv`.
+
+## Who depends on buses
+
+London's 4,994 small areas (2021 LSOAs, typically 1,500-2,000 residents each) from Census 2021 and the
+English Indices of Deprivation 2025, each placed where its residents live (the ONS population weighted
+centroid) and compared with the bus and TfL rail networks. **TfL rail nearby** means a station within
+800 m (about a 10-minute walk); **bus nearby** means a stop served on weekdays in 2025-26 within 400 m.
+Distances are straight-line. National Rail is not counted, so some areas without TfL rail nearby do
+have a train station, especially in south London.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../figures/who-depends-on-buses-dark.png">
+  <img alt="Grouped bar chart: by deprivation decile, the share of residents more than 800 m from TfL rail and the share of households with no car or van" src="../figures/who-depends-on-buses-light.png" width="800">
+</picture>
+
+| | TfL rail within 800 m | Bus only | Neither | London |
+|---|---|---|---|---|
+| Residents (M) | 4.30 | 4.33 | 0.16 | 8.80 |
+| Share of residents | 48.9% | 49.3% | 1.9% | 100% |
+| Households with no car or van | 52.2% | 32.2% | 19.8% | 42.1% |
+| Aged 5-19 | 16.5% | 18.8% | 19.3% | 17.7% |
+| Aged 65+ | 10.2% | 13.3% | 16.6% | 11.9% |
+| Disabled (Equality Act) | 13.0% | 13.5% | 12.9% | 13.2% |
+| In the most deprived 20% of England | 22.1% | 15.2% | 8.5% | 18.5% |
+
+* **Half of Londoners have a bus route but no TfL rail station nearby:** 49.3% of residents. Almost all
+  the rest live near TfL rail; 1.9% have neither, mostly on the edge of London.
+* **Bus-only areas are older, have more children and own more cars** than areas near rail (table). Rail
+  runs through the dense inner areas where living without a car is easiest.
+* **Car-free households away from rail.** 542,000 of London's 1.44 million households with no car or van
+  (37.6%) live more than 800 m from TfL rail; all but 11,779 of them have a bus route within 400 m. These
+  are the households with the fewest alternatives to the bus. The boroughs with the most are Croydon,
+  Greenwich, Lambeth, Southwark and Wandsworth.
+* **Deprivation and distance from rail pull in opposite directions.** 36.1% of residents of the most
+  deprived decile live more than 800 m from TfL rail, against 79.3% in the least deprived; but 55.9% of
+  households in the most deprived decile have no car, against 16.4%.
+* **Bus use near home rises with deprivation:** 0.47 weekday boardings per resident in the most deprived
+  decile, against 0.16 in the least deprived. Each bus stop is counted towards the nearest small area,
+  and stops within 400 m of a rail station (mostly interchange) are left out, so this is an approximate
+  catchment, not where passengers live.
+* **Bus demand fell most around deprived areas:** weekday boardings at stops served in both years fell
+  9.4% from 2023-24 to 2025-26 in the most deprived decile, against 2.6% in the least deprived, a gradient
+  seen both within and beyond 10 km of the centre. This is descriptive: it mixes changes in demand with
+  service cuts.
+* **Sensitivity.** With a 500 m or 1,200 m walk to TfL rail instead of 800 m, 60.3% or 22.8% of car-free
+  households have no TfL rail nearby; the pattern by deprivation is the same.
+
+Full outputs: `results/bus/who_depends_*.csv`.
