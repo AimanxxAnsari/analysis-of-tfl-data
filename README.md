@@ -8,7 +8,8 @@ centrality measures, assesses what the Elizabeth line changed, and studies stati
 entry/exit counts from 2017 to 2022, including the effect of COVID-19. An extended analysis
 added after submission uses counts up to 2025 to measure the Elizabeth line's effect on
 ridership and the network's resilience to closures. A TfL bus analysis adds London's buses:
-recovery after COVID, the Elizabeth line from daily data, crowding, and a combined bus + rail network.
+recovery after COVID, the Elizabeth line from daily data, crowding, a combined bus + rail network, and
+who depends on buses.
 
 > **Submitted version.** The code exactly as it was when the dissertation was submitted
 > (1 September 2024) is preserved at the git tag
@@ -37,6 +38,9 @@ recovery after COVID, the Elizabeth line from daily data, crowding, and a combin
   ([details](docs/passengers-and-buses.md#bus-vs-tube-recovery)).
 * **Bus crowding is a suburban, school-time problem,** worst far from rail and rising as service is cut
   ([details](docs/passengers-and-buses.md#bus-crowding)).
+* **Half of Londoners have a bus route but no TfL rail station within 800 m,** including 542,000 households
+  with no car or van. Deprived areas are nearer TfL rail but far more often car-free, and bus use near home
+  is highest there ([details](docs/passengers-and-buses.md#who-depends-on-buses)).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/centrality-overlap-dark.png">
@@ -59,7 +63,7 @@ recovery after COVID, the Elizabeth line from daily data, crowding, and a combin
 |---|---|
 | [Network structure and resilience](docs/network.md) | 2014 vs 2024 centrality, centrality vs ridership, resilience to closures, the combined bus + rail network |
 | [The Elizabeth line](docs/elizabeth-line.md) | Its effect on the network, on station traffic (annual counts and daily data) and on nearby bus demand |
-| [Passengers and buses](docs/passengers-and-buses.md) | Underground counts 2017-2022, bus vs Tube recovery, where bus demand fell, bus crowding |
+| [Passengers and buses](docs/passengers-and-buses.md) | Underground counts 2017-2022, bus vs Tube recovery, where bus demand fell, bus crowding, who depends on buses |
 | [Corrections after submission](docs/corrections.md) | What was corrected in the code and results after the dissertation was submitted |
 
 ## Notebooks and data
@@ -77,6 +81,7 @@ recovery after COVID, the Elizabeth line from daily data, crowding, and a combin
 | [`bus-demand-change`](python-notebooks/bus-demand-change.ipynb) | Where bus demand fell since 2023-24, and near the Elizabeth line | BUSTO, bus stops, 2024 network |
 | [`bus-crowding`](python-notebooks/bus-crowding.ipynb) | When, where and on which routes buses are crowded | BUSTO, bus stops, 2024 network |
 | [`bus-rail-network`](python-notebooks/bus-rail-network.ipynb) | Combined bus + rail network: accessibility, centrality, resilience | BUSTO, bus stops, 2024 network |
+| [`bus-who-depends`](python-notebooks/bus-who-depends.ipynb) | Who lives away from TfL rail: access, car ownership, age, disability and deprivation by small area | Small-area data, BUSTO, bus stops, 2024 network |
 
 | Data | Contents | Coverage |
 |---|---|---|
@@ -85,6 +90,7 @@ recovery after COVID, the Elizabeth line from daily data, crowding, and a combin
 | [Station counts](https://crowding.data.tfl.gov.uk/) | Annual (`AnnualisedEntryExit_<year>.xlsx`) and quarter-hourly (`ByQhrEntryExit_<year>.xlsx`) station counts | 2017-2025; 2017-2021 |
 | [Network Demand](https://crowding.data.tfl.gov.uk/#!Network%20Demand/) | Total Tube and bus journeys per day; daily entry and exit taps per rail station | Jan 2019 - Nov 2026 |
 | [BUSTO](https://crowding.data.tfl.gov.uk/#!BUSTO/) | Bus boardings, alightings, load and capacity for every route, direction and stop by quarter hour, and each stop's busiest hour (typical weekday, Saturday, Sunday) | 2023-24 to 2025-26 |
+| Small-area data | 2021 LSOAs in London: [Census 2021](https://www.nomisweb.co.uk/sources/census_2021_bulk) residents, car or van availability, age and disability (TS001, TS045, TS007a, TS038); [English Indices of Deprivation 2025](https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025); [ONS population weighted centroids](https://geoportal.statistics.gov.uk/) | Census 2021; IMD 2025 |
 | Bus stops and routes | [TfL bus stops and sequences feeds](https://tfl.gov.uk/info-for/open-data-users/our-open-data) (stop codes used by BUSTO, stop locations, route sequences); [TfL Unified API](https://api.tfl.gov.uk/) (677 current routes with ordered stops) | Aug 2024; snapshot at download |
 
 *Powered by TfL Open Data.* The bus analysis data is **not stored in git** (BUSTO alone is 3.7 GB):
@@ -108,7 +114,7 @@ the 2014 dataset; `python-notebooks/archive/` exploratory notebooks from the dis
   temporarily in some years. Comparisons across years use stations counted in every year.
 * BUSTO gives **typical-day averages** for each financial year, not counts for individual days, and starts
   in 2023-24. The bus stop feed dates from August 2024; 0.5% of 2025-26 boardings are at newer stops.
-* The combined network and the bus-near-rail measures use **TfL rail only**. National Rail, which serves
+* The combined network, the bus-near-rail measures and who depends on buses use **TfL rail only**. National Rail, which serves
   much of south and outer London, is not included.
 
 ## Running
@@ -127,7 +133,7 @@ python data-prep/fix_station_coordinates.py --refresh   # optional: re-download 
 python data-prep/download_tfl_bus.py all
 jupyter nbconvert --to notebook --execute --inplace bus-routes-stops.ipynb bus-eda.ipynb \
     bus-tube-recovery.ipynb elizabeth-line-daily.ipynb bus-demand-change.ipynb bus-crowding.ipynb \
-    bus-rail-network.ipynb   # the last one takes about 20 minutes
+    bus-rail-network.ipynb bus-who-depends.ipynb   # bus-rail-network takes about 20 minutes
 
 python make_readme_figures.py   # rebuilds the charts in figures/ from results/
 ```
@@ -142,6 +148,11 @@ Each notebook runs top to bottom from a fresh kernel and writes its tables to `r
     BUSTO, bus stop and route data) are © Transport for London, used under the
     [TfL open data terms](https://tfl.gov.uk/info-for/open-data-users/).
     *Powered by TfL Open Data.* Bus stop locations contain OS data © Crown copyright and database rights.
+  * Census 2021 tables (Office for National Statistics, via Nomis), the ONS LSOA population weighted
+    centroids and the English Indices of Deprivation 2025 (Ministry of Housing, Communities and Local
+    Government) are © Crown copyright, used under the
+    [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/).
+    The centroids contain OS data © Crown copyright and database rights.
   * The 2014 London multiplex dataset (De Domenico et al., 2014) is licensed under the
     [Open Database License (ODbL)](References/London_Multiplex_Transport/LICENSE_odbl-10.txt),
     with its contents under the

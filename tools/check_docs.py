@@ -368,6 +368,65 @@ else:
 
 
 # ============================================================================
+# Who depends on buses (results/bus/who_depends_*)
+# ============================================================================
+wg = pd.read_csv(BUS / "who_depends_access_groups.csv", index_col=0)
+wcols = ["TfL rail within 800 m", "bus only", "neither within reach", "London"]
+claim("passengers", "who-depends table residents",
+      "| Residents (M) | " + " | ".join(fx(wg.loc["residents", c] / 1e6, 2) for c in wcols) + " |")
+for row, label in [("share of London residents (%)", "Share of residents"),
+                   ("households with no car or van (%)", "Households with no car or van"),
+                   ("aged 5-19 (%)", "Aged 5-19"), ("aged 65+ (%)", "Aged 65+"),
+                   ("disabled (%)", "Disabled (Equality Act)"),
+                   ("residents in most deprived 20% of England (%)", "In the most deprived 20% of England")]:
+    cells = [("100" if c == "London" and row.startswith("share") else r1(wg.loc[row, c])) + "%" for c in wcols]
+    claim("passengers", f"who-depends table {label}", f"| {label} | " + " | ".join(cells) + " |")
+claim("passengers", "who-depends LSOA count", f"London's {int(wg.loc['LSOAs', 'London']):,} small areas")
+claim("passengers", "bus-only share", f"no TfL rail station nearby:** {r1(wg.loc['share of London residents (%)', 'bus only'])}% of residents")
+claim("passengers", "neither share", f"{r1(wg.loc['share of London residents (%)', 'neither within reach'])}% have neither")
+assert wg.loc["aged 65+ (%)", "bus only"] > wg.loc["aged 65+ (%)", "TfL rail within 800 m"]
+assert wg.loc["aged 5-19 (%)", "bus only"] > wg.loc["aged 5-19 (%)", "TfL rail within 800 m"]
+assert wg.loc["households with no car or van (%)", "bus only"] < wg.loc["households with no car or van (%)", "TfL rail within 800 m"]
+claim("passengers", "bus-only older, children, cars (direction checked)", "Bus-only areas are older, have more children and own more cars")
+claim("README", "half of Londoners bus only (range checked)", "Half of Londoners have a bus route but no TfL rail station within 800 m")
+assert 48 <= wg.loc["share of London residents (%)", "bus only"] <= 52
+
+wh = pd.read_csv(BUS / "who_depends_headline.csv", index_col=0)["value"]
+far_nocar = wh["... of which no TfL rail within 800 m"]
+k = f"{fx(round(far_nocar, -3) / 1000, 0)},000"
+claim("passengers", "car-free households far from rail",
+      f"{k} of London's {fx(wh['households with no car or van (London)'] / 1e6, 2)} million households with no car or van\n  "
+      f"({r1(wh['... share (%)'])}%) live more than 800 m from TfL rail; all but {int(wh['... of which also no bus route within 400 m']):,} of them")
+claim("README", "car-free households far from rail", f"including {k} households\n  with no car or van")
+wb = pd.read_csv(BUS / "who_depends_by_borough.csv", index_col=0).index[:5].tolist()
+claim("passengers", "top boroughs", f"The boroughs with the most are {', '.join(wb[:3])},\n  {wb[3]} and {wb[4]}")
+
+wi = pd.read_csv(BUS / "who_depends_by_imd_decile.csv", index_col=0)
+claim("passengers", "rail by deprivation",
+      f"{r1(wi.loc[1, 'no TfL rail within 800 m (%)'])}% of residents of the most\n  deprived decile live more than 800 m from TfL rail, "
+      f"against {r1(wi.loc[10, 'no TfL rail within 800 m (%)'])}% in the least deprived; but "
+      f"{r1(wi.loc[1, 'households with no car or van (%)'])}% of\n  households in the most deprived decile have no car, "
+      f"against {r1(wi.loc[10, 'households with no car or van (%)'])}%")
+wu = pd.read_csv(BUS / "who_depends_bus_use.csv", index_col=[0, 1])["weekday boardings near home per resident"]
+use_hi, use_lo = wu[("IMD decile", "1")], wu[("IMD decile", "10")]
+assert use_hi == wu.loc["IMD decile"].max(), "README says bus use near home is highest in the most deprived areas"
+claim("passengers", "bus use by deprivation", f"{fx(use_hi, 2)} weekday boardings per resident in the most deprived\n  "
+      f"decile, against {fx(use_lo, 2)} in the least deprived")
+claim("README", "bus use highest in deprived (max checked)", "bus use near home\n  is highest there")
+wc = pd.read_csv(BUS / "who_depends_change_by_imd.csv", index_col=[0, 1])["change (%)"]
+for ring in ["within 10 km of centre", "beyond 10 km"]:
+    assert wc[(ring, 1)] < wc[(ring, 10)], f"gradient not seen {ring}"
+claim("passengers", "change by deprivation", f"fell\n  {fx(abs(wc[('all', 1)]), 1)}% from 2023-24 to 2025-26 in the most deprived decile, "
+      f"against {fx(abs(wc[('all', 10)]), 1)}% in the least deprived")
+ws = pd.read_csv(BUS / "who_depends_sensitivity.csv", index_col=0)
+row = "... share of all car-free households (%)"
+claim("passengers", "sensitivity car-free", f"{r1(ws.loc[row, '500 m'])}% or {r1(ws.loc[row, '1200 m'])}% of car-free\n  households have no TfL rail nearby")
+for c in ws.columns:
+    assert ws.loc["most deprived decile: no TfL rail within radius (%)", c] < ws.loc["least deprived decile: no TfL rail within radius (%)", c]
+assert abs(ws.loc[row, "800 m"] - wh["... share (%)"]) < 0.05
+
+
+# ============================================================================
 # Run
 # ============================================================================
 def norm(s: str) -> str:

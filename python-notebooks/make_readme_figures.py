@@ -403,12 +403,33 @@ def fig_bus_rail_closures(t, mode):
     save(fig, "bus-rail-closures", mode)
 
 
+# -- 15. Who depends on buses: rail access and car ownership by deprivation ----
+def fig_who_depends(t, mode):
+    d = pd.read_csv(BUS / "who_depends_by_imd_decile.csv", index_col=0)
+    fig, ax = new_fig(t, 9, 4.4)
+    w = 0.38
+    for i, (col, label, color) in enumerate([
+            ("no TfL rail within 800 m (%)", "residents more than 800 m from TfL rail", t["s1"]),
+            ("households with no car or van (%)", "households with no car or van", t["s2"])]):
+        xs = np.arange(len(d)) + (i - 0.5) * (w + 0.04)
+        bars = ax.bar(xs, d[col].values, w, color=color, label=label, edgecolor=t["surface"], linewidth=1.5)
+        ax.bar_label(bars, labels=[f"{v:.0f}" for v in d[col].values], color=t["ink2"], fontsize=8, padding=2)
+    ax.set_xticks(range(len(d)), ["1\nmost\ndeprived"] + [str(i) for i in d.index[1:-1]] + ["10\nleast\ndeprived"])
+    ax.set_ylim(0, 92)
+    ax.yaxis.set_major_formatter(pct_fmt)
+    ax.set_xlabel("Deprivation decile of the area (English IMD 2025, national deciles)", color=t["ink2"], fontsize=10)
+    title(fig, ax, t, "Deprived areas are nearer TfL rail, but far more often car-free",
+          "London's 4,994 small areas (2021 LSOAs), grouped by deprivation; Census 2021")
+    legend(ax, t, loc="upper center", ncol=2)
+    save(fig, "who-depends-on-buses", mode)
+
+
 if __name__ == "__main__":
     plt.rcParams["font.family"] = "DejaVu Sans"
     for mode, t in THEMES.items():
         for f in (fig_overlap, fig_ranks, fig_totals, fig_share, fig_profile,
                   fig_map, fig_corr, fig_did, fig_resilience,
                   fig_bus_recovery, fig_el_daily, fig_bus_el_distance, fig_crowding,
-                  fig_bus_rail_closures):
+                  fig_bus_rail_closures, fig_who_depends):
             f(t, mode)
     print("wrote", sorted(p.name for p in FIGURES.glob("*.png")))
