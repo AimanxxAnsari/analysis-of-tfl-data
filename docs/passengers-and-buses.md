@@ -56,12 +56,12 @@ holidays removed.
 </picture>
 
 * **The two modes have diverged.** Since July 2023 the Tube has been flat (+0.5% a year, 95% CI -0.1% to
-  +1.2%) while **bus journeys have fallen 2.2% a year** (CI -2.6% to -1.9%). Buses were at 88% of 2019 in
+  +1.1%) while **bus journeys have fallen 2.2% a year** (CI -2.6% to -1.9%). Buses were at 88% of 2019 in
   2023-24 and 84% in 2026; in 2025 they fell below the Tube (86% vs 87%). The decline began around
   **September 2024**, since when bus journeys have been below the year before in every month.
 * **The shortfalls differ.** The Tube is missing weekday commuters, most on Mondays and Fridays (78% of
   2019, against 84-85% mid-week); at weekends it is back to 2019. Buses are 82-84% of 2019 on every
-  weekday and below 2019 at weekends too (90-95%), so their decline is not a working-from-home effect.
+  weekday and below 2019 at weekends too (91-95%), so their decline is not a working-from-home effect.
 * **Service cuts explain about a quarter of the bus fall.** Bus capacity on unchanged route-stops fell
   3.3% on weekdays between 2023-24 and 2025-26 (BUSTO); demand falls about 0.6% for each 1% of capacity,
   which accounts for about 2 of the 7.8 points lost.
@@ -101,7 +101,7 @@ this shows where crowding is systematic rather than on individual buses.
   <img alt="Bar chart: share of weekday morning-peak bus route-stops with standing passengers, by distance to rail and by distance from central London" src="../figures/bus-crowding-light.png" width="800">
 </picture>
 
-* **A weekday morning problem.** 3.5% of route-stops have standing in their busiest AM-peak hour (5% of
+* **A weekday morning problem.** 3.4% of route-stops have standing in their busiest AM-peak hour (5% of
   AM-peak passengers are on them), against about 1.4% in the inter-peak and PM peak and almost none in
   the evening or at weekends. Buses at 80%+ of total capacity are very rare in the averages.
 * **School travel drives much of it.** Morning crowding peaks in the hour from 07:30, and 99% of
@@ -109,7 +109,7 @@ this shows where crowding is systematic rather than on individual buses.
 * **Suburban routes, away from rail.** The most crowded routes are 493, 117, 152, K1, W19, 167 and E10.
   Stops more than 800 m from rail are 2-2.5 percentage points more likely to have standing than stops
   near rail, even allowing for distance from the centre.
-* **Crowding rose as service was cut:** AM-peak standing went from 2.9% of route-stops in 2023-24 to 3.5%
+* **Crowding rose as service was cut:** AM-peak standing went from 2.8% of route-stops in 2023-24 to 3.4%
   in 2025-26 while passengers fell. Routes whose capacity was cut by more than 10% lost 14% of their
   passengers yet became more crowded.
 

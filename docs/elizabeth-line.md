@@ -116,7 +116,7 @@ taps, weekdays, strikes and holidays removed) shows when that happened. Each sta
   Street. (Bond Street's December spikes are West End Christmas shopping.)
 * **It matches the annual analysis:** 2019 to 2023 gives +73% from daily weekday taps vs +84% from annual
   counts, and 2019 to 2025 +91% vs +94%.
-* **Part of it is passengers moving from nearby stations,** which fell 4-9% relative to stations further
+* **Part of it is passengers moving from nearby stations,** which fell 2-9% relative to stations further
   away. Comparing only with stations more than 1 km away gives +82% in year 3 instead of +88%.
 * The Northern line Bank branch (Kennington to Angel) is left out of the control group: it was closed
   from January to May 2022, exactly the period before the opening.
@@ -130,7 +130,7 @@ for buses. It can show where bus demand changed since then (see
 [where bus demand fell](passengers-and-buses.md#where-bus-demand-fell)).
 
 * **Near the Elizabeth line, demand held up slightly better, mostly at the stations' doorstep.** The raw
-  gap (-1.5% near the line vs -7.1% elsewhere) is mostly geography and new routes. Comparing stops on the
+  gap (-1.5% near the line vs -7.2% elsewhere) is mostly geography and new routes. Comparing stops on the
   same route, with distance from the centre and capacity changes controlled for, stops near the line did
   about 2-3% better than stops away from rail at 400 m (not significant), but **7.6% better within 200 m**
   of a central-section station (95% CI +2.5% to +12.9%). Stops near other TfL rail stations did no better.

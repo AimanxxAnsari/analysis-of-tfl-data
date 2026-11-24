@@ -76,7 +76,7 @@ def fig_overlap(t, mode):
         xs = [j + (i - 0.5) * (w + 0.04) for j in range(len(measures))]
         bars = ax.bar(xs, vals, w, color=color, label=label, edgecolor=t["surface"], linewidth=1.5)
         ax.bar_label(bars, color=t["ink2"], fontsize=9, padding=2)
-    ax.set_xticks(range(len(measures)), [m.capitalize() for m in measures])
+    ax.set_xticks(range(len(measures)), ["PageRank" if m == "pagerank" else m.capitalize() for m in measures])
     ax.set_ylim(0, 6.6)
     ax.set_yticks(range(6))
     ax.set_ylabel("Stations shared with 2014 top 5", color=t["ink2"], fontsize=10)
@@ -227,7 +227,7 @@ def fig_corr(t, mode):
         xs = [j + (i - 0.5) * (w + 0.04) for j in range(len(measures))]
         bars = ax.bar(xs, vals, w, color=color, label=label, edgecolor=t["surface"], linewidth=1.5)
         ax.bar_label(bars, labels=[f"{v:.2f}" for v in vals], color=t["ink2"], fontsize=9, padding=2)
-    ax.set_xticks(range(len(measures)), [m.capitalize() for m in measures])
+    ax.set_xticks(range(len(measures)), ["PageRank" if m == "pagerank" else m.capitalize() for m in measures])
     ax.set_ylim(0, 0.95)
     ax.set_ylabel("Spearman correlation with entries + exits", color=t["ink2"], fontsize=10)
     title(fig, ax, t, "Closeness predicts how busy a station is; betweenness much less",
